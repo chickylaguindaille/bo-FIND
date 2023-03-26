@@ -9,30 +9,42 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\Generator\UrlGenerator;
+use Psr\Log\LoggerInterface;
 
-use App\Entity\Ville;
-use App\Form\VilleType;
-use App\Repository\VilleRepository;
+use App\Service\FindApiService;
 
-use App\Entity\Corporations;
-use App\Repository\CorporationsRepository;
-use App\Repository\ParticularitesRepository;
-use App\Repository\AnecdotesRepository;
-use App\Repository\ChantRepository;
-use App\Repository\DecorumRepository;
-use App\Repository\PinsRepository;
-use App\Repository\CroixRepository;
 use JMS\Serializer\SerializerBuilder;
 
 class HomeController extends AbstractController
 {
+
+    private $findApi;
+
+
+    public function __construct(LoggerInterface $logger, FindApiService $findApi)
+    {
+        // parent::__construct($logger);
+        $this->findApi = $findApi;
+
+    }
+
+
+
     /**
      * @Route("/home", name="home")
      * @Template()
      */
-    public function home(Request $request)
+    public function home(FindApiService $findApi)
     {
+
+        $town = $this->findApi->getTown();
+        exit(var_dump($town));
+
+        $association = $findApi->getAssociation();
+        exit(var_dump($association));
+
         return $this->render('home.html.twig');
     }
+
 
 }
