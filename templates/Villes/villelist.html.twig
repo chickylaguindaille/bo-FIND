@@ -1,0 +1,158 @@
+{% extends "layout.html.twig" %}
+
+{# {% block title %}Accueil{% endblock %} #}
+
+{% block content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+
+                    <ul class="nav nav-pills nav-fill m-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">France</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Belgique</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content p-0" id="pills-tabContent">
+                        {# FRANCE #}
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                            <div class="card-body pt-1">
+                                <h4 class="card-title">Villes en France</h4>
+                                <hr>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                        <th>
+                                            Blason
+                                        </th>
+                                        <th>
+                                            Nom
+                                        </th>
+                                        <th>
+                                            Region
+                                        </th>
+                                        <th>
+                                            Country
+                                        </th>
+                                        <th>
+                                            Action
+                                        </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for town in towns %}
+                                            <tr>
+                                            <td class="py-1">
+                                                <img src="{{ asset(town.blason) }}" alt="image"/>
+                                            </td>
+                                            <td>
+                                            {{town.name}}
+                                            </td>
+                                            <td>
+                                                {{town.region}}
+                                            </td>
+                                            <td>
+                                                {{town.country}}
+                                            </td>
+                                            <td>
+                                                May 15, 2015
+                                            </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        {# BELGIQUE #}
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <div class="card-body pt-1">
+                                <h4 class="card-title">Villes en Belgique</h4>
+                                <hr>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                        <th>
+                                            Blason
+                                        </th>
+                                        <th>
+                                            Nom
+                                        </th>
+                                        <th>
+                                            Region
+                                        </th>
+                                        <th>
+                                            Country
+                                        </th>
+                                        <th>
+                                            Action
+                                        </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for town in towns %}
+                                            <tr>
+                                            <td class="py-1">
+                                                <img src="{{ asset(town.blason) }}" alt="image"/>
+                                            </td>
+                                            <td>
+                                            {{town.name}}
+                                            </td>
+                                            <td>
+                                                {{town.region}}
+                                            </td>
+                                            <td>
+                                                {{town.country}}
+                                            </td>
+                                            <td>
+                                                May 15, 2015
+                                            </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+    {% endblock %}

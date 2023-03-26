@@ -12,17 +12,16 @@ use Psr\Http\Message\UriInterface;
 // Doc pour Guzzle
 // http://docs.guzzlephp.org/en/stable/request-options.html#allow-redirects
 
-class StudizzService
+class FindService
 {
     protected $logger;
     protected $baseUrl;
     protected $client = null;
-    protected $timeout;// = 30;
-
-    public function __construct(LoggerInterface $logger, string $studizz_url = "")
+    protected $timeout;
+    public function __construct(LoggerInterface $logger, string $find_url = "")
     {
         $this->logger = $logger;
-        $this->baseUrl = $studizz_url;
+        $this->baseUrl = $find_url;
     }
 
     protected function getClient()
@@ -58,7 +57,6 @@ class StudizzService
         ];
 
         
-        
         if ($type == 'json')
             $params['headers']['Accept'] = 'application/json';
 
@@ -68,7 +66,6 @@ class StudizzService
         $data = array();
 
         try {
-            $this->logger->debug("StudizzService::request method " . $method . " url = " . $this->baseUrl . $url . " params=" . json_encode($params));
 
             $response = $this->getClient()->request($method, $url, $params);
 
@@ -82,15 +79,9 @@ class StudizzService
         } catch (\ErrorException $ee) {
             $data = array('code' => $ee->getCode(), "message" => $ee->getMessage());
         } catch (\Exception $e) {
-            //exit(var_dump($e));
-           /* if ($e->getResponse() == null)
-                $data = array('code' => 500, "message" => "response from api is null");
-            else
-                $data = array('code' => $e->getResponse()->getStatusCode(), "message" => $e->getResponse()->getReasonPhrase());*/
             $data = array('code' => $e->getCode(), "message" => $e->getMessage());
         }
 
-        //exit(var_dump($data));
         return $data;
     }
 

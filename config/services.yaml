@@ -30,8 +30,5 @@ services:
         arguments:
             - '@logger'
             - '%env(resolve:FIND_API_URL)%'
-            # - '@App\Service\StudizzTestUrlService'
-            # $params: '@parameter_bag'
-            # $logger: '@logger'
-            # $httpClient: '@http_client'
+
             

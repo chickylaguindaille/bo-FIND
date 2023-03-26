@@ -4,21 +4,33 @@
           <li class="nav-item">
             <a class="nav-link" href="index.html">
               <i class="mdi mdi-grid-large menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
+              <span class="menu-title">Page d'accueil</span>
             </a>
           </li>
-          <li class="nav-item nav-category">UI Elements</li>
+          <li class="nav-item nav-category">Gestion</li>
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" data-bs-toggle="collapse" href="#villes" aria-expanded="false" aria-controls="villes">
               <i class="menu-icon mdi mdi-floor-plan"></i>
-              <span class="menu-title">UI Elements</span>
+              <span class="menu-title">Villes</span>
               <i class="menu-arrow"></i> 
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse" id="villes">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ path('home')}}">Ajouter</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ path('ville_list')}}">Liste</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#associations" aria-expanded="false" aria-controls="associations">
+              <i class="menu-icon mdi mdi-floor-plan"></i>
+              <span class="menu-title">Associations</span>
+              <i class="menu-arrow"></i> 
+            </a>
+            <div class="collapse" id="associations">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Ajouter</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Liste</a></li>
               </ul>
             </div>
           </li>

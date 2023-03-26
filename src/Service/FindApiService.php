@@ -1,29 +1,21 @@
 <?php
 
 namespace App\Service;
-// use Psr\Log\LoggerInterface;;
-use Symfony\Component\HttpFoundation\Request;
+
 use Symfony\Component\HttpClient\HttpClient;
-use App\Service\StudizzTestUrlService;
-
-// use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-
-
 use Psr\Log\LoggerInterface;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 
-class FindApiService extends StudizzService
+
+class FindApiService extends FindService
 {
 
 	public function __construct(
 		LoggerInterface $logger,
-		string $studizz_url = "",
-		StudizzTestUrlService $testUrlService
+		string $find_url = "",
 		)
 	{
-		parent::__construct($logger, $studizz_url);
+		parent::__construct($logger, $find_url);
 		
 	}
 
@@ -31,33 +23,27 @@ class FindApiService extends StudizzService
 	//------------------------------------------------------------------------------------------------------------------
 	// Town
 	//------------------------------------------------------------------------------------------------------------------
-	public function getTown()
-
+	public function getTowns()
 	{
+		return $this->request(null, 'GET', 'api/villes');
+	}
 
-		return $this->request(null, 'GET', 'api/villes/');
-
-		// $client = HttpClient::create();
-		// $response = $client->request('GET', 'http://localhost:88/api-FIND/public/index.php/api/villes');
-	
-		// $statusCode = $response->getStatusCode();
-		// $content = $response->getContent();
-	
-		// return $content;
+	public function getTown($id)
+	{
+		return $this->request(null, 'GET', 'api/villes/' .$id);
 	}
 
 	//------------------------------------------------------------------------------------------------------------------
 	// Association
 	//------------------------------------------------------------------------------------------------------------------
-	public function getAssociation()
+	public function getAssociations()
 	{
-		$client = HttpClient::create();
-		$response = $client->request('GET', 'http://localhost:88/api-FIND/public/index.php/api/associations');
-	
-		$statusCode = $response->getStatusCode();
-		$content = $response->getContent();
-	
-		return $content;
+		return $this->request(null, 'GET', 'api/associations');
+	}
+
+	public function getAssociation($id)
+	{
+		return $this->request(null, 'GET', 'api/associations/' .$id);
 	}
 
 }
