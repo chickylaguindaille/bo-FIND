@@ -36,7 +36,7 @@ class HomeController extends AbstractController
      */
     public function home(FindApiService $findApi)
     {
-        $town = $this->findApi->getTowns();
+        // $town = $this->findApi->getTowns();
         // exit(var_dump($town));
 
         $town = $this->findApi->getTown('6418e55fa9b5b157c1b54ab0');
@@ -49,22 +49,6 @@ class HomeController extends AbstractController
         // exit(var_dump($association));
 
         return $this->render('home.html.twig');
-    }
-
-    /**
-     * @Route("/ville/list", name="ville_list")
-     * @Template()
-     */
-    public function villeList(FindApiService $findApi)
-    {
-        $town = $this->findApi->getTowns();
-        $town = $town['data'];
-
-        $data['towns'] = $town;
-
-        
-
-        return $this->render('Villes/villelist.html.twig', $data);
     }
 
 
