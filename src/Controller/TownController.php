@@ -65,7 +65,7 @@ class TownController extends AbstractController
         $town = $this->findApi->getTowns('Belgique');
         $data['belgiumtowns'] = $town['data'];
 
-        
+        // $data=array();
 
         return $this->render('Villes/villelist.html.twig', $data);
     }
@@ -90,24 +90,45 @@ class TownController extends AbstractController
         $save = $this->saveFile($blason, $filesrcsave, $filenameonly);
 
 
+        $createtown = $this->findApi->createTown(json_encode($data));
+        
+        return $this->redirectToRoute('ville_list');
+    }
+
+    /**
+     * @Route("/ville/patch/{id}", name="ville_patch")
+     * @Template()
+     */
+    public function villePatch(Request $request, FindApiService $findApi)
+    {
+        $id = $request->get('id');
+
+        $town = $this->findApi->getTown($id);
+
+        $data['name'] = $request->get('name');
+        $data['region'] = $request->get('region');
+        $data['country'] = $request->get('country');
+        $blason = $request->files->get('blason');
+
+        if ($blason !== null){
 
 
-        $json = json_encode($data);
-        // $client = HttpClient::create();
-        // $response = $client->request('POST', 'http://localhost:88/api-FIND/public/index.php/api/villes', [
-        //     'headers' => [
-        //         'Content-Type' => 'application/json',
-        //     ],
-        //     'body' => $json,
-        // ]);
+        if (file_exists($town['blason'])){
+            unlink($town['blason']);
+        }
+
+            $filenameext = $_FILES['blason']['name'];
+            $filenameonly = pathinfo($_FILES['blason']['name'], PATHINFO_FILENAME);
+            $filesrcsave = 'towns/' . $data['name'];
     
-        // $statusCode = $response->getStatusCode();
-        // $content = $response->getContent();
+            $save = 'towns/' . $filenameonly .'/'. $filenameext; 
+            $data['blason'] = $save;
+            $save = $this->saveFile($blason, $filesrcsave, $filenameonly);
 
+        }
+        // exit(var_dump($inputData));
 
-        $createtown = $this->findApi->createTown($json);
-
-        // exit(var_dump($content));
+        $createtown = $this->findApi->patchTown(json_encode($data), $id);
         
         return $this->redirectToRoute('ville_list');
     }
@@ -121,6 +142,13 @@ class TownController extends AbstractController
     public function villeDelete(Request $request, FindApiService $findApi)
     {
         $id = $request->get('id');
+        $town = $this->findApi->getTown($id);
+        $dir = $town['blason'];
+        $posdoss = strrpos($dir, '/');
+        $dirdoss = substr($dir, 0, $posdoss);
+
+        unlink($town['blason']);
+        rmdir($dirdoss);
 
         $town = $this->findApi->deleteTown($id);
         return $this->redirectToRoute('ville_list');

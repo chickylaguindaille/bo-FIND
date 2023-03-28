@@ -33,29 +33,30 @@ class FindApiService extends FindService
 		return $this->request(null, 'GET', 'api/villes/' .$id);
 	}
 
-	public function createTown($json)
-	{
-		// $json = json_encode($data);
+	public function createTown($data)
+	{;
 		$client = HttpClient::create();
-
 		$response = $client->request('POST', 'http://localhost:88/api-FIND/public/index.php/api/villes', [
             'headers' => [
                 'Content-Type' => 'application/json',
             ],
-            'body' => $json,
+            'body' => $data,
         ]);
 
-		// $response = $this->request('POST', 'api/villes', [
-        //     'headers' => [
-        //         'Content-Type' => 'application/json',
-        //     ],
-        //     'body' => $json,
-        // ]);
-
-		// exit(var_dump($response));
 		return $response;
+	}
 
-		// return $this->request(null, 'POST', 'api/villes',$headers, $body);
+	public function patchTown($data, $id)
+	{;
+		$client = HttpClient::create();
+		$response = $client->request('PATCH', 'http://localhost:88/api-FIND/public/index.php/api/villes/' . $id , [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+            'body' => $data,
+        ]);
+
+		return $response;
 	}
 
 	public function deleteTown($id)
