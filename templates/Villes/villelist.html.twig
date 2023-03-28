@@ -131,11 +131,11 @@
                                                                     <form class="forms-sample" action="{{ path('ville_patch', {'id': town.id}) }}" method="post" enctype="multipart/form-data">
                                                                         <div class="form-group">
                                                                         <label for="name">Nom de la ville</label>
-                                                                        <input type="text" class="form-control inputville" name="name"  id="name" value="{{town.name}}">
+                                                                        <input type="text" class="form-control inputville" name="name"  id="name" value="{{town.name}}" required="required">
                                                                         </div>
                                                                         <div class="form-group">
                                                                         <label for="region">Région</label>
-                                                                        <input type="text" class="form-control inputville" name="region" id="region" value="{{town.region}}">
+                                                                        <input type="text" class="form-control inputville" name="region" id="region" value="{{town.region}}" required="required">
                                                                         </div>
                                                                         <div class="form-group">
                                                                         <label for="country">Pays</label>
