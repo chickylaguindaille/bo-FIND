@@ -26,6 +26,8 @@
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             <div class="card-body pt-1">
                                 <div class="align-items-center d-flex justify-content-between">
+                
+                                    <input class="py-2" type="text" placeholder="Recherche"></input>
                                     <h3 class="card-title py-2 m-0">Villes en France</h3>
                                     <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     Ajouter une ville +
@@ -193,14 +195,15 @@
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <div class="card-body pt-1">
                                 <div class="align-items-center d-flex justify-content-between">
+                                    <input class="py-2" type="text" placeholder="Recherche"></input>
                                     <h3 class="card-title py-2 m-0">Villes en Belgique</h3>
-                                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                                     Ajouter une ville +
                                     </button>
                                 </div>
 
                                     <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                         <div class="modal-header">
@@ -220,8 +223,8 @@
                                                 <div class="form-group">
                                                 <label for="country">Pays</label>
                                                     <select name="country" class="form-select" id="country" required="required">
+                                                        <option value="Belgique" selected>Belgique</option>
                                                         <option value="France">France</option>
-                                                        <option value="Belgique">Belgique</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
