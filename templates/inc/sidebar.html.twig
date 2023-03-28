@@ -1,21 +1,21 @@
 <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-          <li class="nav-item">
+          <li class="nav-item {% if page == "home" %}active{% endif %}">
             <a class="nav-link" href="{{ path('home')}}">
               <i class="mdi mdi-home menu-icon"></i>
               <span class="menu-title">Page d'accueil</span>
             </a>
           </li>
           <li class="nav-item nav-category">ACTIF</li>
-          <li class="nav-item">
+          <li class="nav-item {% if page == 'ville' %}active{% endif %}">
             <a class="nav-link" href="{{ path('ville_list')}}">
               <i class="mdi mdi-city menu-icon"></i>
               <span class="menu-title">Villes</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li class="nav-item {% if page == 'association' %}active{% endif %}">
+            <a class="nav-link" href="{{ path('association_list')}}">
               <i class="mdi mdi-beer menu-icon"></i>
               <span class="menu-title">Associations</span>
             </a>
@@ -51,7 +51,37 @@
               <span class="menu-title">Utilisateurs</span>
             </a>
           </li>
-
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="mdi mdi-star menu-icon"></i>
+              <span class="menu-title">Insignes/Rubans</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">Calendriers</li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="mdi mdi-calendar menu-icon"></i>
+              <span class="menu-title">Congrès</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="mdi mdi-calendar menu-icon"></i>
+              <span class="menu-title">Ordinesque</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="mdi mdi-calendar menu-icon"></i>
+              <span class="menu-title">Paris</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="mdi mdi-calendar menu-icon"></i>
+              <span class="menu-title">Namur</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- partial -->

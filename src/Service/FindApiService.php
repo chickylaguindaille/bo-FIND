@@ -78,4 +78,22 @@ class FindApiService extends FindService
 		return $this->request(null, 'GET', 'api/associations/' .$id);
 	}
 
+	public function createAssociation($data)
+	{
+		$client = HttpClient::create();
+		$response = $client->request('POST', 'http://localhost:88/api-FIND/public/index.php/api/associations', [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+            'body' => $data,
+        ]);
+
+		return $response;
+	}
+
+	public function deleteAssociation($id)
+	{
+		return $this->request(null, 'DELETE', 'api/associations/' .$id);
+	}
+
 }

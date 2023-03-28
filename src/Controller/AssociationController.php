@@ -16,7 +16,7 @@ use App\Service\FindApiService;
 
 use JMS\Serializer\SerializerBuilder;
 
-class TownController extends AbstractController
+class AssociationController extends AbstractController
 {
 
     private $findApi;
@@ -54,46 +54,67 @@ class TownController extends AbstractController
 
 
     /**
-     * @Route("/ville/list", name="ville_list")
+     * @Route("/association/list", name="association_list")
      * @Template()
      */
-    public function villeList(FindApiService $findApi)
+    public function associationList(FindApiService $findApi)
     {
-        $data['page'] = 'ville';
-        $town = $this->findApi->getTowns('France');
-        $data['frenchtowns'] = $town['data'];
+        $data['page'] = 'association';
+        $associations = $this->findApi->getAssociations();
 
-        $town = $this->findApi->getTowns('Belgique');
-        $data['belgiumtowns'] = $town['data'];
+        $town = $this->findApi->getTowns(null);
+        $data['towns'] = array_column($town['data'], 'name');
+        // exit(var_dump($data['towns']));
 
-        // $data=array();
+        $data['associations'] = $associations['data'];
 
-        return $this->render('Villes/villelist.html.twig', $data);
+
+
+        return $this->render('Associations/associationlist.html.twig', $data);
     }
 
     /**
-     * @Route("/ville/add", name="ville_add")
+     * @Route("/association/add", name="association_add")
      * @Template()
      */
-    public function villeAdd(Request $request, FindApiService $findApi)
+    public function associationAdd(Request $request, FindApiService $findApi)
     {
-        $data['name'] = $request->request->get('name');
-        $data['region'] = $request->request->get('region');
-        $data['country'] = $request->request->get('country');
-        $blason = $request->files->get('blason');
+        $inputData = $request->request->all();
 
-        $filenameext = $_FILES['blason']['name'];
-        $filenameonly = pathinfo($_FILES['blason']['name'], PATHINFO_FILENAME);
-        $filesrcsave = 'towns/' . $filenameonly;
+        $data['nickname'] = $request->request->get('nickname');
+        $inputData['creation'] = strtotime($inputData['creation']);
+        $inputData['logo'] = $_FILES['logo']['name'];
 
-        $save = 'towns/' . $filenameonly .'/'. $filenameext; 
-        $data['blason'] = $save;
-        $save = $this->saveFile($blason, $filesrcsave, $filenameonly);
+        $inputData['particularity'] = array();
+        $inputData['anecdote'] = array();
+        $inputData['document'] = array();
+        $inputData['decorum'] = array();
+        $inputData['goodies'] = array();
+        $inputData['sing'] = array();
+        $inputData['committee'] = array();
+
+        $data = $inputData;
+
+        // exit(var_dump($data));
+
+        // $data['name'] = $request->request->get('name');
+        // $data['region'] = $request->request->get('region');
+        // $data['country'] = $request->request->get('country');
+        // $blason = $request->files->get('blason');
+
+        // $filenameext = $_FILES['blason']['name'];
+        // $filenameonly = pathinfo($_FILES['blason']['name'], PATHINFO_FILENAME);
+        // $filesrcsave = 'towns/' . $filenameonly;
+
+        // $save = 'towns/' . $filenameonly .'/'. $filenameext; 
+        // $data['blason'] = $save;
+        // $save = $this->saveFile($blason, $filesrcsave, $filenameonly);
 
 
-        $createtown = $this->findApi->createTown(json_encode($data));
+
+        $createtown = $this->findApi->createAssociation(json_encode($data));
         
-        return $this->redirectToRoute('ville_list');
+        return $this->redirectToRoute('association_list');
     }
 
     /**
@@ -137,22 +158,22 @@ class TownController extends AbstractController
 
 
     /**
-     * @Route("/ville/delete/{id}", name="ville_delete")
+     * @Route("/association/delete/{id}", name="association_delete")
      * @Template()
      */
     public function villeDelete(Request $request, FindApiService $findApi)
     {
         $id = $request->get('id');
-        $town = $this->findApi->getTown($id);
-        $dir = $town['blason'];
-        $posdoss = strrpos($dir, '/');
-        $dirdoss = substr($dir, 0, $posdoss);
+        // $town = $this->findApi->getTown($id);
+        // $dir = $town['blason'];
+        // $posdoss = strrpos($dir, '/');
+        // $dirdoss = substr($dir, 0, $posdoss);
 
-        unlink($town['blason']);
-        rmdir($dirdoss);
+        // unlink($town['blason']);
+        // rmdir($dirdoss);
 
-        $town = $this->findApi->deleteTown($id);
-        return $this->redirectToRoute('ville_list');
+        $association = $this->findApi->deleteAssociation($id);
+        return $this->redirectToRoute('association_list');
     }
 
 

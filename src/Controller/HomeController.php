@@ -36,6 +36,8 @@ class HomeController extends AbstractController
      */
     public function home(FindApiService $findApi)
     {
+        $data['page'] = 'home'; 
+
         $town = $this->findApi->getTowns('France');
         // exit(var_dump($town));
 
@@ -48,7 +50,7 @@ class HomeController extends AbstractController
         $association = $findApi->getAssociation('6420590d0671180012100593');
         // exit(var_dump($association));
 
-        return $this->render('home.html.twig');
+        return $this->render('home.html.twig', $data);
     }
 
     /**

@@ -1,0 +1,331 @@
+{% extends "layout.html.twig" %}
+
+{# {% block title %}Accueil{% endblock %} #}
+
+{% block content %}
+
+{% include 'Villes/villelist.css.twig' %}
+
+
+
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+
+                    {# <ul class="nav nav-pills nav-fill m-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">France</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Belgique</button>
+                        </li>
+                    </ul> #}
+                    <div class="tab-content p-0" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                            <div class="card-body">
+                                <div class="align-items-center d-flex justify-content-between">
+                
+                                    <input class="py-2" type="text" placeholder="Recherche"></input>
+                                    <h3 class="card-title py-2 m-0">Toutes les Associations</h3>
+                                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Ajouter une association +
+                                    </button>
+                                </div>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-scrollable modal-xl mt-0">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Ajouter une association</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="forms-sample" action="{{ path('association_add') }}" method="post" enctype="multipart/form-data">
+                                                <div class="row">
+                                                    <div class="form-group col-6">
+                                                        <label for="name">Nom de l'association</label>
+                                                        <input type="text" name="name" class="form-control inputville"  id="name" required="required">
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="nickname">Surnom</label>
+                                                        <input type="text" name="nickname" class="form-control inputville" id="nickname">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-6">
+                                                        <label for="town">Ville</label>
+                                                            <select name="town" class="form-select" id="town" required="required">
+                                                                {% for name in towns|sort %}
+                                                                    <option value="{{name}}">{{name}}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="nickname">Date de création</label>
+                                                        <input type="date" name="creation" class="form-control inputville" id="creation">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-6">
+                                                        <label for="type">Type</label>
+                                                            <select name="type" class="form-select" id="type" required="required">
+                                                                <option value="Filière">Filière</option>
+                                                                <option value="Régionale">Régionale</option>
+                                                                <option value="Cercle">Cercle</option>
+                                                                <option value="Ordre">Ordre</option>
+                                                                <option value="Association">Association</option>
+                                                            </select>
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="hat">Couvre-Chef</label>
+                                                            <select name="hat" class="form-select" id="hat" required="required">
+                                                                <option value="Faluche">Faluche</option>
+                                                                <option value="Calotte">Calotte</option>
+                                                                <option value="Penne">Penne</option>
+                                                                <option value="Mixte">Mixte</option>
+                                                                <option value="Mixte">Aucun</option>
+                                                            </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label for="resume" class="form-label">Résumé</label>
+                                                    <textarea name="resume" class="form-control" id="resume" rows="3" style="height: 5rem !important;"></textarea>
+                                                </div>
+
+
+
+                                                <div class="form-group">
+                                                    <label for="logo">Logo</label>
+                                                    <input type="file" name="logo" class="form-control inputville p-2" id="logo">
+                                                </div>
+
+
+                                                <div class="accordion" id="accordionPanelsStayOpenExample">
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                                            Particularités
+                                                        </button>
+                                                        </h2>
+                                                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+                                                        <div class="accordion-body">
+                                                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                                            Anecdotes
+                                                        </button>
+                                                        </h2>
+                                                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                                                        <div class="accordion-body">
+                                                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                                            Documents
+                                                        </button>
+                                                        </h2>
+                                                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                                                        <div class="accordion-body">
+                                                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                                                            Decorum
+                                                        </button>
+                                                        </h2>
+                                                        <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+                                                        <div class="accordion-body">
+                                                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
+                                                            Pin's, Autocollants et autre
+                                                        </button>
+                                                        </h2>
+                                                        <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
+                                                        <div class="accordion-body">
+                                                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="panelsStayOpen-headingSix">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">
+                                                            Chant
+                                                        </button>
+                                                        </h2>
+                                                        <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
+                                                        <div class="accordion-body">
+                                                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false" aria-controls="panelsStayOpen-collapseSeven">
+                                                            Commité
+                                                        </button>
+                                                        </h2>
+                                                        <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSeven">
+                                                        <div class="accordion-body">
+                                                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                    
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                                            
+                                        </div>
+                                        </form>
+                                        </div>
+                                    </div>
+                                    </div>
+                                <hr>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                        <th>
+                                            Logo
+                                        </th>
+                                        <th>
+                                            Nom
+                                        </th>
+                                        <th>
+                                            Surnom
+                                        </th>
+                                        <th>
+                                            Ville
+                                        </th>
+                                        <th>
+                                            Type
+                                        </th>
+                                        <th>
+                                            Couvre-Chef
+                                        </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for association in associations %}
+                                            <tr>
+                                            <td class="py-1">
+                                                {{association.logo??""}}
+                                                <img src="{{ asset(association.logo) }}" alt="image"/>
+                                            </td>
+                                            <td>
+                                                {{association.name}}
+                                            </td>
+                                            <td>
+                                                {{association.nickname??"/"}}
+                                            </td>
+                                            <td>
+                                                {{association.town}}
+                                            </td>
+                                            <td>
+                                                {{association.type}}
+                                            </td>
+                                            <td>
+                                                {{association.hat}}
+                                            </td>
+                                            <td>
+                                                <!-- Button trigger modal -->
+                                                        <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{association.id}}">
+                                                        Voir plus
+                                                        </button>
+                                                        <button type="button" class="btn btn-outline-danger p-2" data-bs-toggle="modal" data-bs-target="#modalsuppr_{{association.id}}">
+                                                        Supprimer
+                                                        </button>
+
+                                                        <!-- Modal Modifier-->
+                                                        {# <div class="modal fade" id="modal_{{town.id}}" tabindex="-1" role="dialog" aria-labelledby="modal_{{town.id}}" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLongTitle">Modifier {{town.name}}</h5>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form class="forms-sample" action="{{ path('ville_patch', {'id': town.id}) }}" method="post" enctype="multipart/form-data">
+                                                                        <div class="form-group">
+                                                                        <label for="name">Nom de la ville</label>
+                                                                        <input type="text" class="form-control inputville" name="name"  id="name" value="{{town.name}}" required="required">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                        <label for="region">Région</label>
+                                                                        <input type="text" class="form-control inputville" name="region" id="region" value="{{town.region}}" required="required">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                        <label for="country">Pays</label>
+                                                                            <select name="country" class="form-select" id="country" required="required">
+                                                                                <option value="France">France</option>
+                                                                                <option value="Belgique">Belgique</option>
+                                                                            </select>                                                                        </div>
+                                                                        <div class="form-group">
+                                                                        <label for="blason">Blason</label>
+                                                                        <div class="pb-2"><i>{{town.blason}}</i></div>
+                                                                        <input type="file" class="form-control inputville p-2" name="blason" id="blason" value="{{town.blason}}">
+                                                                        </div>
+                                                                    
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                                                    <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                                                                </div>
+                                                                </form>
+                                                                </div>
+                                                            </div>
+                                                        </div> #}
+
+                                                        <!-- Modal Supprimer-->
+                                                        <div class="modal fade" id="modalsuppr_{{association.id}}" tabindex="-1" role="dialog" aria-labelledby="modalsuppr_{{association.id}}" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLongTitle">Supprimer {{association.name}}</h5>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Etes vous sûr de vouloir supprimer {{association.name}} ?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    {# <a href="{{ path('ville_delete') }}"><button type="button" class="btn btn-danger" data-bs-dismiss="modal">Supprimer</button></a> #}
+                                                                    <a class="btn btn-danger" href="{{ path('association_delete', {'id': association.id}) }}" role="button">Supprimer</a>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                            </td>
+                                            </tr>
+                                        {% endfor %} 
+                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+    {% endblock %}
