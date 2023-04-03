@@ -5,7 +5,7 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
         # find_api_base_url: '%env(FIND_API_URL)%'
-        find_api_url: 'http://localhost:88/api-FIND/public/index.php/api/'
+        find_api_url: 'http://localhost:80/api-FIND/public/index.php/api/'
 
 services:
     # default configuration for services in *this* file

@@ -36,7 +36,7 @@ class FindApiService extends FindService
 	public function createTown($data)
 	{;
 		$client = HttpClient::create();
-		$response = $client->request('POST', 'http://localhost:88/api-FIND/public/index.php/api/villes', [
+		$response = $client->request('POST', 'http://localhost:80/api-FIND/public/index.php/api/villes', [
             'headers' => [
                 'Content-Type' => 'application/json',
             ],
@@ -49,7 +49,7 @@ class FindApiService extends FindService
 	public function patchTown($data, $id)
 	{;
 		$client = HttpClient::create();
-		$response = $client->request('PATCH', 'http://localhost:88/api-FIND/public/index.php/api/villes/' . $id , [
+		$response = $client->request('PATCH', 'http://localhost:80/api-FIND/public/index.php/api/villes/' . $id , [
             'headers' => [
                 'Content-Type' => 'application/json',
             ],
@@ -81,7 +81,7 @@ class FindApiService extends FindService
 	public function createAssociation($data)
 	{
 		$client = HttpClient::create();
-		$response = $client->request('POST', 'http://localhost:88/api-FIND/public/index.php/api/associations', [
+		$response = $client->request('POST', 'http://localhost:80/api-FIND/public/index.php/api/associations', [
             'headers' => [
                 'Content-Type' => 'application/json',
             ],

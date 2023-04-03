@@ -1,0 +1,32 @@
+<div class="form-group my-3">
+    <button type="button" class="btn btn-outline-success" id="ajouter-input">Ajouter une particularité +</button>
+</div>
+<div id="inputs-container"></div>
+
+
+<script>
+$(document).ready(function() {
+    var counter = 0;
+    var visualcounter = 1;
+
+$("#ajouter-input").click(function() {
+        var newTextarea = $("<div>", {
+            class: "form-group mb-3"
+        }).append($("<label>", {
+            for: "input" + counter,
+            class: "form-label",
+            text: "Particularité " + visualcounter
+        })).append($("<textarea>", {
+            name: "particularity[" + counter + "]",
+            class: "form-control",
+            id: "input" + counter,
+            rows: 3,
+            style: "height: 5rem !important;"
+        }));
+
+        $("#inputs-container").append(newTextarea);
+        counter++;
+        visualcounter++;
+    });
+});
+</script>

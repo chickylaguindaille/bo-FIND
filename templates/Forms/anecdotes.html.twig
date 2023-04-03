@@ -1,0 +1,49 @@
+<div class="form-group my-3">
+    <button type="button" class="btn btn-outline-success" id="ajouter-input-anecdote">Ajouter une anecdote +</button>
+</div>
+<div id="inputs-container-anecdote"></div>
+
+<script>
+$(document).ready(function() {
+    var counter = 0;
+    var visualcounter = 1
+
+    $("#ajouter-input-anecdote").click(function() {
+        var newInputs = $("<div>", {
+            class: "form-group mb-3"
+        }).append($("<label>", {
+            for: "title" + counter,
+            class: "form-label",
+            text: "Titre de l'anecdote " + visualcounter
+        })).append($("<input>", {
+            type: "text",
+            name: "anecdote[" + counter + "]['title']",
+            class: "form-control",
+            id: "title" + counter
+        })).append($("<label>", {
+            for: "summary" + counter,
+            class: "form-label",
+            text: "Texte de l'anecdote " + visualcounter
+        })).append($("<textarea>", {
+            name: "anecdote[" + counter + "]['text']",
+            class: "form-control",
+            id: "summary" + counter,
+            rows: 3,
+            style: "height: 5rem !important;"
+        })).append($("<label>", {
+            for: "source" + counter,
+            class: "form-label",
+            text: "Source de l'anecdote " + visualcounter
+        })).append($("<input>", {
+            type: "text",
+            name: "anecdote[" + counter + "]['source']",
+            class: "form-control",
+            id: "source" + counter
+        })).append($("<hr>"));;
+
+        $("#inputs-container-anecdote").append(newInputs);
+        counter++;
+        visualcounter++;
+    });
+});
+</script>

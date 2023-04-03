@@ -85,8 +85,12 @@ class AssociationController extends AbstractController
         $inputData['creation'] = strtotime($inputData['creation']);
         $inputData['logo'] = $_FILES['logo']['name'];
 
+        if (!isset($inputData['particularity'])){
         $inputData['particularity'] = array();
+    }
+        if (!isset($inputData['particularity'])){
         $inputData['anecdote'] = array();
+        }
         $inputData['document'] = array();
         $inputData['decorum'] = array();
         $inputData['goodies'] = array();
@@ -95,7 +99,8 @@ class AssociationController extends AbstractController
 
         $data = $inputData;
 
-        // exit(var_dump($data));
+        // exit(var_dump($inputData));
+        // exit(var_dump(json_encode($data)));
 
         // $data['name'] = $request->request->get('name');
         // $data['region'] = $request->request->get('region');
