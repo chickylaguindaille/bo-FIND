@@ -1,0 +1,89 @@
+<div class="form-group my-3">
+    <button type="button" class="btn btn-outline-success" id="ajouter-input-goodies">Ajouter un goodies +</button>
+</div>
+<div id="inputs-container-goodies"></div>
+
+<script>
+$(document).ready(function() {
+    var counter = 0;
+    var visualcounter = 1
+
+ $("#ajouter-input-goodies").click(function() {
+        var newInputs = $("<div>", {
+            class: "form-group mb-3"
+        }).append($("<label>", {
+            for: "title" + counter,
+            class: "form-label",
+            text: "Titre du goodies " + visualcounter
+        })).append($("<input>", {
+            type: "text",
+            name: "goodies[" + counter + "]['title']",
+            class: "form-control",
+            id: "title" + counter
+        })).append($("<label>", {
+            for: "summary" + counter,
+            class: "form-label",
+            text: "Texte du goodies " + visualcounter
+        })).append($("<textarea>", {
+            name: "goodies[" + counter + "]['text']",
+            class: "form-control",
+            id: "summary" + counter,
+            rows: 3,
+            style: "height: 5rem !important;"
+        })).append($("<label>", {
+            for: "year" + counter,
+            class: "form-label p-2",
+            text: "Année du goodies " + visualcounter
+        })).append($("<input>", {
+            type: "date",
+            name: "goodies[" + counter + "]['year']",
+            class: "form-control",
+            id: "year" + counter
+        })).append($("<label>", {
+            for: "type" + counter,
+            class: "form-label",
+            text: "Type de goodies" + visualcounter
+        })).append($("<select>", {
+            name: "goodies[" + counter + "]['type']",
+            class: "form-control",
+            id: "type" + counter,
+        }).append($("<option>", {
+            value: "",
+            text: "Sélectionnez un type de goodies",
+            disabled: true,
+            selected: true
+        })).append($("<option>", {
+            value: "PDF",
+            text: "PDF"
+        })).append($("<option>", {
+            value: "DOC",
+            text: "DOC"
+        })).append($("<option>", {
+            value: "PPT",
+            text: "PPT"
+        }))).append($("<label>", {
+            for: "source" + counter,
+            class: "form-label",
+            text: "Source du goodies " + visualcounter
+        })).append($("<input>", {
+            type: "text",
+            name: "goodies[" + counter + "]['source']",
+            class: "form-control",
+            id: "source" + counter
+        })).append($("<label>", {
+            for: "path" + counter,
+            class: "form-label",
+            text: "Fichier " + visualcounter
+        })).append($("<input>", {
+            type: "file",
+            name: "goodies[" + counter + "]['path']",
+            class: "form-control p-2",
+            id: "path" + counter
+        })).append($("<hr>"));
+
+        $("#inputs-container-goodies").append(newInputs);
+        counter++;
+        visualcounter++;
+    });
+});
+</script>

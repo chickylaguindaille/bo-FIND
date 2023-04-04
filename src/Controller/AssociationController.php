@@ -88,20 +88,43 @@ class AssociationController extends AbstractController
         if (!isset($inputData['particularity'])){
         $inputData['particularity'] = array();
     }
-        if (!isset($inputData['particularity'])){
+        if (!isset($inputData['anecdote'])){
         $inputData['anecdote'] = array();
-        }
-        if (!isset($inputData['particularity'])){
-        $inputData['document'] = array();
     }
+        if (!isset($inputData['document'])){
+        $inputData['document'] = array();
+    }else{
+        foreach ($inputData['document'] as &$document) {
+            $document["'year'"] = strtotime($document["'year'"]);
+        }
+    }
+    if (!isset($inputData['decorum'])){
         $inputData['decorum'] = array();
+    }else{
+        foreach ($inputData['decorum'] as &$decorum) {
+            $decorum["'year'"] = strtotime($decorum["'year'"]);
+        }
+    }
+    if (!isset($inputData['goodies'])){
         $inputData['goodies'] = array();
+    }else{
+        foreach ($inputData['goodies'] as &$goodies) {
+            $goodies["'year'"] = strtotime($goodies["'year'"]);
+        }
+    }
+    if (!isset($inputData['sing'])){
         $inputData['sing'] = array();
+    }else{
+        $inputData['sing']['year'] = strtotime($inputData['sing']['year']);
+    }
+
+
+
         $inputData['committee'] = array();
 
         $data = $inputData;
 
-        exit(var_dump($inputData));
+        // exit(var_dump($inputData));
         // exit(var_dump(json_encode($data)));
 
         // $data['name'] = $request->request->get('name');
