@@ -91,7 +91,9 @@ class AssociationController extends AbstractController
         if (!isset($inputData['particularity'])){
         $inputData['anecdote'] = array();
         }
+        if (!isset($inputData['particularity'])){
         $inputData['document'] = array();
+    }
         $inputData['decorum'] = array();
         $inputData['goodies'] = array();
         $inputData['sing'] = array();
@@ -99,7 +101,7 @@ class AssociationController extends AbstractController
 
         $data = $inputData;
 
-        // exit(var_dump($inputData));
+        exit(var_dump($inputData));
         // exit(var_dump(json_encode($data)));
 
         // $data['name'] = $request->request->get('name');

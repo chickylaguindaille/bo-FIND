@@ -1,47 +1,77 @@
 <div class="form-group my-3">
-    <button type="button" class="btn btn-outline-success" id="ajouter-input-anecdote">Ajouter une anecdote +</button>
+    <button type="button" class="btn btn-outline-success" id="ajouter-input-document">Ajouter un document +</button>
 </div>
-<div id="inputs-container-anecdote"></div>
+<div id="inputs-container-document"></div>
 
 <script>
 $(document).ready(function() {
     var counter = 0;
     var visualcounter = 1
 
-    $("#ajouter-input-anecdote").click(function() {
+ $("#ajouter-input-document").click(function() {
         var newInputs = $("<div>", {
             class: "form-group mb-3"
         }).append($("<label>", {
             for: "title" + counter,
             class: "form-label",
-            text: "Titre de l'anecdote " + visualcounter
+            text: "Titre du document " + visualcounter
         })).append($("<input>", {
             type: "text",
-            name: "anecdote[" + counter + "]['title']",
+            name: "document[" + counter + "]['title']",
             class: "form-control",
             id: "title" + counter
         })).append($("<label>", {
-            for: "summary" + counter,
-            class: "form-label",
-            text: "Texte de l'anecdote " + visualcounter
-        })).append($("<textarea>", {
-            name: "anecdote[" + counter + "]['text']",
+            for: "year" + counter,
+            class: "form-label p-2",
+            text: "Année du document " + visualcounter
+        })).append($("<input>", {
+            type: "date",
+            name: "document[" + counter + "]['year']",
             class: "form-control",
-            id: "summary" + counter,
-            rows: 3,
-            style: "height: 5rem !important;"
+            id: "year" + counter
         })).append($("<label>", {
+            for: "type" + counter,
+            class: "form-label",
+            text: "Type de document" + visualcounter
+        })).append($("<select>", {
+            name: "document[" + counter + "]['type']",
+            class: "form-control",
+            id: "type" + counter,
+        }).append($("<option>", {
+            value: "",
+            text: "Sélectionnez un type de document",
+            disabled: true,
+            selected: true
+        })).append($("<option>", {
+            value: "PDF",
+            text: "PDF"
+        })).append($("<option>", {
+            value: "DOC",
+            text: "DOC"
+        })).append($("<option>", {
+            value: "PPT",
+            text: "PPT"
+        }))).append($("<label>", {
             for: "source" + counter,
             class: "form-label",
-            text: "Source de l'anecdote " + visualcounter
+            text: "Source du document " + visualcounter
         })).append($("<input>", {
             type: "text",
-            name: "anecdote[" + counter + "]['source']",
+            name: "document[" + counter + "]['source']",
             class: "form-control",
             id: "source" + counter
-        })).append($("<hr>"));;
+        })).append($("<label>", {
+            for: "path" + counter,
+            class: "form-label",
+            text: "Fichier " + visualcounter
+        })).append($("<input>", {
+            type: "file",
+            name: "document[" + counter + "]['path']",
+            class: "form-control p-2",
+            id: "path" + counter
+        })).append($("<hr>"));
 
-        $("#inputs-container-anecdote").append(newInputs);
+        $("#inputs-container-document").append(newInputs);
         counter++;
         visualcounter++;
     });
