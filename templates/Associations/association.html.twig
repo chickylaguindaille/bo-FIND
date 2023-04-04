@@ -1,0 +1,295 @@
+{% extends "layout.html.twig" %}
+
+{# {% block title %}Accueil{% endblock %} #}
+
+{% block content %}
+
+{% include 'Villes/villelist.css.twig' %}
+
+
+
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="tab-content p-0" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                        <div class="card-body p-3">
+                            <div class="text-center">
+                                <h3 class="card-title py-2 m-0">{{association.name}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <ul class="nav nav-pills px-3 justify-content-center" id="pills-tab" role="tablist">
+                        <li class="nav-item m-0" role="presentation">
+                            <button class="nav-link active" id="pills-informations-tab" data-bs-toggle="pill" data-bs-target="#pills-informations" type="button" role="tab" aria-controls="pills-informations" aria-selected="true">Informations</button>
+                        </li>
+                        <li class="nav-item m-0" role="presentation">
+                            <button class="nav-link" id="pills-particularity-tab" data-bs-toggle="pill" data-bs-target="#pills-particularity" type="button" role="tab" aria-controls="pills-particularity" aria-selected="false">Particularités</button>
+                        </li>
+                        <li class="nav-item m-0" role="presentation">
+                            <button class="nav-link" id="pills-anecdotes-tab" data-bs-toggle="pill" data-bs-target="#pills-anecdotes" type="button" role="tab" aria-controls="pills-anecdotes" aria-selected="false">Anecdotes</button>
+                        </li>
+                        <li class="nav-item m-0" role="presentation">
+                            <button class="nav-link" id="pills-documents-tab" data-bs-toggle="pill" data-bs-target="#pills-documents" type="button" role="tab" aria-controls="pills-documents" aria-selected="true">Documents</button>
+                        </li>
+
+                        <li class="nav-item m-0" role="presentation">
+                            <button class="nav-link" id="pills-decorum-tab" data-bs-toggle="pill" data-bs-target="#pills-decorum" type="button" role="tab" aria-controls="pills-decorum" aria-selected="false">Decorum</button>
+                        </li>
+                        <li class="nav-item m-0" role="presentation">
+                            <button class="nav-link" id="pills-goodies-tab" data-bs-toggle="pill" data-bs-target="#pills-goodies" type="button" role="tab" aria-controls="pills-goodies" aria-selected="false">Goodies</button>
+                        </li>
+                        <li class="nav-item m-0" role="presentation">
+                            <button class="nav-link" id="pills-chant-tab" data-bs-toggle="pill" data-bs-target="#pills-chant" type="button" role="tab" aria-controls="pills-chant" aria-selected="true">Chant</button>
+                        </li>
+                        <li class="nav-item m-0" role="presentation">
+                            <button class="nav-link" id="pills-comite-tab" data-bs-toggle="pill" data-bs-target="#pills-comite" type="button" role="tab" aria-controls="pills-comite" aria-selected="false">Comité</button>
+                        </li>
+                    </ul>
+
+
+
+                    <div class="tab-content" id="pills-tabContent">
+                        {# INFORMATIONS #}
+                        <div class="tab-pane fade show active" id="pills-informations" role="tabpanel" aria-labelledby="pills-informations-tab">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">{{association.logo}}</th>
+                                        <td>                              
+                                            <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{association.id}}">
+                                                Modifier
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    <th scope="row">{{association.name}}</th>
+                                        <td>                              
+                                            <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{association.id}}">
+                                                Modifier
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <th scope="row">{{association.nickname??"Pas de surnom"}}</th>
+                                        <td>                              
+                                            <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{association.id}}">
+                                                Modifier
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <th scope="row">{{association.town}}</th>
+                                        <td>                              
+                                            <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{association.id}}">
+                                                Modifier
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <th scope="row">{% if association.creation is defined %}{{association.creation|date("d/m/Y")}}{% else %}Pas de date de création{% endif %}</th>
+                                        <td>                              
+                                            <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{association.id}}">
+                                                Modifier
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <th scope="row">{{association.resume??"Pas de résumé"}}</th>
+                                        <td>                              
+                                            <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{association.id}}">
+                                                Modifier
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <th scope="row">{{association.type}}</th>
+                                        <td>                              
+                                            <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{association.id}}">
+                                                Modifier
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    <th scope="row">{{association.hat}}</th>
+                                        <td>                              
+                                            <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{association.id}}">
+                                                Modifier
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane fade" id="pills-particularity" role="tabpanel" aria-labelledby="pills-particularity-tab">
+                            <table class="table">
+                                <tbody>
+                                    {% for key, particularity in association['particularity'] %}
+                                        <tr>
+                                            <th scope="row">{{key}}</th>
+                                            <td scope="row">{{particularity}}</td>
+                                            <td>                              
+                                                <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{association.id}}">
+                                                    Modifier
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane fade" id="pills-anecdotes" role="tabpanel" aria-labelledby="pills-anecdotes-tab">
+                            <table class="table">
+                                <tbody>
+                                    {% for key, value in association['anecdote'] %}
+                                        <tr>
+                                            <th scope="row">{{ value['title'] }}</th>
+                                            <td scope="row">{{ value['text'] }}</td>
+                                            <td scope="row">{{ value['source'] }}</td>
+                                            <td>                              
+                                                <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{ association.id }}">
+                                                    Modifier
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane fade" id="pills-documents" role="tabpanel" aria-labelledby="pills-documents-tab">
+                            <table class="table">
+                                <tbody>
+                                    {% for key, value in association['document'] %}
+                                        <tr>
+                                            <th scope="row">{{ value['title'] }}</th>
+                                            <td scope="row">{{ value['year'] }}</td>
+                                            <td scope="row">{{ value['type'] }}</td>
+                                            <td scope="row">{{ value['source'] }}</td>
+                                            <td>                              
+                                                <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{ association.id }}">
+                                                    Modifier
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane fade" id="pills-decorum" role="tabpanel" aria-labelledby="pills-decorum-tab">
+                            <table class="table">
+                                <tbody>
+                                    {% for key, value in association['decorum'] %}
+                                        <tr>
+                                            <th scope="row">{{ value['image'] }}</th>
+                                            <th scope="row">{{ value['title'] }}</th>
+                                            <td scope="row">{{ value['year']??"Pas d'année" }}</td>
+                                            <td scope="row">{{ value['type'] }}</td>
+                                            <td scope="row">{{ value['source'] }}</td>
+                                            <td>                              
+                                                <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{ association.id }}">
+                                                    Modifier
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane fade" id="pills-goodies" role="tabpanel" aria-labelledby="pills-goodies-tab">
+                            <table class="table">
+                                <tbody>
+                                    {% for key, value in association['goodies'] %}
+                                        <tr>
+                                            <th scope="row">{{ value['image']??"Pas de photo" }}</th>
+                                            <td scope="row">{{ value['title']??"" }}</td>
+                                            <td scope="row">{{ value['year']??"Pas d'année" }}</td>
+                                            <td scope="row">{{ value['type'] }}</td>
+                                            <td scope="row">{{ value['source'] }}</td>
+                                            <td>                              
+                                                <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{ association.id }}">
+                                                    Modifier
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane fade" id="pills-chant" role="tabpanel" aria-labelledby="pills-chant-tab">
+                            {% if association.sing is not empty %}
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">{{ association.sing.title??"Pas encore de chant" }}</th>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">{{ association.sing.author??"Pas d'auteur" }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">{{ association.sing.year??"Pas d'année" }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">{{ association.sing.text??"Pas de paroles" }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-end">                              
+                                                <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{ association.id }}">
+                                                    Modifier
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            {% endif %}
+                        </div>
+
+                        <div class="tab-pane fade" id="pills-comite" role="tabpanel" aria-labelledby="pills-comite-tab">
+                            <table class="table">
+                                <tbody>
+{% for year, committees in association.committee %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th colspan="2">{{ year }}</th>
+            </tr>
+            <tr>
+                <th>Fonction</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Pseudo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for function, members in committees %}
+                {# {% for member in members %} #}
+                    <tr>
+                        {# {% if loop.first %} #}
+                            <td >{{ function }}</td>
+                        {# {% endif %} #}
+                        <td>{{ members.name??"why" }}</td>
+                        <td>{{ members.firstname??"" }}</td>
+                        <td>{{ members.nickname??"" }}</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="">
+                                Modifier
+                            </button>
+                        </td>
+                    </tr>
+                {# {% endfor %} #}
+            {% endfor %}
+        </tbody>
+    </table>
+{% endfor %}
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    {% endblock %}

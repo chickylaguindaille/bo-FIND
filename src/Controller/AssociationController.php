@@ -63,14 +63,29 @@ class AssociationController extends AbstractController
         $associations = $this->findApi->getAssociations();
 
         $town = $this->findApi->getTowns(null);
+
         $data['towns'] = array_column($town['data'], 'name');
         // exit(var_dump($data['towns']));
 
         $data['associations'] = $associations['data'];
 
-
-
         return $this->render('Associations/associationlist.html.twig', $data);
+    }
+
+    /**
+     * @Route("/association/{id}", name="association_details")
+     * @Template()
+     */
+    public function associationDetails(Request $request, FindApiService $findApi)
+    {
+        $data['page'] = 'association';
+
+        $id = $request->get('id');
+        $association = $this->findApi->getAssociation($id);
+
+        $data['association'] = $association;
+
+        return $this->render('Associations/association.html.twig', $data);
     }
 
     /**
@@ -118,10 +133,55 @@ class AssociationController extends AbstractController
         $inputData['sing']['year'] = strtotime($inputData['sing']['year']);
     }
 
-
-
+    if (!isset($inputData['committee'])){
         $inputData['committee'] = array();
+    }else{
+        $bddcommittee = array();
+        foreach ($inputData['committee'] as &$committee) {
+            $year = $committee["year"];
+            $type = $committee["type"];
+            $name = $committee["name"];
+            $firstname = $committee["firstname"];
+            $nickname = $committee["nickname"];
+        
+            // Vérifier si l'année existe déjà dans $bddcommittee
+            if (isset($bddcommittee[$year])) {
+                // Vérifier si le type de comité existe déjà pour cette année
+                if (isset($bddcommittee[$year][$type])) {
+                    // Si oui, générer un identifiant unique à partir du compteur et ajouter une nouvelle entrée
+                    $id = count($bddcommittee[$year][$type]);
+                    $bddcommittee[$year][$type][$id] = array(
+                        "name" => $name,
+                        "firstname" => $firstname,
+                        "nickname" => $nickname
+                    );
+                } else {
+                    // Sinon, créer une nouvelle entrée pour le type de comité correspondant
+                    $bddcommittee[$year][$type] = array(
+                        "0" => array(
+                            "name" => $name,
+                            "firstname" => $firstname,
+                            "nickname" => $nickname
+                        )
+                    );
+                }
+            } else {
+                // Sinon, créer une nouvelle entrée pour l'année et le type de comité correspondant
+                $bddcommittee[$year] = array(
+                    $type => array(
+                        "0" => array(
+                            "name" => $name,
+                            "firstname" => $firstname,
+                            "nickname" => $nickname
+                        )
+                    )
+                );
+            }
+        }
+        $inputData['committee'] = $bddcommittee;
 
+    }
+        // exit(var_dump($bddcommittee));
         $data = $inputData;
 
         // exit(var_dump($inputData));

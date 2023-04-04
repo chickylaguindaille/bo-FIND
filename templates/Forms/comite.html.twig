@@ -1,0 +1,98 @@
+<div class="form-group my-3">
+    <button type="button" class="btn btn-outline-success" id="ajouter-input-comite">Ajouter un comite +</button>
+</div>
+<div id="inputs-container-comite"></div>
+
+<script>
+$(document).ready(function() {
+    var counter = 0;
+    var visualcounter = 1;
+
+    var maxYear = new Date().getFullYear();
+    var minYear = 1900;
+    var yearOptions = '';
+
+    for (var i = maxYear; i >= minYear; i--) {
+        yearOptions += '<option value="' + i + '">' + i + '</option>';
+    }
+
+    $("#ajouter-input-comite").click(function() {
+        var newInputs = $("<div>", {
+            class: "form-group mb-3"
+        })
+
+
+{# SELECT ANEEE #}
+        .append($("<select>", {
+            name: "committee[" + counter + "][year]",
+            class: "form-control",
+            id: "year" + counter,
+        }).append($("<option>", {
+            value: "",
+            text: "Sélectionnez une année de comite",
+            disabled: true,
+            selected: true
+        })).append(yearOptions))
+        
+        .append($("<label>", {
+            for: "name" + counter,
+            class: "form-label",
+            text: "Nom de la personne du comite " + visualcounter
+        })).append($("<input>", {
+            type: "text",
+            name: "committee[" + counter + "][name]",
+            class: "form-control",
+            id: "name" + counter
+        }))
+
+{# SELECT POSTE #}
+        .append($("<select>", {
+            name: "committee[" + counter + "][type]",
+            class: "form-control",
+            id: "type" + counter,
+        }).append($("<option>", {
+            value: "",
+            text: "Sélectionnez un type de comite",
+            disabled: true,
+            selected: true
+        })).append($("<option>", {
+            value: "GM",
+            text: "GM"
+        })).append($("<option>", {
+            value: "GC",
+            text: "GC"
+        })).append($("<option>", {
+            value: "Président",
+            text: "Président"
+        })))
+
+        .append($("<label>", {
+            for: "firstname" + counter,
+            class: "form-label",
+            text: "Prénom de la personne du comite " + visualcounter
+        })).append($("<input>", {
+            type: "text",
+            name: "committee[" + counter + "][firstname]",
+            class: "form-control",
+            id: "firstname" + counter
+        }))
+
+        .append($("<label>", {
+            for: "nickname" + counter,
+            class: "form-label",
+            text: "Surnom de la personne du comite " + visualcounter
+        })).append($("<input>", {
+            type: "text",
+            name: "committee[" + counter + "][nickname]",
+            class: "form-control",
+            id: "nickname" + counter
+        }))
+        
+        .append($("<hr>"));
+
+        $("#inputs-container-comite").append(newInputs);
+        counter++;
+        visualcounter++;
+    });
+});
+</script>
