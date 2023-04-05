@@ -95,7 +95,7 @@ class AssociationController extends AbstractController
     public function associationAdd(Request $request, FindApiService $findApi)
     {
         $inputData = $request->request->all();
-
+exit(var_dump($inputData));
         $data['nickname'] = $request->request->get('nickname');
         $inputData['creation'] = strtotime($inputData['creation']);
         $inputData['logo'] = $_FILES['logo']['name'];
