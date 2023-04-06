@@ -8,7 +8,25 @@
         </div>
         <div class="modal-body">
 
-            
+            <form class="forms-sample" action="{{ path('association_patch', {'id': association.id}) }}" method="post" enctype="multipart/form-data">
+
+                <div class="form-group col-12">
+                    <label for="name">Nom du chant</label>
+                    <input type="text" name="sing[title]" class="form-control inputville" id="name" value="{{association['sing']['title']??""}}">
+                </div>
+                <div class="form-group col-12">
+                    <label for="author">Auteur</label>
+                    <input type="text" name="sing[author]" class="form-control inputville" id="author" value="{{association['sing']['author']??""}}">
+                </div>
+                <div class="form-group col-12">
+                    <label for="year">Année</label>
+                    <input type="date" name="sing[year]" class="form-control inputville" id="year" value="{{association['sing']['year']|date("Y-m-d")}}">
+                </div>
+                <div>
+                    <label for="paroles" class="form-label">Paroles</label>
+                    <textarea name="sing[text]" class="form-control" id="resume" rows="3" style="height: 10rem !important;">{{association['sing']['text']??""}}</textarea>
+                </div>
+
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>

@@ -301,6 +301,12 @@ class AssociationController extends AbstractController
         }
     }
 
+    // CHANT
+    if (isset($inputData['sing'])){
+        $data = $inputData;
+        $redirect = "chant";
+    }
+
     // exit(var_dump($data));
 
         $patchassociation = $this->findApi->patchAssociation(json_encode($data), $id);
