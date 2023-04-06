@@ -73,21 +73,21 @@ class AssociationController extends AbstractController
         $inputData['document'] = array();
     }else{
         foreach ($inputData['document'] as &$document) {
-            $document["'year'"] = strtotime($document["'year'"]);
+            $document["year"] = strtotime($document["year"]);
         }
     }
     if (!isset($inputData['decorum'])){
         $inputData['decorum'] = array();
     }else{
         foreach ($inputData['decorum'] as &$decorum) {
-            $decorum["'year'"] = strtotime($decorum["'year'"]);
+            $decorum["year"] = strtotime($decorum["year"]);
         }
     }
     if (!isset($inputData['goodies'])){
         $inputData['goodies'] = array();
     }else{
         foreach ($inputData['goodies'] as &$goodies) {
-            $goodies["'year'"] = strtotime($goodies["'year'"]);
+            $goodies["year"] = strtotime($goodies["year"]);
         }
     }
     if (!isset($inputData['sing'])){
@@ -217,41 +217,23 @@ class AssociationController extends AbstractController
 
 
     /**
-     * @Route("/ville/patch/{id}", name="ville_patch")
+     * @Route("/association/patch/{id}", name="association_patch")
      * @Template()
      */
-    public function villePatch(Request $request, FindApiService $findApi)
+    public function associationPatch(Request $request, FindApiService $findApi)
     {
         $id = $request->get('id');
 
-        $town = $this->findApi->getTown($id);
-
-        $data['name'] = $request->get('name');
-        $data['region'] = $request->get('region');
-        $data['country'] = $request->get('country');
-        $blason = $request->files->get('blason');
-
-        if ($blason !== null){
+        $association = $this->findApi->getAssociation($id);
+        $inputData = $request->request->all();
 
 
-        if (file_exists($town['blason'])){
-            unlink($town['blason']);
-        }
+        $data['particularity'] = array_replace_recursive($association['particularity'], $inputData['particularity']);
 
-            $filenameext = $_FILES['blason']['name'];
-            $filenameonly = pathinfo($_FILES['blason']['name'], PATHINFO_FILENAME);
-            $filesrcsave = 'towns/' . $data['name'];
-    
-            $save = 'towns/' . $filenameonly .'/'. $filenameext; 
-            $data['blason'] = $save;
-            $save = $this->saveFile($blason, $filesrcsave, $filenameonly);
 
-        }
-        // exit(var_dump($inputData));
-
-        $createtown = $this->findApi->patchTown(json_encode($data), $id);
+        $patchassociation = $this->findApi->patchAssociation(json_encode($data), $id);
         
-        return $this->redirectToRoute('ville_list');
+        return $this->redirectToRoute('association_details' , ['id' => $id]);
     }
 
 

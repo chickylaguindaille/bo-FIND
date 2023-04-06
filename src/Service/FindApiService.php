@@ -94,6 +94,22 @@ class FindApiService extends FindService
 		return $response;
 	}
 
+
+	public function patchAssociation($data, $id)
+	{;
+		$findApiUrl = $_ENV['FIND_API_URL'];
+		$client = HttpClient::create();
+		$response = $client->request('PATCH', $findApiUrl . 'api/associations/' . $id , [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+            'body' => $data,
+        ]);
+
+		return $response;
+	}
+
+
 	public function deleteAssociation($id)
 	{
 		return $this->request(null, 'DELETE', 'api/associations/' .$id);

@@ -55,31 +55,40 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <th scope="row">{{association.logo??"Pas de logo"}}</th>
+                                        <th scope="row">Logo</th>
+                                        <td scope="row">{{association.logo??"<i>Pas de logo</i>"}}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">{{association.name??""}}</th>
-                                    </tr>
-                                    <tR>
-                                        <th scope="row">{{association.nickname??"Pas de surnom"}}</th>
+                                        <th scope="row">Nom</th>
+                                        <td scope="row">{{association.name??""}}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">{{association.town??""}}</th>
+                                        <th scope="row">Surnom</th>
+                                        <td scope="row">{{association.nickname??"<i>Pas de surnom</i>"}}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">{% if association.creation is defined %}{{association.creation|date("d/m/Y")}}{% else %}Pas de date de création{% endif %}</th>
+                                        <th scope="row">Ville</th>
+                                        <td scope="row">{{association.town??""}}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">{{association.resume??"Pas de résumé"}}</th>
+                                        <th scope="row">Date de création</th>
+                                        <td scope="row">{% if association.creation is defined %}{{association.creation|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">{{association.type??"Pas de type"}}</th>
+                                        <th scope="row">Résumé</th>
+                                        <td scope="row">{{association.resume??"<i>Pas de résumé</i>"}}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">{{association.hat??"Pas de couvre-chef"}}</th>
+                                        <th scope="row">Type</th>
+                                        <td scope="row">{{association.type??"<i>Pas de type</i>"}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="text-end w-100">                              
+                                        <th scope="row">Couvre-chef</th>
+                                        <td scope="row">{{association.hat??"<i>Pas de couvre-chef</i>"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="text-end">                              
                                             <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_information_{{association.id}}">
                                                 Modifier
                                             </button>
@@ -92,16 +101,23 @@
 
                         <div class="tab-pane fade" id="pills-particularity" role="tabpanel" aria-labelledby="pills-particularity-tab">
                             <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Numéro</th>
+                                        <th scope="col">Particularité</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     {% for key, particularity in association['particularity'] %}
                                         <tr>
                                             <th scope="row">{{key}}</th>
                                             <td scope="row">{{particularity}}</td>
                                             <td>                              
-                                                <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{association.id}}">
+                                                <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_particularity_{{key}}_{{association.id}}">
                                                     Modifier
                                                 </button>
                                             </td>
+                                            {% include 'FormsModification/particularity.html.twig' %}
                                         </tr>
                                     {% endfor %}
                                 </tbody>
@@ -110,12 +126,22 @@
 
                         <div class="tab-pane fade" id="pills-anecdotes" role="tabpanel" aria-labelledby="pills-anecdotes-tab">
                             <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Titre</th>
+                                        <th scope="col">Texte</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Source</th>
+                                        <th scope="col">Photo</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     {% for key, value in association['anecdote'] %}
                                         <tr>
-                                            <th scope="row">{{ value['title'] }}</th>
-                                            <td scope="row">{{ value['text'] }}</td>
-                                            <td scope="row">{{ value['source'] }}</td>
+                                            <td scope="row">{{ value['title']??"<i>Pas de titre</i>" }}</td>
+                                            <td scope="row">{{ value['text']??"<i>Pas de texte</i>" }}</td>
+                                            <td scope="row">{% if value['year'] is defined %}{{value['year']|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
+                                            <td scope="row">{{ value['source']??"<i>Pas de source</i>" }}</td>
                                             <td scope="row">{{ value['path']??"<i>Pas de photo</i>" }}</td>
                                             <td>                              
                                                 <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{ association.id }}">
@@ -130,14 +156,23 @@
 
                         <div class="tab-pane fade" id="pills-documents" role="tabpanel" aria-labelledby="pills-documents-tab">
                             <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Fichier</th>
+                                        <th scope="col">Titre</th>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Année</th>
+                                        <th scope="col">Source</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     {% for key, value in association['document'] %}
                                         <tr>
-                                            <td scope="row">{{ value['path']??"<i>Pas de path</i>" }}</td>
-                                            <th scope="row">{{ value['title'] }}</th>
-                                            <td scope="row">{{ value['year'] }}</td>
-                                            <td scope="row">{{ value['type'] }}</td>
-                                            <td scope="row">{{ value['source'] }}</td>
+                                            <td scope="row">{{ value['path']??"<i>Pas de photo</i>" }}</td>
+                                            <td scope="row">{{ value['title']??"<i>Pas de titre</i>" }}</td>
+                                            <td scope="row">{{ value['type']??"<i>Pas de type</i>" }}</td>
+                                            <td scope="row">{% if value['year'] is defined %}{{value['year']|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
+                                            <td scope="row">{{ value['source']??"<i>Pas de source</i>" }}</td>
                                             <td>                              
                                                 <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{ association.id }}">
                                                     Modifier
@@ -152,14 +187,24 @@
                         <div class="tab-pane fade" id="pills-decorum" role="tabpanel" aria-labelledby="pills-decorum-tab">
                             {% if association.decorum is defined and association.decorum is not empty %}
                                 <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Photo</th>
+                                            <th scope="col">Titre</th>
+                                            <th scope="col">Texte</th>
+                                            <th scope="col">Type</th>
+                                            <th scope="col">Année</th>
+                                            <th scope="col">Source</th>
+                                        </tr>
+                                    </thead>
                                     <tbody>
                                         {% for key, value in association['decorum'] %}
                                             <tr>
-                                                <td scope="row">{{ value['path']??"<i>Pas de path</i>" }}</td>
-                                                <th scope="row">{{ value['path']??"<i>Pas d'image</i>" }}</th>
-                                                <td scope="row">{{ value['title']??"<i>Pas de titre" }}</td>
-                                                <td scope="row">{{ value['year']??"<i>Pas d'année</i>" }}</td>
+                                                <td scope="row">{{ value['path']??"<i>Pas de photo</i>" }}</td>
+                                                <td scope="row">{{ value['title']??"<i>Pas de titre</i>" }}</td>
+                                                <td scope="row">{{ value['text']??"<i>Pas de texte" }}</td>
                                                 <td scope="row">{{ value['type']??"<i>Pas de type</i>" }}</td>
+                                                <td scope="row">{% if value['year'] is defined %}{{value['year']|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
                                                 <td scope="row">{{ value['source']??"<i>Pas de source</i>" }}</td>
                                                 <td>                              
                                                     <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{ association.id }}">
@@ -175,15 +220,25 @@
 
                         <div class="tab-pane fade" id="pills-goodies" role="tabpanel" aria-labelledby="pills-goodies-tab">
                             <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Photo</th>
+                                        <th scope="col">Titre</th>
+                                        <th scope="col">Texte</th>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Année</th>
+                                        <th scope="col">Source</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     {% for key, value in association['goodies'] %}
                                         <tr>
-                                            <th scope="row">{{ value['path']??"Pas de photo" }}</th>
-                                            <th scope="row">{{ value['text']??"Pas de texte" }}</th>
-                                            <td scope="row">{{ value['title']??"" }}</td>
-                                            <td scope="row">{{ value['year']??"Pas d'année" }}</td>
-                                            <td scope="row">{{ value['type'] }}</td>
-                                            <td scope="row">{{ value['source'] }}</td>
+                                            <td scope="row">{{ value['path']??"<i>Pas de photo</i>" }}</td>
+                                            <td scope="row">{{ value['title']??"<i>Pas de titre</i>" }}</td>
+                                            <td scope="row">{{ value['text']??"<i>Pas de texte</i>" }}</td>
+                                            <td scope="row">{{ value['type']??"<i>Pas de type</i>" }}</td>
+                                            <td scope="row">{% if value['year'] is defined %}{{value['year']|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
+                                            <td scope="row">{{ value['source']??"<i>Pas de source</i>" }}</td>
                                             <td>                              
                                                 <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{ association.id }}">
                                                     Modifier
@@ -200,18 +255,23 @@
                                 <table class="table">
                                     <tbody>
                                         <tr>
-                                            <th scope="row">{{ association.sing.title??"Pas encore de chant" }}</th>
+                                            <th scope="row">Titre</th>
+                                            <td scope="row">{{ association.sing.title??"<i>Pas encore de chant</i>" }}</td>
                                         </tr>
                                         <tr>
-                                            <td scope="row">{{ association.sing.author??"Pas d'auteur" }}</td>
+                                            <th scope="row">Auteur</th>
+                                            <td scope="row">{{ association.sing.author??"<i>Pas d'auteur</i>" }}</td>
                                         </tr>
                                         <tr>
-                                            <td scope="row">{{ association.sing.year??"Pas d'année" }}</td>
+                                            <th scope="row">Année de création</th>
+                                            <td scope="row">{% if association.sing.year is defined %}{{association.sing.year|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
                                         </tr>
                                         <tr>
-                                            <td scope="row">{{ association.sing.text??"Pas de paroles" }}</td>
+                                            <th scope="row">Paroles</th>
+                                            <td scope="row">{{ association.sing.text??"<i>Pas de paroles</i>" }}</td>
                                         </tr>
                                         <tr>
+                                            <td></td>
                                             <td class="text-end">                              
                                                 <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{ association.id }}">
                                                     Modifier

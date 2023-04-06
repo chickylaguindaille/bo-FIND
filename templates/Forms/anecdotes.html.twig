@@ -31,6 +31,15 @@ $(document).ready(function() {
             rows: 3,
             style: "height: 5rem !important;"
         })).append($("<label>", {
+            for: "year" + counter,
+            class: "form-label p-2",
+            text: "Année de l'anecdote " + visualcounter
+        })).append($("<input>", {
+            type: "date",
+            name: "anecdote[" + counter + "][year]",
+            class: "form-control",
+            id: "year" + counter
+        })).append($("<label>", {
             for: "source" + counter,
             class: "form-label",
             text: "Source de l'anecdote " + visualcounter
