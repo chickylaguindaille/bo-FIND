@@ -17,7 +17,7 @@ $(document).ready(function() {
             text: "Titre du decorum " + visualcounter
         })).append($("<input>", {
             type: "text",
-            name: "decorum[" + counter + "]['title']",
+            name: "decorum[" + counter + "][title]",
             class: "form-control",
             id: "title" + counter
         })).append($("<label>", {
@@ -25,7 +25,7 @@ $(document).ready(function() {
             class: "form-label",
             text: "Texte du décorum " + visualcounter
         })).append($("<textarea>", {
-            name: "decorum[" + counter + "]['text']",
+            name: "decorum[" + counter + "][text]",
             class: "form-control",
             id: "summary" + counter,
             rows: 3,
@@ -36,7 +36,7 @@ $(document).ready(function() {
             text: "Année du decorum " + visualcounter
         })).append($("<input>", {
             type: "date",
-            name: "decorum[" + counter + "]['year']",
+            name: "decorum[" + counter + "][year]",
             class: "form-control",
             id: "year" + counter
         })).append($("<label>", {
@@ -44,7 +44,7 @@ $(document).ready(function() {
             class: "form-label",
             text: "Type de decorum" + visualcounter
         })).append($("<select>", {
-            name: "decorum[" + counter + "]['type']",
+            name: "decorum[" + counter + "][type]",
             class: "form-control",
             id: "type" + counter,
         }).append($("<option>", {
@@ -67,7 +67,7 @@ $(document).ready(function() {
             text: "Source du decorum " + visualcounter
         })).append($("<input>", {
             type: "text",
-            name: "decorum[" + counter + "]['source']",
+            name: "decorum[" + counter + "][source]",
             class: "form-control",
             id: "source" + counter
         })).append($("<label>", {
@@ -76,7 +76,7 @@ $(document).ready(function() {
             text: "Fichier " + visualcounter
         })).append($("<input>", {
             type: "file",
-            name: "decorum[" + counter + "]['path']",
+            name: "decorum[" + counter + "][path]",
             class: "form-control p-2",
             id: "path" + counter
         })).append($("<hr>"));

@@ -17,7 +17,7 @@ $(document).ready(function() {
             text: "Titre du goodies " + visualcounter
         })).append($("<input>", {
             type: "text",
-            name: "goodies[" + counter + "]['title']",
+            name: "goodies[" + counter + "][title]",
             class: "form-control",
             id: "title" + counter
         })).append($("<label>", {
@@ -25,7 +25,7 @@ $(document).ready(function() {
             class: "form-label",
             text: "Texte du goodies " + visualcounter
         })).append($("<textarea>", {
-            name: "goodies[" + counter + "]['text']",
+            name: "goodies[" + counter + "][text]",
             class: "form-control",
             id: "summary" + counter,
             rows: 3,
@@ -36,7 +36,7 @@ $(document).ready(function() {
             text: "Année du goodies " + visualcounter
         })).append($("<input>", {
             type: "date",
-            name: "goodies[" + counter + "]['year']",
+            name: "goodies[" + counter + "][year]",
             class: "form-control",
             id: "year" + counter
         })).append($("<label>", {
@@ -44,7 +44,7 @@ $(document).ready(function() {
             class: "form-label",
             text: "Type de goodies" + visualcounter
         })).append($("<select>", {
-            name: "goodies[" + counter + "]['type']",
+            name: "goodies[" + counter + "][type]",
             class: "form-control",
             id: "type" + counter,
         }).append($("<option>", {
@@ -67,7 +67,7 @@ $(document).ready(function() {
             text: "Source du goodies " + visualcounter
         })).append($("<input>", {
             type: "text",
-            name: "goodies[" + counter + "]['source']",
+            name: "goodies[" + counter + "][source]",
             class: "form-control",
             id: "source" + counter
         })).append($("<label>", {
@@ -76,7 +76,7 @@ $(document).ready(function() {
             text: "Fichier " + visualcounter
         })).append($("<input>", {
             type: "file",
-            name: "goodies[" + counter + "]['path']",
+            name: "goodies[" + counter + "][path]",
             class: "form-control p-2",
             id: "path" + counter
         })).append($("<hr>"));

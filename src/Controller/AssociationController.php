@@ -191,6 +191,8 @@ class AssociationController extends AbstractController
         return $this->render('Associations/associationlist.html.twig', $data);
     }
 
+
+
     /**
      * @Route("/association/{id}", name="association_details")
      * @Template()
@@ -204,6 +206,8 @@ class AssociationController extends AbstractController
 
         $id = $request->get('id');
         $association = $this->findApi->getAssociation($id);
+
+        // exit(var_dump($association['anecdote']));
 
         $data['association'] = $association;
 

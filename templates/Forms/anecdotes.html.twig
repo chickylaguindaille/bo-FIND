@@ -17,7 +17,7 @@ $(document).ready(function() {
             text: "Titre de l'anecdote " + visualcounter
         })).append($("<input>", {
             type: "text",
-            name: "anecdote[" + counter + "]['title']",
+            name: "anecdote[" + counter + "][title]",
             class: "form-control",
             id: "title" + counter
         })).append($("<label>", {
@@ -25,7 +25,7 @@ $(document).ready(function() {
             class: "form-label",
             text: "Texte de l'anecdote " + visualcounter
         })).append($("<textarea>", {
-            name: "anecdote[" + counter + "]['text']",
+            name: "anecdote[" + counter + "][text]",
             class: "form-control",
             id: "summary" + counter,
             rows: 3,
@@ -36,9 +36,18 @@ $(document).ready(function() {
             text: "Source de l'anecdote " + visualcounter
         })).append($("<input>", {
             type: "text",
-            name: "anecdote[" + counter + "]['source']",
+            name: "anecdote[" + counter + "][source]",
             class: "form-control",
             id: "source" + counter
+        })).append($("<label>", {
+            for: "path" + counter,
+            class: "form-label",
+            text: "Fichier " + visualcounter
+        })).append($("<input>", {
+            type: "file",
+            name: "anecdote[" + counter + "][path]",
+            class: "form-control p-2",
+            id: "path" + counter
         })).append($("<hr>"));;
 
         $("#inputs-container-anecdote").append(newInputs);

@@ -17,7 +17,7 @@ $(document).ready(function() {
             text: "Titre du document " + visualcounter
         })).append($("<input>", {
             type: "text",
-            name: "document[" + counter + "]['title']",
+            name: "document[" + counter + "][title]",
             class: "form-control",
             id: "title" + counter
         })).append($("<label>", {
@@ -26,7 +26,7 @@ $(document).ready(function() {
             text: "Année du document " + visualcounter
         })).append($("<input>", {
             type: "date",
-            name: "document[" + counter + "]['year']",
+            name: "document[" + counter + "][year]",
             class: "form-control",
             id: "year" + counter
         })).append($("<label>", {
@@ -34,7 +34,7 @@ $(document).ready(function() {
             class: "form-label",
             text: "Type de document" + visualcounter
         })).append($("<select>", {
-            name: "document[" + counter + "]['type']",
+            name: "document[" + counter + "][type]",
             class: "form-control",
             id: "type" + counter,
         }).append($("<option>", {
@@ -57,7 +57,7 @@ $(document).ready(function() {
             text: "Source du document " + visualcounter
         })).append($("<input>", {
             type: "text",
-            name: "document[" + counter + "]['source']",
+            name: "document[" + counter + "][source]",
             class: "form-control",
             id: "source" + counter
         })).append($("<label>", {
@@ -66,7 +66,7 @@ $(document).ready(function() {
             text: "Fichier " + visualcounter
         })).append($("<input>", {
             type: "file",
-            name: "document[" + counter + "]['path']",
+            name: "document[" + counter + "][path]",
             class: "form-control p-2",
             id: "path" + counter
         })).append($("<hr>"));
