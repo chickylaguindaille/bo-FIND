@@ -209,6 +209,10 @@ class AssociationController extends AbstractController
         $association = $this->findApi->getAssociation($id);
 
         $data['numberparticularity'] = count($association['particularity']);
+        $data['numberanecdote'] = count($association['anecdote']);
+        $data['numberdocument'] = count($association['document']);
+        $data['numberdecorum'] = count($association['decorum']);
+        $data['numbergoodies'] = count($association['goodies']);
 
         $data['association'] = $association;
 
@@ -229,6 +233,7 @@ class AssociationController extends AbstractController
         $inputData = $request->request->all();
 
     // PARTICULARITY
+    if (isset($inputData['particularity'])){
         if ($inputData['action'] != "deleteassociation" ){
         $data['particularity'] = array_replace_recursive($association['particularity'], $inputData['particularity']);
         $redirect = "particularity";
@@ -237,6 +242,23 @@ class AssociationController extends AbstractController
             $data['particularity'] = array_values($data['particularity']);
         $redirect = "particularity";
         }
+    }
+
+    // ANECDOTES
+    if (isset($inputData['anecdote'])){
+        if ($inputData['action'] != "deleteassociation" ){
+            $data['anecdote'] = array_replace_recursive($association['anecdote'], $inputData['anecdote']);
+            $redirect = "anecdotes";
+        }else{
+            $keynumber = array_keys($inputData['anecdote']);
+            unset($association['anecdote'][$keynumber[0]]);
+            $data['anecdote'] = array_values($association['anecdote']);
+            $redirect = "anecdotes";
+        }
+
+    }
+
+    // exit(var_dump($data));
 
         $patchassociation = $this->findApi->patchAssociation(json_encode($data), $id);
         
