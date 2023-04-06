@@ -71,7 +71,7 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">Date de création</th>
-                                        <td scope="row">{% if association.creation is defined %}{{association.creation|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
+                                        <td scope="row">{% if (association.creation is defined) and (association.creation != "") %}{{association.creation|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Résumé</th>
@@ -130,6 +130,7 @@
                                 </tbody>
                                 {% include 'FormsAdd/particularity.html.twig' %}
                             </table>
+                            {% if numberparticularity == 0 %}<h2 class="text-center p-5 font-weight-bold">Pas encore de particularité</h2>{% endif %}
                         </div>
 
                         <div class="tab-pane fade {% if redirect == "anecdotes" %} show active{% endif %}" id="pills-anecdotes" role="tabpanel" aria-labelledby="pills-anecdotes-tab">
@@ -170,6 +171,7 @@
                                 </tbody>
                                 {% include 'FormsAdd/anecdote.html.twig' %}
                             </table>
+                            {% if numberanecdote == 0 %}<h2 class="text-center p-5 font-weight-bold">Pas encore d'anecdote</h2>{% endif %}
                         </div>
 
                         <div class="tab-pane fade {% if redirect == "documents" %} show active{% endif %}" id="pills-documents" role="tabpanel" aria-labelledby="pills-documents-tab">
@@ -210,10 +212,10 @@
                                 </tbody>
                                 {% include 'FormsAdd/document.html.twig' %}
                             </table>
+                            {% if numberdocument == 0 %}<h2 class="text-center p-5 font-weight-bold">Pas encore de document</h2>{% endif %}
                         </div>
 
                         <div class="tab-pane fade {% if redirect == "decorums" %} show active{% endif %}" id="pills-decorum" role="tabpanel" aria-labelledby="pills-decorum-tab">
-                            {# {% if association.decorum is defined and association.decorum is not empty %} #}
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -253,7 +255,7 @@
                                     </tbody>
                                     {% include 'FormsAdd/decorum.html.twig' %}
                                 </table>
-                            {# {% endif %} #}
+                                {% if numberdecorum == 0 %}<h2 class="text-center p-5 font-weight-bold">Pas encore de decorum</h2>{% endif %}
                         </div>
 
                         <div class="tab-pane fade {% if redirect == "goodies" %} show active{% endif %}" id="pills-goodies" role="tabpanel" aria-labelledby="pills-goodies-tab">
@@ -296,10 +298,10 @@
                                 </tbody>
                                 {% include 'FormsAdd/goodies.html.twig' %}
                             </table>
+                            {% if numbergoodies == 0 %}<h2 class="text-center p-5 font-weight-bold">Pas encore de goodies</h2>{% endif %}
                         </div>
 
                         <div class="tab-pane fade {% if redirect == "chant" %} show active{% endif %}" id="pills-chant" role="tabpanel" aria-labelledby="pills-chant-tab">
-                            {% if association.sing is not empty %}
                                 <table class="table">
                                     <tbody>
                                         <tr>
@@ -329,7 +331,6 @@
                                     </tbody>
                                     {% include 'FormsModification/chant.html.twig' %}
                                 </table>
-                            {% endif %}
                         </div>
 
                         <div class="tab-pane fade {% if redirect == "committee" %} show active{% endif %}" id="pills-comite" role="tabpanel" aria-labelledby="pills-comite-tab">

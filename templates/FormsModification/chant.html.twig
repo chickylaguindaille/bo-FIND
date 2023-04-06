@@ -20,7 +20,7 @@
                 </div>
                 <div class="form-group col-12">
                     <label for="year">Année</label>
-                    <input type="date" name="sing[year]" class="form-control inputville" id="year" value="{{association['sing']['year']|date("Y-m-d")}}">
+                    <input type="date" name="sing[year]" class="form-control inputville" id="year" value="{% if association.sing.year is defined %}{{association['sing']['year']|date("Y-m-d")}}{% endif %}">
                 </div>
                 <div>
                     <label for="paroles" class="form-label">Paroles</label>

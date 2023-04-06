@@ -144,10 +144,27 @@ class AssociationController extends AbstractController
         $inputData['committee'] = $bddcommittee;
 
     }
-        // exit(var_dump($bddcommittee));
-        $data = $inputData;
 
-        // exit(var_dump($inputData));
+
+    //SUPPRESSION DES CHAINES VIDES CHANT ET DES DATES NON REMPLIES    
+        if($inputData['creation'] == false){
+            unset($inputData['creation']);
+        }
+        if($inputData['sing']['title'] == ""){
+            unset($inputData['sing']['title']);
+        }
+        if($inputData['sing']['author'] == ""){
+            unset($inputData['sing']['author']);
+        }
+        if($inputData['sing']['year'] == false){
+            unset($inputData['sing']['year']);
+        }
+        if($inputData['sing']['text'] == ""){
+            unset($inputData['sing']['text']);
+        }
+
+        $data = $inputData;
+;
         // exit(var_dump(json_encode($data)));
 
         // $data['name'] = $request->request->get('name');
@@ -165,7 +182,7 @@ class AssociationController extends AbstractController
 
 
 
-        $createtown = $this->findApi->createAssociation(json_encode($data));
+        $createassociation = $this->findApi->createAssociation(json_encode($data));
         
         return $this->redirectToRoute('association_list');
 
