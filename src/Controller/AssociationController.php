@@ -264,9 +264,6 @@ class AssociationController extends AbstractController
 
     // DOCUMENTS
     if (isset($inputData['document'])){
-
-// exit(var_dump($inputData));
-
         if ($inputData['action'] != "deleteassociation" ){
             $data['document'] = array_replace_recursive($association['document'], $inputData['document']);
             $redirect = "documents";
@@ -275,6 +272,32 @@ class AssociationController extends AbstractController
             unset($association['document'][$keynumber[0]]);
             $data['document'] = array_values($association['document']);
             $redirect = "documents";
+        }
+    }
+
+    // DECORUM
+    if (isset($inputData['decorum'])){
+        if ($inputData['action'] != "deleteassociation" ){
+            $data['decorum'] = array_replace_recursive($association['decorum'], $inputData['decorum']);
+            $redirect = "decorums";
+        }else{
+            $keynumber = array_keys($inputData['decorum']);
+            unset($association['decorum'][$keynumber[0]]);
+            $data['decorum'] = array_values($association['decorum']);
+            $redirect = "decorums";
+        }
+    }
+
+    // GOODIES
+    if (isset($inputData['goodies'])){
+        if ($inputData['action'] != "deleteassociation" ){
+            $data['goodies'] = array_replace_recursive($association['goodies'], $inputData['goodies']);
+            $redirect = "goodies";
+        }else{
+            $keynumber = array_keys($inputData['goodies']);
+            unset($association['goodies'][$keynumber[0]]);
+            $data['goodies'] = array_values($association['goodies']);
+            $redirect = "goodies";
         }
     }
 
