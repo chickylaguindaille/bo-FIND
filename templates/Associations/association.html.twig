@@ -141,6 +141,11 @@
                                         <th scope="col">Date</th>
                                         <th scope="col">Source</th>
                                         <th scope="col">Photo</th>
+                                        <td>
+                                            <button type="button" class="btn btn-outline-success p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_add_anecdote_{{association.id}}">
+                                                Ajouter +
+                                            </button>
+                                        </td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -152,13 +157,18 @@
                                             <td scope="row">{{ value['source']??"<i>Pas de source</i>" }}</td>
                                             <td scope="row">{{ value['path']??"<i>Pas de photo</i>" }}</td>
                                             <td>                              
-                                                <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{ association.id }}">
+                                                <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_anecdote_{{key}}_{{ association.id }}">
                                                     Modifier
                                                 </button>
+                                                <button type="button" class="btn btn-outline-danger p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_anecdotesuppr_{{key}}_{{association.id}}">
+                                                    Supprimer
+                                                </button>
                                             </td>
+                                            {% include 'FormsModification/anecdotes.html.twig' %}
                                         </tr>
                                     {% endfor %}
                                 </tbody>
+                                {% include 'FormsAdd/anecdote.html.twig' %}
                             </table>
                         </div>
 
@@ -171,6 +181,11 @@
                                         <th scope="col">Type</th>
                                         <th scope="col">Année</th>
                                         <th scope="col">Source</th>
+                                        <td>
+                                            <button type="button" class="btn btn-outline-success p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_add_document_{{association.id}}">
+                                                Ajouter +
+                                            </button>
+                                        </td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -182,13 +197,18 @@
                                             <td scope="row">{% if value['year'] is defined %}{{value['year']|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
                                             <td scope="row">{{ value['source']??"<i>Pas de source</i>" }}</td>
                                             <td>                              
-                                                <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{ association.id }}">
+                                                <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_documents_{{key}}_{{ association.id }}">
                                                     Modifier
                                                 </button>
+                                                <button type="button" class="btn btn-outline-danger p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_documentsuppr_{{key}}_{{association.id}}">
+                                                        Supprimer
+                                                </button>
                                             </td>
+                                            {% include 'FormsModification/documents.html.twig' %}
                                         </tr>
                                     {% endfor %}
                                 </tbody>
+                                {% include 'FormsAdd/document.html.twig' %}
                             </table>
                         </div>
 
@@ -203,6 +223,11 @@
                                             <th scope="col">Type</th>
                                             <th scope="col">Année</th>
                                             <th scope="col">Source</th>
+                                            <td>
+                                            <button type="button" class="btn btn-outline-success p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_add_decorum_{{association.id}}">
+                                                Ajouter +
+                                            </button>
+                                            </td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -215,13 +240,18 @@
                                                 <td scope="row">{% if value['year'] is defined %}{{value['year']|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
                                                 <td scope="row">{{ value['source']??"<i>Pas de source</i>" }}</td>
                                                 <td>                              
-                                                    <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{ association.id }}">
+                                                    <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_decorum_{{key}}_{{ association.id }}">
                                                         Modifier
                                                     </button>
+                                                    <button type="button" class="btn btn-outline-danger p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_decorumsuppr_{{key}}_{{association.id}}">
+                                                        Supprimer
+                                                    </button>
                                                 </td>
+                                                {% include 'FormsModification/decorums.html.twig' %}
                                             </tr>
                                         {% endfor %}
                                     </tbody>
+                                    {% include 'FormsAdd/decorum.html.twig' %}
                                 </table>
                             {% endif %}
                         </div>
@@ -236,6 +266,11 @@
                                         <th scope="col">Type</th>
                                         <th scope="col">Année</th>
                                         <th scope="col">Source</th>
+                                        <td>
+                                            <button type="button" class="btn btn-outline-success p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_add_goodies_{{association.id}}">
+                                                Ajouter +
+                                            </button>
+                                        </td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -248,13 +283,18 @@
                                             <td scope="row">{% if value['year'] is defined %}{{value['year']|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
                                             <td scope="row">{{ value['source']??"<i>Pas de source</i>" }}</td>
                                             <td>                              
-                                                <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{ association.id }}">
+                                                <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_goodies_{{key}}_{{ association.id }}">
                                                     Modifier
                                                 </button>
+                                                <button type="button" class="btn btn-outline-danger p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_goodiessuppr_{{key}}_{{association.id}}">
+                                                    Supprimer
+                                                </button>
                                             </td>
+                                            {% include 'FormsModification/goodies.html.twig' %}
                                         </tr>
                                     {% endfor %}
                                 </tbody>
+                                {% include 'FormsAdd/goodies.html.twig' %}
                             </table>
                         </div>
 
@@ -281,12 +321,13 @@
                                         <tr>
                                             <td></td>
                                             <td class="text-end">                              
-                                                <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{ association.id }}">
+                                                <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_chant_{{ association.id }}">
                                                     Modifier
                                                 </button>
                                             </td>
                                         </tr>
                                     </tbody>
+                                    {% include 'FormsModification/chant.html.twig' %}
                                 </table>
                             {% endif %}
                         </div>
@@ -305,6 +346,11 @@
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Pseudo</th>
+                <td>
+                    <button type="button" class="btn btn-outline-success p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_add_committee_{{association.id}}">
+                        Ajouter +
+                    </button>
+                </td>
             </tr>
         </thead>
         <tbody>
@@ -317,6 +363,9 @@
                         <td>
                             <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="">
                                 Modifier
+                            </button>
+                            <button type="button" class="btn btn-outline-danger p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_committeeuppr_{{key}}_{{association.id}}">
+                                Supprimer
                             </button>
                         </td>
                     </tr>

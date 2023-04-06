@@ -1,0 +1,66 @@
+<!-- Modal goodiess Modification-->
+    <div class="modal fade" id="modal_goodies_{{key}}_{{association.id??""}}" tabindex="-1" role="dialog" aria-labelledby="modal_goodies_{{key}}_{{association.id??""}}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modifier cette goodies de {{association.name??""}}</h5>
+        </div>
+        <div class="modal-body">
+            <form class="forms-sample" action="{{ path('association_patch', {'id': association.id}) }}" method="post" enctype="multipart/form-data">
+
+                <div class="form-group mb-3">
+                    <input name="action" value="modifyassociation" class="d-none"></input>
+
+                    <label class="form-label">Titre</label>
+                    <input type="text" name="goodies[{{key}}]['title']" class="form-control" id="goodies_{{key}}_{{association.id??""}}" value="{{association['goodies'][key]['title']??""}}"></input>
+                    
+                    <label class="form-label">Texte</label>
+                    <textarea name="goodies[{{key}}]['text']" class="form-control" id="goodies_{{key}}_{{association.id??""}}" rows="3" style="height: 5rem !important;">{{association['goodies'][key]['text']??""}}</textarea>
+                    
+                    <label class="form-label">Date</label>
+                    <input type="date" name="goodies[{{key}}]['year']" class="form-control" id="goodies_{{key}}_{{association.id??""}}" value="{{association['goodies'][key]['year']|date("Y-m-d")}}"></input>
+                
+                    <label class="form-label">Source</label>
+                    <input type="text" name="goodies[{{key}}]['source']" class="form-control" id="goodies_{{key}}_{{association.id??""}}" value="{{association['goodies'][key]['source']??""}}"></input>
+                
+                    <label class="form-label">Photo</label><br>
+                    <i>{{association['goodies'][key]['path']??"Pas de photo"}}</i>
+                    <input type="file" name="goodies[{{key}}]['path']" class="form-control" id="goodies_{{key}}_{{association.id??""}}" value=""></input>
+                </div>
+            
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+        </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal goodiess Suppression-->
+    <div class="modal fade" id="modal_goodiessuppr_{{key}}_{{association.id??""}}" tabindex="-1" role="dialog" aria-labelledby="modal_goodiessuppr_{{key}}_{{association.id??""}}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Supprimer cette particularité de {{association.name??""}}</h5>
+        </div>
+        <div class="modal-body">
+            <form class="forms-sample" action="{{ path('association_patch', {'id': association.id}) }}" method="post" enctype="multipart/form-data">
+
+                <div class="form-group mb-3">
+                    <input name="action" value="deleteassociation" class="d-none"></input>
+                    <textarea name="goodies[{{key}}]" class="form-control d-none">{{association['goodies'][key]['source']??""}}</textarea>
+                    <div>{{association['goodies'][key]['title']??""}}</div>
+                </div>
+            
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            <button type="submit" class="btn btn-danger">Supprimer</button>
+        </div>
+        </form>
+        </div>
+    </div>
+</div>
