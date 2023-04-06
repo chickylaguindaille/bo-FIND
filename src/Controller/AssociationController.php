@@ -49,53 +49,16 @@ class AssociationController extends AbstractController
     }
 
     
-
-
-
-
-    /**
-     * @Route("/association/list", name="association_list")
-     * @Template()
-     */
-    public function associationList(FindApiService $findApi)
-    {
-        $data['page'] = 'association';
-        $associations = $this->findApi->getAssociations();
-
-        $town = $this->findApi->getTowns(null);
-
-        $data['towns'] = array_column($town['data'], 'name');
-        // exit(var_dump($data['towns']));
-
-        $data['associations'] = $associations['data'];
-
-        return $this->render('Associations/associationlist.html.twig', $data);
-    }
-
-    /**
-     * @Route("/association/{id}", name="association_details")
-     * @Template()
-     */
-    public function associationDetails(Request $request, FindApiService $findApi)
-    {
-        $data['page'] = 'association';
-
-        $id = $request->get('id');
-        $association = $this->findApi->getAssociation($id);
-
-        $data['association'] = $association;
-
-        return $this->render('Associations/association.html.twig', $data);
-    }
-
     /**
      * @Route("/association/add", name="association_add")
      * @Template()
      */
     public function associationAdd(Request $request, FindApiService $findApi)
     {
+        // exit(var_dump("test"));
+
         $inputData = $request->request->all();
-exit(var_dump($inputData));
+// exit(var_dump($inputData));
         $data['nickname'] = $request->request->get('nickname');
         $inputData['creation'] = strtotime($inputData['creation']);
         $inputData['logo'] = $_FILES['logo']['name'];
@@ -205,7 +168,49 @@ exit(var_dump($inputData));
         $createtown = $this->findApi->createAssociation(json_encode($data));
         
         return $this->redirectToRoute('association_list');
+
     }
+
+
+
+    /**
+     * @Route("/association/list", name="association_list")
+     * @Template()
+     */
+    public function associationList(FindApiService $findApi)
+    {
+        $data['page'] = 'association';
+        $associations = $this->findApi->getAssociations();
+
+        $town = $this->findApi->getTowns(null);
+        $data['towns'] = array_column($town['data'], 'name');
+        // exit(var_dump($data['towns']));
+
+        $data['associations'] = $associations['data'];
+
+        return $this->render('Associations/associationlist.html.twig', $data);
+    }
+
+    /**
+     * @Route("/association/{id}", name="association_details")
+     * @Template()
+     */
+    public function associationDetails(Request $request, FindApiService $findApi)
+    {
+        $data['page'] = 'association';
+
+        $town = $this->findApi->getTowns(null);
+        $data['towns'] = array_column($town['data'], 'name');
+
+        $id = $request->get('id');
+        $association = $this->findApi->getAssociation($id);
+
+        $data['association'] = $association;
+
+        return $this->render('Associations/association.html.twig', $data);
+    }
+
+
 
     /**
      * @Route("/ville/patch/{id}", name="ville_patch")
