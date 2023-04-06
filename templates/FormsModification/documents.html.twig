@@ -1,10 +1,10 @@
-<!-- Modal documentss Modification-->
+<!-- Modal document Modification-->
 
     <div class="modal fade" id="modal_documents_{{key}}_{{association.id??""}}" tabindex="-1" role="dialog" aria-labelledby="modal_documents_{{key}}_{{association.id??""}}" aria-hidden="true">
     <div class="modal-dialog modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Modifier cette documents de {{association.name??""}}</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Modifier cette document de {{association.name??""}}</h5>
         </div>
         <div class="modal-body">
             <form class="forms-sample" action="{{ path('association_patch', {'id': association.id}) }}" method="post" enctype="multipart/form-data">
@@ -13,20 +13,20 @@
                     <input name="action" value="modifyassociation" class="d-none"></input>
 
                     <label class="form-label">Titre</label>
-                    <input type="text" name="documents[{{key}}]['title']" class="form-control" id="documents_{{key}}_{{association.id??""}}" value="{{association['documents'][key]['title']??""}}"></input>
-                    
-                    <label class="form-label">Texte</label>
-                    <textarea name="documents[{{key}}]['text']" class="form-control" id="documents_{{key}}_{{association.id??""}}" rows="3" style="height: 5rem !important;">{{association['documents'][key]['text']??""}}</textarea>
+                    <input type="text" name="document[{{key}}][title]" class="form-control" id="document_{{key}}_{{association.id??""}}" value="{{association['document'][key]['title']??""}}"></input>
+                
+                    <label class="form-label">Type</label>
+                    <input type="test" name="document[{{key}}][type]" class="form-control" id="document_{{key}}_{{association.id??""}}" value="{{association['document'][key]['type']??""}}" ></input>
                     
                     <label class="form-label">Date</label>
-                    {# <input type="date" name="documents[{{key}}]['year']" class="form-control" id="documents_{{key}}_{{association.id??""}}" value="{{association['documents'][key]['year']|date("Y-m-d")}}"></input> #}
+                    <input type="date" name="document[{{key}}][year]" class="form-control" id="document_{{key}}_{{association.id??""}}" value="{{association['document'][key]['year']|date("Y-m-d")}}"></input>
                 
                     <label class="form-label">Source</label>
-                    <input type="text" name="documents[{{key}}]['source']" class="form-control" id="documents_{{key}}_{{association.id??""}}" value="{{association['documents'][key]['source']??""}}"></input>
+                    <input type="text" name="document[{{key}}][source]" class="form-control" id="document_{{key}}_{{association.id??""}}" value="{{association['document'][key]['source']??""}}"></input>
                 
                     <label class="form-label">Photo</label><br>
-                    <i>{{association['documents'][key]['path']??"Pas de photo"}}</i>
-                    <input type="file" name="documents[{{key}}]['path']" class="form-control" id="documents_{{key}}_{{association.id??""}}" value=""></input>
+                    <i>{{association['document'][key]['path']??"Pas de photo"}}</i>
+                    <input type="file" name="document[{{key}}][path']" class="form-control" id="document_{{key}}_{{association.id??""}}" value=""></input>
                 </div>
             
         </div>
@@ -40,8 +40,8 @@
 </div>
 
 
-<!-- Modal documentss Suppression-->
-    <div class="modal fade" id="modal_documentsuppr_{{key}}_{{association.id}}" tabindex="-1" role="dialog" aria-labelledby="modal_documentsuppr_{{key}}_{{association.id??""}}" aria-hidden="true">
+<!-- Modal documents Suppression-->
+    <div class="modal fade" id="modal_documentuppr_{{key}}_{{association.id}}" tabindex="-1" role="dialog" aria-labelledby="modal_documentuppr_{{key}}_{{association.id??""}}" aria-hidden="true">
     <div class="modal-dialog modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -52,8 +52,8 @@
 
                 <div class="form-group mb-3">
                     <input name="action" value="deleteassociation" class="d-none"></input>
-                    <textarea name="documents[{{key}}]" class="form-control d-none">{{association['documents'][key]['source']??""}}</textarea>
-                    <div>{{association['documents'][key]['title']??""}}</div>
+                    <textarea name="document[{{key}}]" class="form-control d-none">{{association['document'][key]['source']??""}}</textarea>
+                    <div>{{association['document'][key]['title']??""}}</div>
                 </div>
             
         </div>

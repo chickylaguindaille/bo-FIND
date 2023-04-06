@@ -13,20 +13,20 @@
                     <input name="action" value="modifyassociation" class="d-none"></input>
 
                     <label class="form-label">Titre</label>
-                    <input type="text" name="decorum[{{key}}]['title']" class="form-control" id="decorum_{{key}}_{{association.id??""}}" value="{{association['decorum'][key]['title']??""}}"></input>
+                    <input type="text" name="decorum[{{key}}][title]" class="form-control" id="decorum_{{key}}_{{association.id??""}}" value="{{association['decorum'][key]['title']??""}}"></input>
                     
                     <label class="form-label">Texte</label>
                     <textarea name="decorum[{{key}}]['text']" class="form-control" id="decorum_{{key}}_{{association.id??""}}" rows="3" style="height: 5rem !important;">{{association['decorum'][key]['text']??""}}</textarea>
                     
                     <label class="form-label">Date</label>
-                    <input type="date" name="decorum[{{key}}]['year']" class="form-control" id="decorum_{{key}}_{{association.id??""}}" value="{{association['decorum'][key]['year']|date("Y-m-d")}}"></input>
+                    <input type="date" name="decorum[{{key}}][year]" class="form-control" id="decorum_{{key}}_{{association.id??""}}" value="{{association['decorum'][key]['year']|date("Y-m-d")}}"></input>
                 
                     <label class="form-label">Source</label>
-                    <input type="text" name="decorum[{{key}}]['source']" class="form-control" id="decorum_{{key}}_{{association.id??""}}" value="{{association['decorum'][key]['source']??""}}"></input>
+                    <input type="text" name="decorum[{{key}}][source]" class="form-control" id="decorum_{{key}}_{{association.id??""}}" value="{{association['decorum'][key]['source']??""}}"></input>
                 
                     <label class="form-label">Photo</label><br>
                     <i>{{association['decorum'][key]['path']??"Pas de photo"}}</i>
-                    <input type="file" name="decorum[{{key}}]['path']" class="form-control" id="decorum_{{key}}_{{association.id??""}}" value=""></input>
+                    <input type="file" name="decorum[{{key}}][path]" class="form-control" id="decorum_{{key}}_{{association.id??""}}" value=""></input>
                 </div>
             
         </div>

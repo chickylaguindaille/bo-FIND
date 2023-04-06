@@ -232,6 +232,11 @@ class AssociationController extends AbstractController
         $association = $this->findApi->getAssociation($id);
         $inputData = $request->request->all();
 
+    // INFORMATIONS
+    $data = $inputData;
+    $redirect = "informations";
+    
+
     // PARTICULARITY
     if (isset($inputData['particularity'])){
         if ($inputData['action'] != "deleteassociation" ){
@@ -255,7 +260,22 @@ class AssociationController extends AbstractController
             $data['anecdote'] = array_values($association['anecdote']);
             $redirect = "anecdotes";
         }
+    }
 
+    // DOCUMENTS
+    if (isset($inputData['document'])){
+
+// exit(var_dump($inputData));
+
+        if ($inputData['action'] != "deleteassociation" ){
+            $data['document'] = array_replace_recursive($association['document'], $inputData['document']);
+            $redirect = "documents";
+        }else{
+            $keynumber = array_keys($inputData['document']);
+            unset($association['document'][$keynumber[0]]);
+            $data['document'] = array_values($association['document']);
+            $redirect = "documents";
+        }
     }
 
     // exit(var_dump($data));
