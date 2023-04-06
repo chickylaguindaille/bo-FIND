@@ -10,9 +10,26 @@
             <form class="forms-sample" action="{{ path('association_patch', {'id': association.id}) }}" method="post" enctype="multipart/form-data">
 
                 <div class="form-group mb-3">
-                    <label for="goodies_add_{{association.id??""}}" class="form-label">Texte</label>
                     <input name="action" value="addassociation" class="d-none"></input>
-                    {# <textarea name="goodies[{{numbergoodies}}]" class="form-control" id="goodies_add_{{association.id??""}}" rows="3" style="height: 5rem !important;"></textarea> #}
+
+                    <label class="form-label">Titre</label>
+                    <input type="text" name="goodies[{{numbergoodies}}][title]" class="form-control" id="goodies_{{numbergoodies}}_{{association.id??""}}"></input>
+                    
+                    <label class="form-label">Texte</label>
+                    <textarea name="goodies[{{numbergoodies}}][text]" class="form-control" id="goodies_{{numbergoodies}}_{{association.id??""}}" rows="3" style="height: 5rem !important;"></textarea>
+                    
+                    <label class="form-label">Type</label>
+                    <input type="test" name="goodies[{{numbergoodies}}][type]" class="form-control" id="goodies_{{numbergoodies}}_{{association.id??""}}"></input>
+
+                    <label class="form-label">Date</label>
+                    <input type="date" name="goodies[{{numbergoodies}}][year]" class="form-control" id="goodies_{{numbergoodies}}_{{association.id??""}}"></input>
+                
+                    <label class="form-label">Source</label>
+                    <input type="text" name="goodies[{{numbergoodies}}][source]" class="form-control" id="goodies_{{numbergoodies}}_{{association.id??""}}"></input>
+                
+                    <label class="form-label">Photo</label><br>
+                    <i>{{association['goodies'][numbergoodies]['path']??"Pas de photo"}}</i>
+                    <input type="file" name="goodies[{{numbergoodies}}][path]" class="form-control" id="goodies_{{numbergoodies}}_{{association.id??""}}"></input>
                 </div>
             
         </div>

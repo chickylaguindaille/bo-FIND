@@ -10,7 +10,7 @@
             <form class="forms-sample" action="{{ path('association_patch', {'id': association.id}) }}" method="post" enctype="multipart/form-data">
 
                 <div class="form-group mb-3">
-                    <input name="action" value="modifyassociation" class="d-none"></input>
+                    <input name="action" value="addassociation" class="d-none"></input>
 
                     <label class="form-label">Titre</label>
                     <input type="text" name="document[{{numberdocument}}][title]" class="form-control" id="document_{{numberdocument}}_{{association.id??""}}"></input>

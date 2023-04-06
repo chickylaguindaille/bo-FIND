@@ -1,18 +1,35 @@
 
 <!-- Modal Particularités Ajout-->
     <div class="modal fade" id="modal_add_decorum_{{association.id??""}}" tabindex="-1" role="dialog" aria-labelledby="modal_add_decorum_{{association.id??""}}" aria-hidden="true">
-    <div class="modal-dialog modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog" role="decorum">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Ajout d'une particularité</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Ajout d'un décorum</h5>
         </div>
         <div class="modal-body">
             <form class="forms-sample" action="{{ path('association_patch', {'id': association.id}) }}" method="post" enctype="multipart/form-data">
 
                 <div class="form-group mb-3">
-                    <label for="decorum_add_{{association.id??""}}" class="form-label">Texte</label>
                     <input name="action" value="addassociation" class="d-none"></input>
-                    {# <textarea name="decorum[{{numberdecorum}}]" class="form-control" id="decorum_add_{{association.id??""}}" rows="3" style="height: 5rem !important;"></textarea> #}
+
+                    <label class="form-label">Titre</label>
+                    <input type="text" name="decorum[{{numberdecorum}}][title]" class="form-control" id="decorum_{{numberdecorum}}_{{association.id??""}}"></input>
+
+                    <label class="form-label">Texte</label>
+                    <textarea name="decorum[{{numberdecorum}}][text]" class="form-control" id="anecdote_{{numberdecorum}}_{{association.id??""}}" rows="3" style="height: 5rem !important;"></textarea>
+                
+                    <label class="form-label">Type</label>
+                    <input type="test" name="decorum[{{numberdecorum}}][type]" class="form-control" id="decorum_{{numberdecorum}}_{{association.id??""}}"></input>
+                    
+                    <label class="form-label">Date</label>
+                    <input type="date" name="decorum[{{numberdecorum}}][year]" class="form-control" id="decorum_{{numberdecorum}}_{{association.id??""}}"></input>
+                
+                    <label class="form-label">Source</label>
+                    <input type="text" name="decorum[{{numberdecorum}}][source]" class="form-control" id="decorum_{{numberdecorum}}_{{association.id??""}}"></input>
+                
+                    <label class="form-label">Photo</label><br>
+                    <i>{{association['decorum'][numberdecorum]['path']??"Pas de photo"}}</i>
+                    <input type="file" name="decorum[{{numberdecorum}}][path]" class="form-control" id="decorum_{{numberdecorum}}_{{association.id??""}}"></input>
                 </div>
             
         </div>

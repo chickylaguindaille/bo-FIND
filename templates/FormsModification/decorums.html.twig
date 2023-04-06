@@ -1,10 +1,10 @@
 <!-- Modal decorums Modification-->
 
     <div class="modal fade" id="modal_decorum_{{key}}_{{association.id??""}}" tabindex="-1" role="dialog" aria-labelledby="modal_decorum_{{key}}_{{association.id??""}}" aria-hidden="true">
-    <div class="modal-dialog modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog" role="decorum">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Modifier cette decorum de {{association.name??""}}</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Modifier ce decorum de {{association.name??""}}</h5>
         </div>
         <div class="modal-body">
             <form class="forms-sample" action="{{ path('association_patch', {'id': association.id}) }}" method="post" enctype="multipart/form-data">
@@ -16,8 +16,11 @@
                     <input type="text" name="decorum[{{key}}][title]" class="form-control" id="decorum_{{key}}_{{association.id??""}}" value="{{association['decorum'][key]['title']??""}}"></input>
                     
                     <label class="form-label">Texte</label>
-                    <textarea name="decorum[{{key}}]['text']" class="form-control" id="decorum_{{key}}_{{association.id??""}}" rows="3" style="height: 5rem !important;">{{association['decorum'][key]['text']??""}}</textarea>
+                    <textarea name="decorum[{{key}}][text]" class="form-control" id="decorum_{{key}}_{{association.id??""}}" rows="3" style="height: 5rem !important;">{{association['decorum'][key]['text']??""}}</textarea>
                     
+                    <label class="form-label">Type</label>
+                    <input type="test" name="decorum[{{key}}][type]" class="form-control" id="decorum{{key}}_{{association.id??""}}" value="{{association['decorum'][key]['type']??""}}" ></input>
+
                     <label class="form-label">Date</label>
                     <input type="date" name="decorum[{{key}}][year]" class="form-control" id="decorum_{{key}}_{{association.id??""}}" value="{{association['decorum'][key]['year']|date("Y-m-d")}}"></input>
                 
@@ -42,10 +45,10 @@
 
 <!-- Modal decorums Suppression-->
     <div class="modal fade" id="modal_decorumsuppr_{{key}}_{{association.id??""}}" tabindex="-1" role="dialog" aria-labelledby="modal_decorumsuppr_{{key}}_{{association.id??""}}" aria-hidden="true">
-    <div class="modal-dialog modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog" role="decorum">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Supprimer cette particularité de {{association.name??""}}</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Supprimer ce decorum de {{association.name??""}}</h5>
         </div>
         <div class="modal-body">
             <form class="forms-sample" action="{{ path('association_patch', {'id': association.id}) }}" method="post" enctype="multipart/form-data">

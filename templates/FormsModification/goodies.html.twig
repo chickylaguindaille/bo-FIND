@@ -17,6 +17,9 @@
                     <label class="form-label">Texte</label>
                     <textarea name="goodies[{{key}}][text]" class="form-control" id="goodies_{{key}}_{{association.id??""}}" rows="3" style="height: 5rem !important;">{{association['goodies'][key]['text']??""}}</textarea>
                     
+                    <label class="form-label">Type</label>
+                    <input type="test" name="goodies[{{key}}][type]" class="form-control" id="goodies_{{key}}_{{association.id??""}}" value="{{association['goodies'][key]['type']??""}}" ></input>
+
                     <label class="form-label">Date</label>
                     <input type="date" name="goodies[{{key}}][year]" class="form-control" id="goodies_{{key}}_{{association.id??""}}" value="{{association['goodies'][key]['year']|date("Y-m-d")}}"></input>
                 
