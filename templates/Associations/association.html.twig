@@ -21,29 +21,28 @@
                         
                     <ul class="nav nav-pills px-3 justify-content-center" id="pills-tab" role="tablist">
                         <li class="nav-item m-0" role="presentation">
-                            <button class="nav-link active" id="pills-informations-tab" data-bs-toggle="pill" data-bs-target="#pills-informations" type="button" role="tab" aria-controls="pills-informations" aria-selected="true">Informations</button>
+                            <button class="nav-link {% if redirect == "informations" %}active{% endif %}" id="pills-informations-tab" data-bs-toggle="pill" data-bs-target="#pills-informations" type="button" role="tab" aria-controls="pills-informations" aria-selected="true">Informations</button>
                         </li>
                         <li class="nav-item m-0" role="presentation">
-                            <button class="nav-link" id="pills-particularity-tab" data-bs-toggle="pill" data-bs-target="#pills-particularity" type="button" role="tab" aria-controls="pills-particularity" aria-selected="false">Particularités</button>
+                            <button class="nav-link {% if redirect == "particularity" %}active{% endif %}" id="pills-particularity-tab" data-bs-toggle="pill" data-bs-target="#pills-particularity" type="button" role="tab" aria-controls="pills-particularity" aria-selected="false">Particularités</button>
                         </li>
                         <li class="nav-item m-0" role="presentation">
-                            <button class="nav-link" id="pills-anecdotes-tab" data-bs-toggle="pill" data-bs-target="#pills-anecdotes" type="button" role="tab" aria-controls="pills-anecdotes" aria-selected="false">Anecdotes</button>
+                            <button class="nav-link {% if redirect == "anecdotes" %} active{% endif %}" id="pills-anecdotes-tab" data-bs-toggle="pill" data-bs-target="#pills-anecdotes" type="button" role="tab" aria-controls="pills-anecdotes" aria-selected="false">Anecdotes</button>
                         </li>
                         <li class="nav-item m-0" role="presentation">
-                            <button class="nav-link" id="pills-documents-tab" data-bs-toggle="pill" data-bs-target="#pills-documents" type="button" role="tab" aria-controls="pills-documents" aria-selected="true">Documents</button>
-                        </li>
-
-                        <li class="nav-item m-0" role="presentation">
-                            <button class="nav-link" id="pills-decorum-tab" data-bs-toggle="pill" data-bs-target="#pills-decorum" type="button" role="tab" aria-controls="pills-decorum" aria-selected="false">Decorum</button>
+                            <button class="nav-link {% if redirect == "documents" %} active{% endif %}" id="pills-documents-tab" data-bs-toggle="pill" data-bs-target="#pills-documents" type="button" role="tab" aria-controls="pills-documents" aria-selected="true">Documents</button>
                         </li>
                         <li class="nav-item m-0" role="presentation">
-                            <button class="nav-link" id="pills-goodies-tab" data-bs-toggle="pill" data-bs-target="#pills-goodies" type="button" role="tab" aria-controls="pills-goodies" aria-selected="false">Goodies</button>
+                            <button class="nav-link {% if redirect == "decorum" %} active{% endif %}" id="pills-decorum-tab" data-bs-toggle="pill" data-bs-target="#pills-decorum" type="button" role="tab" aria-controls="pills-decorum" aria-selected="false">Decorum</button>
                         </li>
                         <li class="nav-item m-0" role="presentation">
-                            <button class="nav-link" id="pills-chant-tab" data-bs-toggle="pill" data-bs-target="#pills-chant" type="button" role="tab" aria-controls="pills-chant" aria-selected="true">Chant</button>
+                            <button class="nav-link {% if redirect == "goodies" %} active{% endif %}" id="pills-goodies-tab" data-bs-toggle="pill" data-bs-target="#pills-goodies" type="button" role="tab" aria-controls="pills-goodies" aria-selected="false">Goodies</button>
                         </li>
                         <li class="nav-item m-0" role="presentation">
-                            <button class="nav-link" id="pills-comite-tab" data-bs-toggle="pill" data-bs-target="#pills-comite" type="button" role="tab" aria-controls="pills-comite" aria-selected="false">Comité</button>
+                            <button class="nav-link {% if redirect == "chant" %} active{% endif %}" id="pills-chant-tab" data-bs-toggle="pill" data-bs-target="#pills-chant" type="button" role="tab" aria-controls="pills-chant" aria-selected="true">Chant</button>
+                        </li>
+                        <li class="nav-item m-0" role="presentation">
+                            <button class="nav-link {% if redirect == "committee" %} active{% endif %}" id="pills-comite-tab" data-bs-toggle="pill" data-bs-target="#pills-comite" type="button" role="tab" aria-controls="pills-comite" aria-selected="false">Comité</button>
                         </li>
                     </ul>
 
@@ -51,7 +50,7 @@
 
                     <div class="tab-content" id="pills-tabContent">
                         
-                        <div class="tab-pane fade show active" id="pills-informations" role="tabpanel" aria-labelledby="pills-informations-tab">
+                        <div class="tab-pane fade {% if redirect == "informations" %} show active{% endif %}" id="pills-informations" role="tabpanel" aria-labelledby="pills-informations-tab">
                             <table class="table">
                                 <tbody>
                                     <tr>
@@ -99,12 +98,17 @@
                             </table>
                         </div>
 
-                        <div class="tab-pane fade" id="pills-particularity" role="tabpanel" aria-labelledby="pills-particularity-tab">
+                        <div class="tab-pane fade {% if redirect == "particularity" %} show active{% endif %}" id="pills-particularity" role="tabpanel" aria-labelledby="pills-particularity-tab">
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">Numéro</th>
                                         <th scope="col">Particularité</th>
+                                        <td>
+                                            <button type="button" class="btn btn-outline-success p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_add_particularity_{{association.id}}">
+                                                Ajouter +
+                                            </button>
+                                        </td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -116,15 +120,19 @@
                                                 <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_particularity_{{key}}_{{association.id}}">
                                                     Modifier
                                                 </button>
+                                                <button type="button" class="btn btn-outline-danger p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_particularitysuppr_{{key}}_{{association.id}}">
+                                                    Supprimer
+                                                </button>
                                             </td>
                                             {% include 'FormsModification/particularity.html.twig' %}
                                         </tr>
                                     {% endfor %}
                                 </tbody>
+                                {% include 'FormsAdd/particularity.html.twig' %}
                             </table>
                         </div>
 
-                        <div class="tab-pane fade" id="pills-anecdotes" role="tabpanel" aria-labelledby="pills-anecdotes-tab">
+                        <div class="tab-pane fade {% if redirect == "anecdotes" %} show active{% endif %}" id="pills-anecdotes" role="tabpanel" aria-labelledby="pills-anecdotes-tab">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -154,7 +162,7 @@
                             </table>
                         </div>
 
-                        <div class="tab-pane fade" id="pills-documents" role="tabpanel" aria-labelledby="pills-documents-tab">
+                        <div class="tab-pane fade {% if redirect == "documents" %} show active{% endif %}" id="pills-documents" role="tabpanel" aria-labelledby="pills-documents-tab">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -184,7 +192,7 @@
                             </table>
                         </div>
 
-                        <div class="tab-pane fade" id="pills-decorum" role="tabpanel" aria-labelledby="pills-decorum-tab">
+                        <div class="tab-pane fade {% if redirect == "decorum" %} show active{% endif %}" id="pills-decorum" role="tabpanel" aria-labelledby="pills-decorum-tab">
                             {% if association.decorum is defined and association.decorum is not empty %}
                                 <table class="table">
                                     <thead>
@@ -218,7 +226,7 @@
                             {% endif %}
                         </div>
 
-                        <div class="tab-pane fade" id="pills-goodies" role="tabpanel" aria-labelledby="pills-goodies-tab">
+                        <div class="tab-pane fade {% if redirect == "goodies" %} show active{% endif %}" id="pills-goodies" role="tabpanel" aria-labelledby="pills-goodies-tab">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -250,7 +258,7 @@
                             </table>
                         </div>
 
-                        <div class="tab-pane fade" id="pills-chant" role="tabpanel" aria-labelledby="pills-chant-tab">
+                        <div class="tab-pane fade {% if redirect == "chant" %} show active{% endif %}" id="pills-chant" role="tabpanel" aria-labelledby="pills-chant-tab">
                             {% if association.sing is not empty %}
                                 <table class="table">
                                     <tbody>
@@ -283,7 +291,7 @@
                             {% endif %}
                         </div>
 
-                        <div class="tab-pane fade" id="pills-comite" role="tabpanel" aria-labelledby="pills-comite-tab">
+                        <div class="tab-pane fade {% if redirect == "committee" %} show active{% endif %}" id="pills-comite" role="tabpanel" aria-labelledby="pills-comite-tab">
                             <table class="table">
                                 <tbody>
 {% for year, committees in association.committee %}

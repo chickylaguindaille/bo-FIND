@@ -205,9 +205,10 @@ class AssociationController extends AbstractController
         $data['towns'] = array_column($town['data'], 'name');
 
         $id = $request->get('id');
+        $data['redirect'] = $request->get('redirect');
         $association = $this->findApi->getAssociation($id);
 
-        // exit(var_dump($association['anecdote']));
+        $data['numberparticularity'] = count($association['particularity']);
 
         $data['association'] = $association;
 
@@ -227,13 +228,19 @@ class AssociationController extends AbstractController
         $association = $this->findApi->getAssociation($id);
         $inputData = $request->request->all();
 
-
+    // PARTICULARITY
+        if ($inputData['action'] != "deleteassociation" ){
         $data['particularity'] = array_replace_recursive($association['particularity'], $inputData['particularity']);
-
+        $redirect = "particularity";
+        }else{
+            $data['particularity'] = array_diff($association['particularity'], $inputData['particularity']);
+            $data['particularity'] = array_values($data['particularity']);
+        $redirect = "particularity";
+        }
 
         $patchassociation = $this->findApi->patchAssociation(json_encode($data), $id);
         
-        return $this->redirectToRoute('association_details' , ['id' => $id]);
+        return $this->redirectToRoute('association_details' , ['id' => $id, 'redirect' => $redirect]);
     }
 
 
