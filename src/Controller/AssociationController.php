@@ -63,12 +63,22 @@ class AssociationController extends AbstractController
         $inputData['creation'] = strtotime($inputData['creation']);
         $inputData['logo'] = $_FILES['logo']['name'];
 
+
+    // PARTICULARITY
         if (!isset($inputData['particularity'])){
         $inputData['particularity'] = array();
     }
+
+    // ANECDOTE
         if (!isset($inputData['anecdote'])){
         $inputData['anecdote'] = array();
+    }else{
+        foreach ($inputData['anecdote'] as &$anecdote) {
+            $anecdote["year"] = strtotime($anecdote["year"]);
+        }
     }
+
+    // DOCUMENT
         if (!isset($inputData['document'])){
         $inputData['document'] = array();
     }else{
@@ -76,6 +86,8 @@ class AssociationController extends AbstractController
             $document["year"] = strtotime($document["year"]);
         }
     }
+
+    // DECORUM
     if (!isset($inputData['decorum'])){
         $inputData['decorum'] = array();
     }else{
@@ -83,6 +95,8 @@ class AssociationController extends AbstractController
             $decorum["year"] = strtotime($decorum["year"]);
         }
     }
+
+    // GOODIES
     if (!isset($inputData['goodies'])){
         $inputData['goodies'] = array();
     }else{
@@ -90,12 +104,15 @@ class AssociationController extends AbstractController
             $goodies["year"] = strtotime($goodies["year"]);
         }
     }
+
+    // SING
     if (!isset($inputData['sing'])){
         $inputData['sing'] = array();
     }else{
         $inputData['sing']['year'] = strtotime($inputData['sing']['year']);
     }
 
+    // COMMITTEE
     if (!isset($inputData['committee'])){
         $inputData['committee'] = array();
     }else{
@@ -200,8 +217,9 @@ class AssociationController extends AbstractController
         $associations = $this->findApi->getAssociations();
 
         $town = $this->findApi->getTowns(null);
+        // exit(var_dump($town));
         $data['towns'] = array_column($town['data'], 'name');
-        // exit(var_dump($data['towns']));
+
 
         $data['associations'] = $associations['data'];
 
@@ -249,10 +267,39 @@ class AssociationController extends AbstractController
         $association = $this->findApi->getAssociation($id);
         $inputData = $request->request->all();
 
+
     // INFORMATIONS
+    if (isset($inputData['creation'])){
+        if($inputData['creation'] == false){
+            $inputData['creation'] == null;
+        }else{
+        $inputData['creation'] = strtotime($inputData['creation']);
+        }
+    }
+
+    //SUPPRESSION DES CHAINES VIDES CHANT ET DES DATES NON REMPLIES    
+    if (isset($inputData['sing'])){
+        if($inputData['sing']['title'] == ""){
+            unset($inputData['sing']['title']);
+        }
+        if($inputData['sing']['author'] == ""){
+            unset($inputData['sing']['author']);
+        }
+        if($inputData['sing']['year'] == false){
+            unset($inputData['sing']['year']);
+        }else{
+        $inputData['sing']['year'] = strtotime($inputData['sing']['year']);
+        }
+        if($inputData['sing']['text'] == ""){
+            unset($inputData['sing']['text']);
+        }
+    }
+
     $data = $inputData;
     $redirect = "informations";
-    
+
+    // exit(var_dump($data));
+
 
     // PARTICULARITY
     if (isset($inputData['particularity'])){
@@ -268,11 +315,12 @@ class AssociationController extends AbstractController
 
     // ANECDOTES
     if (isset($inputData['anecdote'])){
+        $keynumber = array_keys($inputData['anecdote']);
         if ($inputData['action'] != "deleteassociation" ){
+            $inputData['anecdote'][$keynumber[0]]['year'] = strtotime($inputData['anecdote'][$keynumber[0]]['year']);
             $data['anecdote'] = array_replace_recursive($association['anecdote'], $inputData['anecdote']);
             $redirect = "anecdotes";
         }else{
-            $keynumber = array_keys($inputData['anecdote']);
             unset($association['anecdote'][$keynumber[0]]);
             $data['anecdote'] = array_values($association['anecdote']);
             $redirect = "anecdotes";
@@ -281,11 +329,12 @@ class AssociationController extends AbstractController
 
     // DOCUMENTS
     if (isset($inputData['document'])){
+        $keynumber = array_keys($inputData['document']);
         if ($inputData['action'] != "deleteassociation" ){
+            $inputData['document'][$keynumber[0]]['year'] = strtotime($inputData['document'][$keynumber[0]]['year']);
             $data['document'] = array_replace_recursive($association['document'], $inputData['document']);
             $redirect = "documents";
         }else{
-            $keynumber = array_keys($inputData['document']);
             unset($association['document'][$keynumber[0]]);
             $data['document'] = array_values($association['document']);
             $redirect = "documents";
@@ -294,11 +343,12 @@ class AssociationController extends AbstractController
 
     // DECORUM
     if (isset($inputData['decorum'])){
+        $keynumber = array_keys($inputData['decorum']);
         if ($inputData['action'] != "deleteassociation" ){
+            $inputData['decorum'][$keynumber[0]]['year'] = strtotime($inputData['decorum'][$keynumber[0]]['year']);
             $data['decorum'] = array_replace_recursive($association['decorum'], $inputData['decorum']);
             $redirect = "decorums";
         }else{
-            $keynumber = array_keys($inputData['decorum']);
             unset($association['decorum'][$keynumber[0]]);
             $data['decorum'] = array_values($association['decorum']);
             $redirect = "decorums";
@@ -307,11 +357,12 @@ class AssociationController extends AbstractController
 
     // GOODIES
     if (isset($inputData['goodies'])){
+        $keynumber = array_keys($inputData['goodies']);
         if ($inputData['action'] != "deleteassociation" ){
+            $inputData['goodies'][$keynumber[0]]['year'] = strtotime($inputData['goodies'][$keynumber[0]]['year']);
             $data['goodies'] = array_replace_recursive($association['goodies'], $inputData['goodies']);
             $redirect = "goodies";
         }else{
-            $keynumber = array_keys($inputData['goodies']);
             unset($association['goodies'][$keynumber[0]]);
             $data['goodies'] = array_values($association['goodies']);
             $redirect = "goodies";

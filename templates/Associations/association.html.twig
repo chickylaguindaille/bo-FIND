@@ -47,7 +47,7 @@
                     </ul>
 
 
-
+{# INFORMATIONS #}
                     <div class="tab-content" id="pills-tabContent">
                         
                         <div class="tab-pane fade {% if redirect == "informations" %} show active{% endif %}" id="pills-informations" role="tabpanel" aria-labelledby="pills-informations-tab">
@@ -71,7 +71,7 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">Date de création</th>
-                                        <td scope="row">{% if (association.creation is defined) and (association.creation != "") %}{{association.creation|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
+                                        <td scope="row">{% if (association.creation is defined) and (association.creation != 0) %}{{association.creation|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Résumé</th>
@@ -97,7 +97,7 @@
                                 </tbody>
                             </table>
                         </div>
-
+{# PARTICULARITÉS #}
                         <div class="tab-pane fade {% if redirect == "particularity" %} show active{% endif %}" id="pills-particularity" role="tabpanel" aria-labelledby="pills-particularity-tab">
                             <table class="table">
                                 <thead>
@@ -132,7 +132,7 @@
                             </table>
                             {% if numberparticularity == 0 %}<h2 class="text-center p-5 font-weight-bold">Pas encore de particularité</h2>{% endif %}
                         </div>
-
+{# ANECDOTES #}
                         <div class="tab-pane fade {% if redirect == "anecdotes" %} show active{% endif %}" id="pills-anecdotes" role="tabpanel" aria-labelledby="pills-anecdotes-tab">
                             <table class="table">
                                 <thead>
@@ -153,9 +153,9 @@
                                     {% for key, value in association['anecdote'] %}
                                         <tr>
                                             <td scope="row">{{ value['title']??"<i>Pas de titre</i>" }}</td>
-                                            <td scope="row">{{ value['text']??"<i>Pas de texte</i>" }}</td>
-                                            <td scope="row">{% if value['year'] is defined %}{{value['year']|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
-                                            <td scope="row">{{ value['source']??"<i>Pas de source</i>" }}</td>
+                                            <td scope="row">{% if (value['text'] is defined) and (value['text'] != "") %}{{ value['text']}}{% else %}<i>Pas de texte</i>{% endif %}</td>
+                                            <td scope="row">{% if (value['year'] is defined) and (value['year'] != false) %}{{value['year']|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
+                                            <td scope="row">{% if (value['source'] is defined) and (value['source'] != "") %}{{ value['source']}}{% else %}<i>Pas de source</i>{% endif %}</td>
                                             <td scope="row">{{ value['path']??"<i>Pas de photo</i>" }}</td>
                                             <td>                              
                                                 <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_anecdote_{{key}}_{{ association.id }}">
@@ -173,7 +173,7 @@
                             </table>
                             {% if numberanecdote == 0 %}<h2 class="text-center p-5 font-weight-bold">Pas encore d'anecdote</h2>{% endif %}
                         </div>
-
+{# DOCUMENTS #}
                         <div class="tab-pane fade {% if redirect == "documents" %} show active{% endif %}" id="pills-documents" role="tabpanel" aria-labelledby="pills-documents-tab">
                             <table class="table">
                                 <thead>
@@ -196,8 +196,8 @@
                                             <td scope="row">{{ value['path']??"<i>Pas de photo</i>" }}</td>
                                             <td scope="row">{{ value['title']??"<i>Pas de titre</i>" }}</td>
                                             <td scope="row">{{ value['type']??"<i>Pas de type</i>" }}</td>
-                                            <td scope="row">{% if value['year'] is defined %}{{value['year']|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
-                                            <td scope="row">{{ value['source']??"<i>Pas de source</i>" }}</td>
+                                            <td scope="row">{% if (value['year'] is defined) and (value['year'] != false) %}{{value['year']|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
+                                            <td scope="row">{% if (value['source'] is defined) and (value['source'] != "") %}{{ value['source']}}{% else %}<i>Pas de source</i>{% endif %}</td>
                                             <td>                              
                                                 <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_documents_{{key}}_{{ association.id }}">
                                                     Modifier
@@ -214,7 +214,7 @@
                             </table>
                             {% if numberdocument == 0 %}<h2 class="text-center p-5 font-weight-bold">Pas encore de document</h2>{% endif %}
                         </div>
-
+{# DECORUM #}
                         <div class="tab-pane fade {% if redirect == "decorums" %} show active{% endif %}" id="pills-decorum" role="tabpanel" aria-labelledby="pills-decorum-tab">
                                 <table class="table">
                                     <thead>
@@ -237,10 +237,10 @@
                                             <tr>
                                                 <td scope="row">{{ value['path']??"<i>Pas de photo</i>" }}</td>
                                                 <td scope="row">{{ value['title']??"<i>Pas de titre</i>" }}</td>
-                                                <td scope="row">{{ value['text']??"<i>Pas de texte" }}</td>
+                                                <td scope="row">{% if (value['text'] is defined) and (value['text'] != "") %}{{ value['text']}}{% else %}<i>Pas de texte</i>{% endif %}</td>
                                                 <td scope="row">{{ value['type']??"<i>Pas de type</i>" }}</td>
-                                                <td scope="row">{% if value['year'] is defined %}{{value['year']|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
-                                                <td scope="row">{{ value['source']??"<i>Pas de source</i>" }}</td>
+                                                <td scope="row">{% if (value['year'] is defined) and (value['year'] != false) %}{{value['year']|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
+                                                <td scope="row">{% if (value['source'] is defined) and (value['source'] != "") %}{{ value['source']}}{% else %}<i>Pas de source</i>{% endif %}</td>
                                                 <td>                              
                                                     <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_decorum_{{key}}_{{ association.id }}">
                                                         Modifier
@@ -257,7 +257,7 @@
                                 </table>
                                 {% if numberdecorum == 0 %}<h2 class="text-center p-5 font-weight-bold">Pas encore de decorum</h2>{% endif %}
                         </div>
-
+{# GOODIES #}
                         <div class="tab-pane fade {% if redirect == "goodies" %} show active{% endif %}" id="pills-goodies" role="tabpanel" aria-labelledby="pills-goodies-tab">
                             <table class="table">
                                 <thead>
@@ -280,10 +280,10 @@
                                         <tr>
                                             <td scope="row">{{ value['path']??"<i>Pas de photo</i>" }}</td>
                                             <td scope="row">{{ value['title']??"<i>Pas de titre</i>" }}</td>
-                                            <td scope="row">{{ value['text']??"<i>Pas de texte</i>" }}</td>
+                                            <td scope="row">{% if (value['text'] is defined) and (value['text'] != "") %}{{ value['text']}}{% else %}<i>Pas de texte</i>{% endif %}</td>
                                             <td scope="row">{{ value['type']??"<i>Pas de type</i>" }}</td>
-                                            <td scope="row">{% if value['year'] is defined %}{{value['year']|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
-                                            <td scope="row">{{ value['source']??"<i>Pas de source</i>" }}</td>
+                                            <td scope="row">{% if (value['year'] is defined) and (value['year'] != false) %}{{value['year']|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
+                                            <td scope="row">{% if (value['source'] is defined) and (value['source'] != "") %}{{ value['source']}}{% else %}<i>Pas de source</i>{% endif %}</td>
                                             <td>                              
                                                 <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_goodies_{{key}}_{{ association.id }}">
                                                     Modifier
@@ -300,7 +300,7 @@
                             </table>
                             {% if numbergoodies == 0 %}<h2 class="text-center p-5 font-weight-bold">Pas encore de goodies</h2>{% endif %}
                         </div>
-
+{# CHANT #}
                         <div class="tab-pane fade {% if redirect == "chant" %} show active{% endif %}" id="pills-chant" role="tabpanel" aria-labelledby="pills-chant-tab">
                                 <table class="table">
                                     <tbody>
@@ -332,7 +332,7 @@
                                     {% include 'FormsModification/chant.html.twig' %}
                                 </table>
                         </div>
-
+{# COMITÉ #}
                         <div class="tab-pane fade {% if redirect == "committee" %} show active{% endif %}" id="pills-comite" role="tabpanel" aria-labelledby="pills-comite-tab">
                             <table class="table">
                                 <tbody>
