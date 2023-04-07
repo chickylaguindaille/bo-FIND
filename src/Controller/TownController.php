@@ -33,12 +33,12 @@ class TownController extends AbstractController
 
 
 
-    function saveFile($file, $filesrcsave) {
+    function saveFile($file, $filesrcsave, $filenameext) {
         // Créer le dossier si celui-ci n'existe pas
         if (!file_exists($filesrcsave)) {
             mkdir($filesrcsave, 0777, true);
         }
-        $filenameext = $file->getClientOriginalName();
+        // $filenameext = $file->getClientOriginalName();
         $save = $file->move($filesrcsave, $filenameext);
     
         if ($save) {
@@ -80,16 +80,15 @@ class TownController extends AbstractController
         $data['name'] = $request->request->get('name');
         $data['region'] = $request->request->get('region');
         $data['country'] = $request->request->get('country');
-        $blason = $request->files->get('blason');
+        $file = $request->files->get('blason');
+        $id = uniqid();
 
         $filenameext = $_FILES['blason']['name'];
-        $filenameonly = pathinfo($_FILES['blason']['name'], PATHINFO_FILENAME);
-        $filesrcsave = 'towns/' . $filenameonly;
+        $filesrcsave = 'towns/' . $id;
 
-        $save = 'towns/' . $filenameonly .'/'. $filenameext; 
+        $save = $filesrcsave .'/'. $filenameext; 
         $data['blason'] = $save;
-        $save = $this->saveFile($blason, $filesrcsave, $filenameonly);
-
+        $save = $this->saveFile($file, $filesrcsave, $filenameext);
 
         $createtown = $this->findApi->createTown(json_encode($data));
         
@@ -109,25 +108,20 @@ class TownController extends AbstractController
         $data['name'] = $request->get('name');
         $data['region'] = $request->get('region');
         $data['country'] = $request->get('country');
-        $blason = $request->files->get('blason');
+        $file = $request->files->get('blason');
 
-        if ($blason !== null){
+        if ($file !== null){
 
-
+        $folder = dirname($town['blason']);
         if (file_exists($town['blason'])){
             unlink($town['blason']);
         }
-
-            $filenameext = $_FILES['blason']['name'];
-            $filenameonly = pathinfo($_FILES['blason']['name'], PATHINFO_FILENAME);
-            $filesrcsave = 'towns/' . $data['name'];
-    
-            $save = 'towns/' . $filenameonly .'/'. $filenameext; 
-            $data['blason'] = $save;
-            $save = $this->saveFile($blason, $filesrcsave, $filenameonly);
-
+        $filenameext = $_FILES['blason']['name'];
+        $filesrcsave = dirname($town['blason']);
+        $save = $filesrcsave .'/'. $filenameext; 
+        $data['blason'] = $save;
+        $save = $this->saveFile($file, $filesrcsave, $filenameext);
         }
-        // exit(var_dump($inputData));
 
         $createtown = $this->findApi->patchTown(json_encode($data), $id);
         

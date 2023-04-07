@@ -56,7 +56,7 @@
                                     <tr>
                                         <th scope="row">Logo</th>
                                         {# <td scope="row">{{association.logo??"<i>Pas de logo</i>"}}</td> #}
-                                        <td scope="row">{% if (association.logo is defined) and (association.logo != "") %}{{association.logo}}{% else %}<i>Pas de logo</i>{% endif %}</td>
+                                        <td scope="row">{% if (association.logo is defined) and (association.logo != "") %}<img src="{{ asset(association.logo) }}" alt="image"/><span class="mx-3">{{association.logo}}</span>{% else %}<i>Pas de logo</i>{% endif %}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Nom</th>

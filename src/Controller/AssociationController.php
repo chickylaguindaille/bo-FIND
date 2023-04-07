@@ -33,12 +33,12 @@ class AssociationController extends AbstractController
 
 
 
-    function saveFile($file, $filesrcsave) {
+    function saveFile($file, $filesrcsave, $filenameext) {
         // Créer le dossier si celui-ci n'existe pas
         if (!file_exists($filesrcsave)) {
             mkdir($filesrcsave, 0777, true);
         }
-        $filenameext = $file->getClientOriginalName();
+        // $filenameext = $file->getClientOriginalName();
         $save = $file->move($filesrcsave, $filenameext);
     
         if ($save) {
@@ -49,19 +49,30 @@ class AssociationController extends AbstractController
     }
 
     
+
+    
     /**
      * @Route("/association/add", name="association_add")
      * @Template()
      */
     public function associationAdd(Request $request, FindApiService $findApi)
     {
-        // exit(var_dump("test"));
-
         $inputData = $request->request->all();
-// exit(var_dump($inputData));
-        $data['nickname'] = $request->request->get('nickname');
+
         $inputData['creation'] = strtotime($inputData['creation']);
+
+
+        //GESTION DE LA SAUVEGARDE FICHIER
+        $file = $request->files->get('logo');
+        $id = uniqid();
+
         $inputData['logo'] = $_FILES['logo']['name'];
+        $filenameext = $_FILES['logo']['name'];
+        $filesrcsave = 'associations/' . $id;
+
+        $savelogoasso = $filesrcsave .'/'. $filenameext; 
+        $save = $this->saveFile($file, $filesrcsave, $filenameext);
+
 
 
     // PARTICULARITY
@@ -181,23 +192,9 @@ class AssociationController extends AbstractController
         }
 
         $data = $inputData;
-;
-        // exit(var_dump(json_encode($data)));
+        $data['logo'] = $savelogoasso;
 
-        // $data['name'] = $request->request->get('name');
-        // $data['region'] = $request->request->get('region');
-        // $data['country'] = $request->request->get('country');
-        // $blason = $request->files->get('blason');
-
-        // $filenameext = $_FILES['blason']['name'];
-        // $filenameonly = pathinfo($_FILES['blason']['name'], PATHINFO_FILENAME);
-        // $filesrcsave = 'towns/' . $filenameonly;
-
-        // $save = 'towns/' . $filenameonly .'/'. $filenameext; 
-        // $data['blason'] = $save;
-        // $save = $this->saveFile($blason, $filesrcsave, $filenameonly);
-
-
+        // exit(var_dump($data));
 
         $createassociation = $this->findApi->createAssociation(json_encode($data));
         
@@ -213,6 +210,9 @@ class AssociationController extends AbstractController
      */
     public function associationList(FindApiService $findApi)
     {
+
+		$data['required'] = $_ENV['REQUIRED_INPUT'];
+
         $data['page'] = 'association';
         $associations = $this->findApi->getAssociations();
 
@@ -267,6 +267,7 @@ class AssociationController extends AbstractController
 
         $association = $this->findApi->getAssociation($id);
         $inputData = $request->request->all();
+        $filelogo = $request->files->get('logo');
 
 
     // INFORMATIONS
@@ -276,6 +277,18 @@ class AssociationController extends AbstractController
         }else{
         $inputData['creation'] = strtotime($inputData['creation']);
         }
+    }
+
+    ////////////// MODIFICATION DU LOGO
+    if ($filelogo !== null){
+
+        if (file_exists($association['logo'])){
+            unlink($association['logo']);
+        }
+        $filenameext = $_FILES['logo']['name'];
+        $filesrcsave = dirname($association['logo']);
+        $savebdd = $filesrcsave .'/'. $filenameext; 
+        $save = $this->saveFile($filelogo, $filesrcsave, $filenameext);
     }
 
     //SUPPRESSION DES CHAINES VIDES CHANT ET DES DATES NON REMPLIES    
@@ -297,6 +310,7 @@ class AssociationController extends AbstractController
     }
 
     $data = $inputData;
+    $data['logo'] = $savebdd;
     $redirect = "informations";
 
     // exit(var_dump($data));
@@ -450,13 +464,13 @@ class AssociationController extends AbstractController
     public function villeDelete(Request $request, FindApiService $findApi)
     {
         $id = $request->get('id');
-        // $town = $this->findApi->getTown($id);
-        // $dir = $town['blason'];
-        // $posdoss = strrpos($dir, '/');
-        // $dirdoss = substr($dir, 0, $posdoss);
+        $association = $this->findApi->getAssociation($id);
 
-        // unlink($town['blason']);
-        // rmdir($dirdoss);
+        $dir = $association['logo'];
+        $posdoss = strrpos($dir, '/');
+        $dirdoss = substr($dir, 0, $posdoss);
+        unlink($association['logo']);
+        rmdir($dirdoss);
 
         $association = $this->findApi->deleteAssociation($id);
         return $this->redirectToRoute('association_list');

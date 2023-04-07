@@ -2,7 +2,7 @@
     <div class="row">
         <div class="form-group col-6">
             <label for="name">Nom de l'association</label>
-            <input type="text" name="name" class="form-control inputville"  id="name" required="required">
+            <input type="text" name="name" class="form-control inputville"  id="name" {{required}}>
         </div>
         <div class="form-group col-6">
             <label for="nickname">Surnom</label>
@@ -12,7 +12,7 @@
     <div class="row">
         <div class="form-group col-6">
             <label for="town">Ville</label>
-            <select name="town" class="form-select" id="town" required="required">
+            <select name="town" class="form-select" id="town" {{required}}>
                 {% for name in towns|sort %}
                     <option value="{{name}}">{{name}}</option>
                 {% endfor %}
@@ -26,7 +26,7 @@
     <div class="row">
         <div class="form-group col-6">
             <label for="type">Type</label>
-            <select name="type" class="form-select" id="type" required="required">
+            <select name="type" class="form-select" id="type" {{required}}>
                 <option value="Filière">Filière</option>
                 <option value="Régionale">Régionale</option>
                 <option value="Cercle">Cercle</option>
@@ -36,7 +36,7 @@
         </div>
         <div class="form-group col-6">
             <label for="hat">Couvre-Chef</label>
-            <select name="hat" class="form-select" id="hat" required="required">
+            <select name="hat" class="form-select" id="hat" {{required}}>
                 <option value="Faluche">Faluche</option>
                 <option value="Calotte">Calotte</option>
                 <option value="Penne">Penne</option>
