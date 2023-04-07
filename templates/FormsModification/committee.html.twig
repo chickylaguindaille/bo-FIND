@@ -1,0 +1,70 @@
+<!-- Modal commitee Modification-->
+
+    <div class="modal fade" id="modal_committee_{{year}}_{{function}}_{{ loop.index - 1}}_{{ association.id }}" tabindex="-1" role="dialog" aria-labelledby="modal_committee_{{year}}_{{function}}_{{ loop.index - 1}}_{{ association.id }}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modifier le poste de {{association.name??""}}</h5>
+        </div>
+        <div class="modal-body">
+
+            <form class="forms-sample" action="{{ path('association_patch', {'id': association.id}) }}" method="post" enctype="multipart/form-data">
+
+                <input name="action" value="modifyassociation" class="d-none"></input>
+
+                <div class="form-group col-12">
+                    <label for="author">Nom</label>
+                    <input type="text" name="committee[{{year}}][{{function}}][{{loop.index - 1}}][name]" class="form-control inputville" id="author" value="{{association['committee'][year][function][loop.index - 1]['name']??""}}">
+                </div>
+                <div class="form-group col-12">
+                    <label for="author">Prénom</label>
+                    <input type="text" name="committee[{{year}}][{{function}}][{{loop.index - 1}}][firstname]" class="form-control inputville" id="author" value="{{association['committee'][year][function][loop.index - 1]['firstname']??""}}">
+                </div>
+                <div class="form-group col-12">
+                    <label for="author">Surnom</label>
+                    <input type="text" name="committee[{{year}}][{{function}}][{{loop.index - 1}}][nickname]" class="form-control inputville" id="author" value="{{association['committee'][year][function][loop.index - 1]['nickname']??""}}">
+                </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+        </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal committee Suppression-->
+
+    <div class="modal fade" id="modal_committeesuppr_{{year}}_{{function}}_{{ loop.index - 1}}_{{ association.id }}" tabindex="-1" role="dialog" aria-labelledby="modal_committeesuppr_{{year}}_{{function}}_{{ loop.index - 1}}_{{ association.id }}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Supprimer ce membre du comité de {{association.name??""}}</h5>
+        </div>
+        <div class="modal-body">
+            <form class="forms-sample" action="{{ path('association_patch', {'id': association.id}) }}" method="post" enctype="multipart/form-data">
+
+
+                <div class="form-group mb-3">
+                    <input name="action" value="deleteassociation" class="d-none"></input>
+
+                    <input type="text" name="suppr[year]" class="d-none form-control inputville" id="author" value="{{year}}">
+                    <input type="text" name="suppr[function]" class="d-none form-control inputville" id="author" value="{{function}}">
+                    <input type="text" name="suppr[key]" class="d-none form-control inputville" id="author" value="{{loop.index - 1 }}">
+                    <textarea name="committee[{{year}}][{{function}}][{{loop.index - 1}}]" class="form-control d-none"></textarea>
+                    <div>Es-tu sûr de vouloi supprimer ce membre du comité?</div>
+                </div>
+
+            
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            <button type="submit" class="btn btn-danger">Supprimer</button>
+        </div>
+        </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+
+<!-- Modal Committee Ajout-->
+    <div class="modal fade" id="modal_add_committee_{{association.id}}" tabindex="-1" role="dialog" aria-labelledby="modal_add_committee_{{association.id}}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Ajout d'un membre de comité</h5>
+        </div>
+        <div class="modal-body">
+            <form class="forms-sample" action="{{ path('association_patch', {'id': association.id}) }}" method="post" enctype="multipart/form-data">
+
+                <div class="form-group mb-3">
+                    <input name="action" value="addassociation" class="d-none"></input>
+
+                    <label class="form-label">Année</label>
+                        <select id="year" name="committee[year]" class="form-control">
+                            {% for year in range('now'|date('Y'), 1900-1, -1) %}
+                            <option value="{{ year }}">{{ year }}</option>
+                            {% endfor %}
+                        </select>  
+
+                    <label class="form-label">Fonction</label>
+                    <input type="text" name="committee[function]" class="form-control" id="document_{{numberdocument}}_{{association.id??""}}"></input>
+                    
+                    <label class="form-label">Nom</label>
+                    <input type="text" name="committee[name]" class="form-control" id="document_{{numberdocument}}_{{association.id??""}}"></input>
+                
+                    <label class="form-label">Prénom</label>
+                    <input type="text" name="committee[firstname]" class="form-control" id="document_{{numberdocument}}_{{association.id??""}}"></input>
+                
+                    <label class="form-label">Surnom</label><br>
+                    <input type="text" name="committee[nickname]" class="form-control" id="document_{{numberdocument}}_{{association.id??""}}"></input>
+
+                </div>
+            
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+        </div>
+        </form>
+        </div>
+    </div>
+</div>

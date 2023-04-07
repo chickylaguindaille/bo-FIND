@@ -33,17 +33,7 @@ $(document).ready(function() {
             disabled: true,
             selected: true
         })).append(yearOptions))
-        
-        .append($("<label>", {
-            for: "name" + counter,
-            class: "form-label",
-            text: "Nom de la personne du comite " + visualcounter
-        })).append($("<input>", {
-            type: "text",
-            name: "committee[" + counter + "][name]",
-            class: "form-control",
-            id: "name" + counter
-        }))
+    
 
 {# SELECT POSTE #}
         .append($("<select>", {
@@ -64,7 +54,18 @@ $(document).ready(function() {
         })).append($("<option>", {
             value: "Président",
             text: "Président"
-        })))
+        })))        
+        
+        .append($("<label>", {
+            for: "name" + counter,
+            class: "form-label",
+            text: "Nom de la personne du comite " + visualcounter
+        })).append($("<input>", {
+            type: "text",
+            name: "committee[" + counter + "][name]",
+            class: "form-control",
+            id: "name" + counter
+        }))
 
         .append($("<label>", {
             for: "firstname" + counter,

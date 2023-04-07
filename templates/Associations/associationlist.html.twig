@@ -21,7 +21,7 @@
                             <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Belgique</button>
                         </li>
                     </ul> #}
-                    <div class="tab-content p-0" id="pills-tabContent">
+                    <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             <div class="card-body">
                                 <div class="align-items-center d-flex justify-content-between">
@@ -70,20 +70,25 @@
                                         <th>
                                             Couvre-Chef
                                         </th>
+                                        <th>
+                                            Création
+                                        </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {% for association in associations %}
                                             <tr>
                                             <td class="py-1">
-                                                {{association.logo??""}}
-                                                <img src="{{ asset(association.logo??"") }}" alt="image"/>
+                                                {# {{association.logo??""}}
+                                                <img src="{{ asset(association.logo??"") }}" alt="image"/> #}
+                                                {% if (association.logo is defined) and (association.logo != "") %}{{association.logo}}{% else %}<i>/</i>{% endif %}
                                             </td>
                                             <td>
                                                 {{association.name}}
                                             </td>
                                             <td>
-                                                {{association.nickname??"/"}}
+                                                {# {{association.nickname??"/"}} #}
+                                                {% if (association.nickname is defined) and (association.nickname != "") %}{{association.nickname}}{% else %}<i>/</i>{% endif %}
                                             </td>
                                             <td>
                                                 {{association.town}}
@@ -93,6 +98,9 @@
                                             </td>
                                             <td>
                                                 {{association.hat??""}}
+                                            </td>
+                                            <td>
+                                                {% if (association.creation is defined) and (association.creation != 0) %}{{association.creation|date("d/m/Y")}}{% else %}<i>/</i>{% endif %}
                                             </td>
                                             <td>
                                                 <!-- Button trigger modal -->

@@ -55,7 +55,8 @@
                                 <tbody>
                                     <tr>
                                         <th scope="row">Logo</th>
-                                        <td scope="row">{{association.logo??"<i>Pas de logo</i>"}}</td>
+                                        {# <td scope="row">{{association.logo??"<i>Pas de logo</i>"}}</td> #}
+                                        <td scope="row">{% if (association.logo is defined) and (association.logo != "") %}{{association.logo}}{% else %}<i>Pas de logo</i>{% endif %}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Nom</th>
@@ -63,7 +64,7 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">Surnom</th>
-                                        <td scope="row">{{association.nickname??"<i>Pas de surnom</i>"}}</td>
+                                        <td scope="row">{% if (association.nickname is defined) and (association.nickname != "") %}{{association.nickname}}{% else %}<i>Pas de surnom</i>{% endif %}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Ville</th>
@@ -75,7 +76,7 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">Résumé</th>
-                                        <td scope="row">{{association.resume??"<i>Pas de résumé</i>"}}</td>
+                                        <td scope="row">{% if (association.resume is defined) and (association.resume != "") %}{{association.resume}}{% else %}<i>Pas de résumé</i>{% endif %}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Type</th>
@@ -130,7 +131,7 @@
                                 </tbody>
                                 {% include 'FormsAdd/particularity.html.twig' %}
                             </table>
-                            {% if numberparticularity == 0 %}<h2 class="text-center p-5 font-weight-bold">Pas encore de particularité</h2>{% endif %}
+                            {% if numberparticularity == 0 %}<h2 class="text-center pt-5 pb-4 font-weight-bold">Pas encore de particularité</h2>{% endif %}
                         </div>
 {# ANECDOTES #}
                         <div class="tab-pane fade {% if redirect == "anecdotes" %} show active{% endif %}" id="pills-anecdotes" role="tabpanel" aria-labelledby="pills-anecdotes-tab">
@@ -171,7 +172,7 @@
                                 </tbody>
                                 {% include 'FormsAdd/anecdote.html.twig' %}
                             </table>
-                            {% if numberanecdote == 0 %}<h2 class="text-center p-5 font-weight-bold">Pas encore d'anecdote</h2>{% endif %}
+                            {% if numberanecdote == 0 %}<h2 class="text-center pt-5 pb-4 font-weight-bold">Pas encore d'anecdote</h2>{% endif %}
                         </div>
 {# DOCUMENTS #}
                         <div class="tab-pane fade {% if redirect == "documents" %} show active{% endif %}" id="pills-documents" role="tabpanel" aria-labelledby="pills-documents-tab">
@@ -212,7 +213,7 @@
                                 </tbody>
                                 {% include 'FormsAdd/document.html.twig' %}
                             </table>
-                            {% if numberdocument == 0 %}<h2 class="text-center p-5 font-weight-bold">Pas encore de document</h2>{% endif %}
+                            {% if numberdocument == 0 %}<h2 class="text-center pt-5 pb-4 font-weight-bold">Pas encore de document</h2>{% endif %}
                         </div>
 {# DECORUM #}
                         <div class="tab-pane fade {% if redirect == "decorums" %} show active{% endif %}" id="pills-decorum" role="tabpanel" aria-labelledby="pills-decorum-tab">
@@ -255,7 +256,7 @@
                                     </tbody>
                                     {% include 'FormsAdd/decorum.html.twig' %}
                                 </table>
-                                {% if numberdecorum == 0 %}<h2 class="text-center p-5 font-weight-bold">Pas encore de decorum</h2>{% endif %}
+                                {% if numberdecorum == 0 %}<h2 class="text-center pt-5 pb-4 font-weight-bold">Pas encore de decorum</h2>{% endif %}
                         </div>
 {# GOODIES #}
                         <div class="tab-pane fade {% if redirect == "goodies" %} show active{% endif %}" id="pills-goodies" role="tabpanel" aria-labelledby="pills-goodies-tab">
@@ -298,7 +299,7 @@
                                 </tbody>
                                 {% include 'FormsAdd/goodies.html.twig' %}
                             </table>
-                            {% if numbergoodies == 0 %}<h2 class="text-center p-5 font-weight-bold">Pas encore de goodies</h2>{% endif %}
+                            {% if numbergoodies == 0 %}<h2 class="text-center pt-5 pb-4 font-weight-bold">Pas encore de goodies</h2>{% endif %}
                         </div>
 {# CHANT #}
                         <div class="tab-pane fade {% if redirect == "chant" %} show active{% endif %}" id="pills-chant" role="tabpanel" aria-labelledby="pills-chant-tab">
@@ -335,47 +336,54 @@
 {# COMITÉ #}
                         <div class="tab-pane fade {% if redirect == "committee" %} show active{% endif %}" id="pills-comite" role="tabpanel" aria-labelledby="pills-comite-tab">
                             <table class="table">
-                                <tbody>
-{% for year, committees in association.committee %}
-    <table class="table">
-        <thead>
-            <tr>
-                <th colspan="2">{{ year }}</th>
-            </tr>
-            <tr>
-                <th>Fonction</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Pseudo</th>
-                <td>
-                    <button type="button" class="btn btn-outline-success p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_add_committee_{{association.id}}">
-                        Ajouter +
-                    </button>
-                </td>
-            </tr>
-        </thead>
-        <tbody>
-            {% for function, members in committees %}
-                    <tr>
-                            <td >{{ function }}</td>
-                        <td>{{ members.name??"why" }}</td>
-                        <td>{{ members.firstname??"" }}</td>
-                        <td>{{ members.nickname??"" }}</td>
-                        <td>
-                            <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="">
-                                Modifier
-                            </button>
-                            <button type="button" class="btn btn-outline-danger p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_committeeuppr_{{key}}_{{association.id}}">
-                                Supprimer
-                            </button>
-                        </td>
-                    </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-{% endfor %}
-
+                                <div class="text-end">
+                                    <button type="button" class="btn btn-outline-success p-3 mx-2" data-bs-toggle="modal" data-bs-target="#modal_add_committee_{{association.id}}">
+                                        Ajouter un membre de comité +
+                                    </button>
+                                </div>
+                                {% for year, committees in association.committee %}
+                                    <table class="table my-4" style="border: solid 1px black">
+                                        <thead>
+                                            <tr style="border-bottom: solid 1px black">
+                                                <th colspan="2">{{ year }}</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Fonction</th>
+                                                <th>Nom</th>
+                                                <th>Prénom</th>
+                                                <th>Surnom</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for function, members in committees %}
+                                                {% for member in members %}
+                                                    <tr>
+                                                        {% if loop.first %}
+                                                            <td rowspan="{{ members|length }}"><h4>{{ function }}</h4></td>
+                                                        {% endif %}
+                                                        {# <td>{{ loop.index - 1}}</td> #}
+                                                        <td>{{ member.name }}</td>
+                                                        <td>{{ member.firstname ?? "" }}</td>
+                                                        <td>{{ member.nickname ?? "" }}</td>
+                                                        <td class="col-2">
+                                                            <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_committee_{{year}}_{{function}}_{{ loop.index - 1}}_{{ association.id }}">
+                                                                Modifier
+                                                            </button>
+                                                            <button type="button" class="btn btn-outline-danger p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_committeesuppr_{{year}}_{{function}}_{{ loop.index - 1}}_{{ association.id }}">
+                                                                Supprimer
+                                                            </button>
+                                                            {% include 'FormsModification/committee.html.twig' %}
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                {% endfor %}
+                                {% include 'FormsAdd/committee.html.twig' %}
                             </table>
+                            {% if numbercommittee == 0 %}<h2 class="text-center pt-5 pb-4 font-weight-bold">Pas encore de comité</h2>{% endif %}
                         </div>
                     </div>
                 </div>

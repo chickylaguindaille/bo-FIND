@@ -165,7 +165,7 @@ class AssociationController extends AbstractController
 
     //SUPPRESSION DES CHAINES VIDES CHANT ET DES DATES NON REMPLIES    
         if($inputData['creation'] == false){
-            unset($inputData['creation']);
+            ($inputData['creation'] = 0);
         }
         if($inputData['sing']['title'] == ""){
             unset($inputData['sing']['title']);
@@ -248,6 +248,7 @@ class AssociationController extends AbstractController
         $data['numberdocument'] = count($association['document']);
         $data['numberdecorum'] = count($association['decorum']);
         $data['numbergoodies'] = count($association['goodies']);
+        $data['numbercommittee'] = count($association['committee']);
 
         $data['association'] = $association;
 
@@ -375,7 +376,65 @@ class AssociationController extends AbstractController
         $redirect = "chant";
     }
 
-    // exit(var_dump($data));
+    // COMMITTEE
+    if (isset($inputData['committee'])){
+        if ($inputData['action'] != "deleteassociation" ){
+            if($inputData['action'] == "addassociation"){
+                $year = $inputData['committee']['year'];
+                $function = $inputData['committee']['function'];
+                // exit(var_dump($association));
+                if (!isset($association['committee'][$year])){
+                    exit(var_dump($inputData));
+                    $association['committee'][$year] = array();
+                    exit(var_dump("annee"));
+                }
+                if (!isset($association['committee'][$year][$function])){
+                    $association['committee'][$year][$function] = array();
+                    // exit(var_dump("fonction"));
+                }
+                // exit(var_dump("ici"));
+                $key = count($association['committee'][$year][$function]);
+                    if(isset($inputData['committee']['name'])){
+                        $association['committee'][$year][$function][$key]['name'] = $inputData['committee']['name'];
+                    }
+                    if(isset($inputData['committee']['firstname'])){
+                        $association['committee'][$year][$function][$key]['firstname'] = $inputData['committee']['firstname'];
+                    }
+                    if(isset($inputData['committee']['nickname'])){
+                        $association['committee'][$year][$function][$key]['nickname'] = $inputData['committee']['nickname'];
+                    }
+                    $data['committee'] = $association['committee'];
+                    $redirect = "committee";
+
+                    // exit(var_dump($association));
+            }else{
+            $data['committee'] = array_replace_recursive($association['committee'], $inputData['committee']);
+            $redirect = "committee";
+            }
+        }else{
+            $year = $inputData['suppr']['year'];
+            $function = $inputData['suppr']['function'];
+            $keysuppr = $inputData['suppr']['key'];
+            unset($association['committee'][$year][$function][$keysuppr]);
+            $association['committee'][$year][$function] =  array_values($association['committee'][$year][$function]);
+
+            if(count($association['committee'][$year][$function]) == 0){
+                unset($association['committee'][$year][$function]);
+                if(count($association['committee'][$year]) == 0){
+                    unset($association['committee'][$year]);
+                }
+            }
+
+
+            $data['committee'] = $association['committee'];
+            $redirect = "committee";
+        }
+    }
+
+
+    // exit(var_dump("stop"));
+
+    // exit(var_dump(json_encode($data)));
 
         $patchassociation = $this->findApi->patchAssociation(json_encode($data), $id);
         
