@@ -115,4 +115,12 @@ class FindApiService extends FindService
 		return $this->request(null, 'DELETE', 'api/associations/' .$id);
 	}
 
+	//------------------------------------------------------------------------------------------------------------------
+	// Liste
+	//------------------------------------------------------------------------------------------------------------------
+	public function getListes()
+	{
+		return $this->request(null, 'GET', 'api/listes');
+	}
+
 }

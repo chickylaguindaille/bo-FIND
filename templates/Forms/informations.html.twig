@@ -27,21 +27,17 @@
         <div class="form-group col-6">
             <label for="type">Type</label>
             <select name="type" class="form-select" id="type" {{required}}>
-                <option value="Filière">Filière</option>
-                <option value="Régionale">Régionale</option>
-                <option value="Cercle">Cercle</option>
-                <option value="Ordre">Ordre</option>
-                <option value="Association">Association</option>
+                {% for name in listes[0]['assotype']|sort %}
+                    <option value="{{name}}">{{name}}</option>
+                {% endfor %}
             </select>
         </div>
         <div class="form-group col-6">
             <label for="hat">Couvre-Chef</label>
             <select name="hat" class="form-select" id="hat" {{required}}>
-                <option value="Faluche">Faluche</option>
-                <option value="Calotte">Calotte</option>
-                <option value="Penne">Penne</option>
-                <option value="Mixte">Mixte</option>
-                <option value="Mixte">Aucun</option>
+                {% for name in listes[0]['hats']|sort %}
+                    <option value="{{name}}">{{name}}</option>
+                {% endfor %}
             </select>
         </div>
     </div>

@@ -297,6 +297,10 @@ class AssociationController extends AbstractController
         $data['page'] = 'association';
         $associations = $this->findApi->getAssociations();
 
+        $listes = $this->findApi->getListes();
+        $data['listes'] = $listes['data'];
+        // exit(var_dump($data['listes'][0]['hats']));
+
         $town = $this->findApi->getTowns(null);
         // exit(var_dump($town));
         $data['towns'] = array_column($town['data'], 'name');
