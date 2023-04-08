@@ -25,8 +25,11 @@
                     <input type="text" name="anecdote[{{key}}][source]" class="form-control" id="anecdote_{{key}}_{{association.id??""}}" value="{{association['anecdote'][key]['source']??""}}"></input>
                 
                     <label class="form-label">Photo</label><br>
-                    <i>{{association['anecdote'][key]['path']??"Pas de photo"}}</i>
-                    <input type="file" name="anecdote[{{key}}][path]" class="form-control" id="anecdote_{{key}}_{{association.id??""}}" value=""></input>
+                    <i>{{association['anecdote'][key]['file'][0]['path']??"Pas de photo"}}</i>
+                    <input type="file" name="anecdote[{{key}}][file][0][path]" class="form-control" id="anecdote_{{key}}_{{association.id??""}}" value=""></input>
+
+                    <label class="form-label">Titre de la photo</label>
+                    <input type="text" name="anecdote[{{key}}][file][0][title]" class="form-control" id="document_{{key}}_{{association.id??""}}" value="{{association['anecdote'][key]['file'][0]['title']??""}}"></input>
                 </div>
             
         </div>

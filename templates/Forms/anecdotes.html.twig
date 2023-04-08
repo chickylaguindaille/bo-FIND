@@ -49,14 +49,23 @@ $(document).ready(function() {
             class: "form-control",
             id: "source" + counter
         })).append($("<label>", {
-            for: "path" + counter,
+            for: "file" + counter,
             class: "form-label",
             text: "Fichier " + visualcounter
         })).append($("<input>", {
             type: "file",
-            name: "anecdote[" + counter + "][path]",
+            name: "anecdote[" + counter + "][file][0][path]",
             class: "form-control p-2",
             id: "path" + counter
+        })).append($("<label>", {
+            for: "titlefile" + counter,
+            class: "form-label",
+            text: "Titre du fichier " + visualcounter
+        })).append($("<input>", {
+            type: "text",
+            name: "anecdote[" + counter + "][file][0][title]",
+            class: "form-control",
+            id: "titlefile" + counter
         })).append($("<hr>"));;
 
         $("#inputs-container-anecdote").append(newInputs);

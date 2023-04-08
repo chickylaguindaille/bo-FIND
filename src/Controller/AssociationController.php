@@ -59,19 +59,23 @@ class AssociationController extends AbstractController
     {
         $inputData = $request->request->all();
 
+
+
         $inputData['creation'] = strtotime($inputData['creation']);
 
 
         //GESTION DE LA SAUVEGARDE FICHIER
+        
         $file = $request->files->get('logo');
         $id = uniqid();
 
-        $inputData['logo'] = $_FILES['logo']['name'];
-        $filenameext = $_FILES['logo']['name'];
+    if($file != null){
+        $filenameext = $file->getClientOriginalName();
         $filesrcsave = 'associations/' . $id;
 
         $savelogoasso = $filesrcsave .'/'. $filenameext; 
         $save = $this->saveFile($file, $filesrcsave, $filenameext);
+    }
 
 
 
@@ -83,8 +87,28 @@ class AssociationController extends AbstractController
     // ANECDOTE
         if (!isset($inputData['anecdote'])){
         $inputData['anecdote'] = array();
-    }else{
+    }else{ 
+        $counter = -1;
         foreach ($inputData['anecdote'] as &$anecdote) {
+
+            // ENREGISTREMENT FICHIER
+            $anecdoteuniqid = uniqid();
+            $counter = $counter +1;
+            // $anecdote['file'][0]['folderanecdoteid'] = $anecdoteuniqid;
+            $fileanecdote = $request->files->get('anecdote')[$counter]['file'][0]['path'];
+            if($fileanecdote != null){
+                $filenameext = $fileanecdote->getClientOriginalName();
+                $filesrcsave = 'associations/' . $id . '/anecdotes/'. $anecdoteuniqid;
+        
+                $saveanecdoteasso = $filesrcsave .'/'. $filenameext; 
+                $save = $this->saveFile($fileanecdote, $filesrcsave, $filenameext);
+
+                $anecdote['file'][0]['path'] = $saveanecdoteasso;
+            }else{
+                unset($inputData['anecdote'][$counter]['file']);
+            }
+
+
             $anecdote["year"] = strtotime($anecdote["year"]);
         }
     }
@@ -93,7 +117,25 @@ class AssociationController extends AbstractController
         if (!isset($inputData['document'])){
         $inputData['document'] = array();
     }else{
+        $counter = -1;
         foreach ($inputData['document'] as &$document) {
+
+            // ENREGISTREMENT FICHIER
+            $documentuniqid = uniqid();
+            $counter = $counter +1;
+            // $document['folderdocumentid'] = $documentuniqid;
+            $filedocument = $request->files->get('document')[$counter]['file']['path'];
+            if($filedocument != null){
+                $filenameext = $filedocument->getClientOriginalName();
+                $filesrcsave = 'associations/' . $id . '/documents/'. $documentuniqid;
+        
+                $savedocumentasso = $filesrcsave .'/'. $filenameext; 
+                $save = $this->saveFile($filedocument, $filesrcsave, $filenameext);
+
+                $document['file']['path'] = $savedocumentasso;
+            }else{
+                unset($inputData['document'][$counter]['file']);
+            }
             $document["year"] = strtotime($document["year"]);
         }
     }
@@ -102,7 +144,25 @@ class AssociationController extends AbstractController
     if (!isset($inputData['decorum'])){
         $inputData['decorum'] = array();
     }else{
+        $counter= -1;
         foreach ($inputData['decorum'] as &$decorum) {
+
+            // ENREGISTREMENT FICHIER
+            $decorumuniqid = uniqid();
+            $counter = $counter +1;
+            $filedecorum = $request->files->get('decorum')[$counter]['file'][0]['path'];
+            if($filedecorum != null){
+            $filenameext = $filedecorum->getClientOriginalName();
+            $filesrcsave = 'associations/' . $id . '/decorums/'. $decorumuniqid;
+    
+            $savedecorumasso = $filesrcsave .'/'. $filenameext; 
+            $save = $this->saveFile($filedecorum, $filesrcsave, $filenameext);
+
+            $decorum['file'][0]['path'] = $savedecorumasso;
+            }else{
+                unset($inputData['decorum'][$counter]['file']);
+            }
+
             $decorum["year"] = strtotime($decorum["year"]);
         }
     }
@@ -111,7 +171,25 @@ class AssociationController extends AbstractController
     if (!isset($inputData['goodies'])){
         $inputData['goodies'] = array();
     }else{
+        $counter= -1;
         foreach ($inputData['goodies'] as &$goodies) {
+
+            // ENREGISTREMENT FICHIER
+            $goodiesuniqid = uniqid();
+            $counter = $counter +1;
+            $filegoodies = $request->files->get('goodies')[$counter]['file'][0]['path'];
+            if($filegoodies != null){
+            $filenameext = $filegoodies->getClientOriginalName();
+            $filesrcsave = 'associations/' . $id . '/goodies/'. $goodiesuniqid;
+    
+            $savegoodiesasso = $filesrcsave .'/'. $filenameext; 
+            $save = $this->saveFile($filegoodies, $filesrcsave, $filenameext);
+
+            $goodies['file'][0]['path'] = $savegoodiesasso;
+            }else{
+                unset($inputData['goodies'][$counter]['file']);
+            }
+
             $goodies["year"] = strtotime($goodies["year"]);
         }
     }
@@ -192,7 +270,10 @@ class AssociationController extends AbstractController
         }
 
         $data = $inputData;
+        $data['folderid'] = 'associations/' . $id;
+        if(isset($savelogoasso)){
         $data['logo'] = $savelogoasso;
+    }
 
         // exit(var_dump($data));
 
@@ -243,13 +324,24 @@ class AssociationController extends AbstractController
         $data['redirect'] = $request->get('redirect');
         $association = $this->findApi->getAssociation($id);
 
-        $data['numberparticularity'] = count($association['particularity']);
+        // if (isset($data['particularity'])){
+            $data['numberparticularity'] = count($association['particularity']);
+        // }
+        // if (isset($data['anecdote'])){
         $data['numberanecdote'] = count($association['anecdote']);
+        // }
+        // if (isset($data['document'])){
         $data['numberdocument'] = count($association['document']);
+        // }
+        // if (isset($data['decorum'])){
         $data['numberdecorum'] = count($association['decorum']);
+        // }
+        // if (isset($data['goodies'])){
         $data['numbergoodies'] = count($association['goodies']);
+        // }
+        // if (isset($data['committee'])){
         $data['numbercommittee'] = count($association['committee']);
-
+        // }
         $data['association'] = $association;
 
         return $this->render('Associations/association.html.twig', $data);
@@ -310,7 +402,9 @@ class AssociationController extends AbstractController
     }
 
     $data = $inputData;
+    if (isset($savebdd)){
     $data['logo'] = $savebdd;
+}
     $redirect = "informations";
 
     // exit(var_dump($data));
@@ -332,10 +426,38 @@ class AssociationController extends AbstractController
     if (isset($inputData['anecdote'])){
         $keynumber = array_keys($inputData['anecdote']);
         if ($inputData['action'] != "deleteassociation" ){
+
+            // SAUVEGARDE FICHIER
+            $fileanecdote = $request->files->get('anecdote')[$keynumber[0]]['file'][0]['path'];
+            if($fileanecdote != null){
+                $uniqid = uniqid();
+                if($inputData['action'] == "modifyassociation" ){
+                    if(isset($association['anecdote'][$keynumber[0]]['file'])){
+                        if (file_exists($association['anecdote'][$keynumber[0]]['file'][0]['path'])) {
+                        unlink($association['anecdote'][$keynumber[0]]['file'][0]['path']);
+                        rmdir(dirname($association['anecdote'][$keynumber[0]]['file'][0]['path']));
+                        }
+                    }
+                }
+                $filenameext = $fileanecdote->getClientOriginalName();
+                $filesrcsave = $association['folderid'] . '/anecdotes/'. $uniqid;
+                $saveanecdoteasso = $filesrcsave .'/'. $filenameext; 
+                $save = $this->saveFile($fileanecdote, $filesrcsave, $filenameext);
+                $inputData['anecdote'][$keynumber[0]]['file'][0]['path'] = $saveanecdoteasso;
+            }else{
+                unset($inputData['anecdote'][$keynumber[0]]['file']);
+            }
+            /////// SAUVEGARDE FICHIER
             $inputData['anecdote'][$keynumber[0]]['year'] = strtotime($inputData['anecdote'][$keynumber[0]]['year']);
             $data['anecdote'] = array_replace_recursive($association['anecdote'], $inputData['anecdote']);
             $redirect = "anecdotes";
         }else{
+            if(isset($association['anecdote'][$keynumber[0]]['file'][0]['path'])){
+                unlink($association['anecdote'][$keynumber[0]]['file'][0]['path']);
+                rmdir(dirname($association['anecdote'][$keynumber[0]]['file'][0]['path']));
+                }
+
+            
             unset($association['anecdote'][$keynumber[0]]);
             $data['anecdote'] = array_values($association['anecdote']);
             $redirect = "anecdotes";
@@ -346,10 +468,31 @@ class AssociationController extends AbstractController
     if (isset($inputData['document'])){
         $keynumber = array_keys($inputData['document']);
         if ($inputData['action'] != "deleteassociation" ){
+            // SAUVEGARDE FICHIER
+            $filedocument = $request->files->get('document')[$keynumber[0]]['file']['path'];
+            if($filedocument != null){
+                $uniqid = uniqid();
+                if($inputData['action'] == "modifyassociation" ){
+                unlink($association['document'][$keynumber[0]]['file']['path']);
+                rmdir(dirname($association['document'][$keynumber[0]]['file']['path']));
+                }
+                $filenameext = $filedocument->getClientOriginalName();
+                $filesrcsave = $association['folderid'] . '/documents/'. $uniqid;
+                $savedocumentasso = $filesrcsave .'/'. $filenameext; 
+                $save = $this->saveFile($filedocument, $filesrcsave, $filenameext);
+                $inputData['document'][$keynumber[0]]['file']['path'] = $savedocumentasso;
+            }
+            /////// SAUVEGARDE FICHIER
+
             $inputData['document'][$keynumber[0]]['year'] = strtotime($inputData['document'][$keynumber[0]]['year']);
             $data['document'] = array_replace_recursive($association['document'], $inputData['document']);
             $redirect = "documents";
         }else{
+            if(isset($association['document'][$keynumber[0]]['file']['path'])){
+            unlink($association['document'][$keynumber[0]]['file']['path']);
+            rmdir(dirname($association['document'][$keynumber[0]]['file']['path']));
+            }
+
             unset($association['document'][$keynumber[0]]);
             $data['document'] = array_values($association['document']);
             $redirect = "documents";
@@ -360,10 +503,36 @@ class AssociationController extends AbstractController
     if (isset($inputData['decorum'])){
         $keynumber = array_keys($inputData['decorum']);
         if ($inputData['action'] != "deleteassociation" ){
+
+            // SAUVEGARDE FICHIER
+            $filedecorum = $request->files->get('decorum')[$keynumber[0]]['file'][0]['path'];
+            if($filedecorum != null){
+                $uniqid = uniqid();
+                if($inputData['action'] == "modifyassociation" ){
+                    if(isset($association['decorum'][$keynumber[0]]['file'])){
+                        if (file_exists($association['decorum'][$keynumber[0]]['file'][0]['path'])) {
+                        unlink($association['decorum'][$keynumber[0]]['file'][0]['path']);
+                        rmdir(dirname($association['decorum'][$keynumber[0]]['file'][0]['path']));
+                        }
+                    }
+                }
+                $filenameext = $filedecorum->getClientOriginalName();
+                $filesrcsave = $association['folderid'] . '/decorums/'. $uniqid;
+                $savedecorumasso = $filesrcsave .'/'. $filenameext; 
+                $save = $this->saveFile($filedecorum, $filesrcsave, $filenameext);
+                $inputData['decorum'][$keynumber[0]]['file'][0]['path'] = $savedecorumasso;
+            }
+            /////// SAUVEGARDE FICHIER
+
             $inputData['decorum'][$keynumber[0]]['year'] = strtotime($inputData['decorum'][$keynumber[0]]['year']);
             $data['decorum'] = array_replace_recursive($association['decorum'], $inputData['decorum']);
             $redirect = "decorums";
         }else{
+            if(isset($association['decorum'][$keynumber[0]]['file'][0]['path'])){
+                unlink($association['decorum'][$keynumber[0]]['file'][0]['path']);
+                rmdir(dirname($association['decorum'][$keynumber[0]]['file'][0]['path']));
+                }
+
             unset($association['decorum'][$keynumber[0]]);
             $data['decorum'] = array_values($association['decorum']);
             $redirect = "decorums";
@@ -374,10 +543,37 @@ class AssociationController extends AbstractController
     if (isset($inputData['goodies'])){
         $keynumber = array_keys($inputData['goodies']);
         if ($inputData['action'] != "deleteassociation" ){
+
+            // SAUVEGARDE FICHIER
+            $filegoodies = $request->files->get('goodies')[$keynumber[0]]['file'][0]['path'];
+            if($filegoodies != null){
+                $uniqid = uniqid();
+                if($inputData['action'] == "modifyassociation" ){
+                    if(isset($association['goodies'][$keynumber[0]]['file'])){
+                        if (file_exists($association['goodies'][$keynumber[0]]['file'][0]['path'])) {
+                        unlink($association['goodies'][$keynumber[0]]['file'][0]['path']);
+                        rmdir(dirname($association['goodies'][$keynumber[0]]['file'][0]['path']));
+                        }
+                    }
+                }
+                $filenameext = $filegoodies->getClientOriginalName();
+                $filesrcsave = $association['folderid'] . '/goodies/'. $uniqid;
+                $savegoodiesasso = $filesrcsave .'/'. $filenameext; 
+                $save = $this->saveFile($filegoodies, $filesrcsave, $filenameext);
+                $inputData['goodies'][$keynumber[0]]['file'][0]['path'] = $savegoodiesasso;
+            }
+            /////// SAUVEGARDE FICHIER
+
             $inputData['goodies'][$keynumber[0]]['year'] = strtotime($inputData['goodies'][$keynumber[0]]['year']);
             $data['goodies'] = array_replace_recursive($association['goodies'], $inputData['goodies']);
             $redirect = "goodies";
         }else{
+            if(isset($association['goodies'][$keynumber[0]]['file'][0]['path'])){
+                unlink($association['goodies'][$keynumber[0]]['file'][0]['path']);
+                rmdir(dirname($association['goodies'][$keynumber[0]]['file'][0]['path']));
+                }
+
+
             unset($association['goodies'][$keynumber[0]]);
             $data['goodies'] = array_values($association['goodies']);
             $redirect = "goodies";
@@ -466,11 +662,40 @@ class AssociationController extends AbstractController
         $id = $request->get('id');
         $association = $this->findApi->getAssociation($id);
 
-        $dir = $association['logo'];
+        $dir = $association['folderid'];
         $posdoss = strrpos($dir, '/');
         $dirdoss = substr($dir, 0, $posdoss);
-        unlink($association['logo']);
-        rmdir($dirdoss);
+        // if (isset($association['logo'])){
+        // unlink($association['logo']);
+        // rmdir($dirdoss);
+        // }
+        
+        function deleteDirectory($dir) {
+            if (!file_exists($dir)) {
+                return true;
+            }
+        
+            if (!is_dir($dir)) {
+                return unlink($dir);
+            }
+        
+            foreach (scandir($dir) as $item) {
+                if ($item == '.' || $item == '..') {
+                    continue;
+                }
+        
+                if (!deleteDirectory($dir . DIRECTORY_SEPARATOR . $item)) {
+                    return false;
+                }
+        
+            }
+        
+            return rmdir($dir);
+        }
+        
+        deleteDirectory($dir);
+        
+        
 
         $association = $this->findApi->deleteAssociation($id);
         return $this->redirectToRoute('association_list');

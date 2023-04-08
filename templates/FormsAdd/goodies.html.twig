@@ -29,8 +29,11 @@
                 
                     <label class="form-label">Photo</label><br>
                     <i>{{association['goodies'][numbergoodies]['path']??"Pas de photo"}}</i>
-                    <input type="file" name="goodies[{{numbergoodies}}][path]" class="form-control" id="goodies_{{numbergoodies}}_{{association.id??""}}"></input>
-                </div>
+                    <input type="file" name="goodies[{{numbergoodies}}][file][0][path]" class="form-control" id="goodies_{{numbergoodies}}_{{association.id??""}}"></input>
+
+                    {# <label class="form-label">Titre de la photo</label>
+                    <input type="text" name="goodies[{{numberdocument}}][file][0][title]" class="form-control" id="goodies__{{numberdocument}}_{{association.id??""}}"></input>
+                </div> #}
             
         </div>
         <div class="modal-footer">

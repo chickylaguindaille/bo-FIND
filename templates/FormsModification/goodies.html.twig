@@ -27,8 +27,11 @@
                     <input type="text" name="goodies[{{key}}][source]" class="form-control" id="goodies_{{key}}_{{association.id??""}}" value="{{association['goodies'][key]['source']??""}}"></input>
                 
                     <label class="form-label">Photo</label><br>
-                    <i>{{association['goodies'][key]['path']??"Pas de photo"}}</i>
-                    <input type="file" name="goodies[{{key}}][path]" class="form-control" id="goodies_{{key}}_{{association.id??""}}" value=""></input>
+                    <i>{{association['goodies'][key]['file'][0]['path']??"Pas de photo"}}</i>
+                    <input type="file" name="goodies[{{key}}][file][0][path]" class="form-control" id="goodies_{{key}}_{{association.id??""}}" value=""></input>
+
+                    {# <label class="form-label">Titre de la photo</label>
+                    <input type="text" name="goodies[{{key}}][file][0][title]" class="form-control" id="document_{{key}}_{{association.id??""}}" value="{{association['goodies'][key]['file'][0]['title']??""}}"></input> #}
                 </div>
             
         </div>

@@ -66,9 +66,18 @@ $(document).ready(function() {
             text: "Fichier " + visualcounter
         })).append($("<input>", {
             type: "file",
-            name: "document[" + counter + "][path]",
+            name: "document[" + counter + "][file][path]",
             class: "form-control p-2",
             id: "path" + counter
+        })).append($("<label>", {
+            for: "titlefile" + counter,
+            class: "form-label",
+            text: "Titre du fichier " + visualcounter
+        })).append($("<input>", {
+            type: "text",
+            name: "document[" + counter + "][file][title]",
+            class: "form-control",
+            id: "titlefile" + counter
         })).append($("<hr>"));
 
         $("#inputs-container-document").append(newInputs);

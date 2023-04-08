@@ -28,8 +28,11 @@
                     <input type="text" name="decorum[{{key}}][source]" class="form-control" id="decorum_{{key}}_{{association.id??""}}" value="{{association['decorum'][key]['source']??""}}"></input>
                 
                     <label class="form-label">Photo</label><br>
-                    <i>{{association['decorum'][key]['path']??"Pas de photo"}}</i>
-                    <input type="file" name="decorum[{{key}}][path]" class="form-control" id="decorum_{{key}}_{{association.id??""}}" value=""></input>
+                    <i>{{association['decorum'][key]['file'][0]['path']??"Pas de photo"}}</i>
+                    <input type="file" name="decorum[{{key}}][file][0][path]" class="form-control" id="decorum_{{key}}_{{association.id??""}}" value=""></input>
+
+                    {# <label class="form-label">Titre de la photo</label>
+                    <input type="text" name="decorum[{{key}}][file][0][title]" class="form-control" id="document_{{key}}_{{association.id??""}}" value="{{association['decorum'][key]['file'][0]['title']??""}}"></input> #}
                 </div>
             
         </div>

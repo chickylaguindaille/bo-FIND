@@ -157,7 +157,8 @@
                                             <td scope="row">{% if (value['text'] is defined) and (value['text'] != "") %}{{ value['text']}}{% else %}<i>Pas de texte</i>{% endif %}</td>
                                             <td scope="row">{% if (value['year'] is defined) and (value['year'] != false) %}{{value['year']|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
                                             <td scope="row">{% if (value['source'] is defined) and (value['source'] != "") %}{{ value['source']}}{% else %}<i>Pas de source</i>{% endif %}</td>
-                                            <td scope="row">{{ value['path']??"<i>Pas de photo</i>" }}</td>
+                                            <td scope="row">{% if (value['file'] is defined) and (value['file'] != "") %}<img src="{{ asset(value['file'][0]['path']) }}" alt="image"/>{% else %}<i>Pas de photo</i>{% endif %}</td>
+
                                             <td>                              
                                                 <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_anecdote_{{key}}_{{ association.id }}">
                                                     Modifier
@@ -194,7 +195,7 @@
                                 <tbody>
                                     {% for key, value in association['document'] %}
                                         <tr>
-                                            <td scope="row">{{ value['path']??"<i>Pas de photo</i>" }}</td>
+                                            <td scope="row">{{ value['file']['title']??"<i>Pas de photo</i>" }}</td>
                                             <td scope="row">{{ value['title']??"<i>Pas de titre</i>" }}</td>
                                             <td scope="row">{{ value['type']??"<i>Pas de type</i>" }}</td>
                                             <td scope="row">{% if (value['year'] is defined) and (value['year'] != false) %}{{value['year']|date("d/m/Y")}}{% else %}<i>Pas de date de création</i>{% endif %}</td>
@@ -236,7 +237,7 @@
                                     <tbody>
                                         {% for key, value in association['decorum'] %}
                                             <tr>
-                                                <td scope="row">{{ value['path']??"<i>Pas de photo</i>" }}</td>
+                                                <td scope="row">{% if (value['file'] is defined) and (value['file'] != "") %}<img src="{{ asset(value['file'][0]['path']) }}" alt="image"/>{% else %}<i>Pas de photo</i>{% endif %}</td>
                                                 <td scope="row">{{ value['title']??"<i>Pas de titre</i>" }}</td>
                                                 <td scope="row">{% if (value['text'] is defined) and (value['text'] != "") %}{{ value['text']}}{% else %}<i>Pas de texte</i>{% endif %}</td>
                                                 <td scope="row">{{ value['type']??"<i>Pas de type</i>" }}</td>
@@ -279,7 +280,7 @@
                                 <tbody>
                                     {% for key, value in association['goodies'] %}
                                         <tr>
-                                            <td scope="row">{{ value['path']??"<i>Pas de photo</i>" }}</td>
+                                            <td scope="row">{% if (value['file'] is defined) and (value['file'] != "") %}<img src="{{ asset(value['file'][0]['path']) }}" alt="image"/>{% else %}<i>Pas de photo</i>{% endif %}</td>
                                             <td scope="row">{{ value['title']??"<i>Pas de titre</i>" }}</td>
                                             <td scope="row">{% if (value['text'] is defined) and (value['text'] != "") %}{{ value['text']}}{% else %}<i>Pas de texte</i>{% endif %}</td>
                                             <td scope="row">{{ value['type']??"<i>Pas de type</i>" }}</td>
