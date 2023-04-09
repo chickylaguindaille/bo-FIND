@@ -706,5 +706,42 @@ class AssociationController extends AbstractController
     }
 
 
+
+
+
+    /**
+     * @Route("/association/list/change", name="association_list_change")
+     * @Template()
+     */
+    public function associationListChange(FindApiService $findApi)
+    {
+        $data['page'] = 'association';
+
+
+
+        if(isset($_GET['texte'])){
+            $texte = $_GET['texte'];
+
+            $associations = $this->findApi->getAssociations();
+            $associations = $associations['data'];
+    
+            $numberassociations = count($associations) - 1;
+            $filterarray = array();
+
+
+            for ($i = 0; $i <= $numberassociations; $i++) {
+                    if (str_contains(strtolower($associations[$i]['name']), strtolower($texte))) {
+                        array_push($filterarray, $associations[$i]);
+                    }
+            }
+
+            $data['associations'] = $filterarray;
+
+
+        return $this->render('Associations/search.associationlist.html.twig', $data);
+    }
+
+
 }
 
+}

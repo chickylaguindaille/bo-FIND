@@ -1,0 +1,34 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+<script>
+
+
+function delay(fn, ms) {
+  let timer = 0
+  return function(...args) {
+    clearTimeout(timer)
+    timer = setTimeout(fn.bind(this, ...args), ms || 0)
+  }
+}
+
+  $(document).ready(function(){
+    $('#searchInputAssociation').keyup(delay(function(){
+
+      $('#result-search').html('');
+      var texte = $(this).val();
+      {# var tri = $('input[name=tri]:checked').val(); #}
+
+          $.ajax({
+              type: 'GET',
+              url: '{{ path('association_list_change')}}',
+              data: 'texte=' + encodeURIComponent(texte),
+              success: function(data){
+                if(data != ""){
+                    $('#result-search').append(data);
+                    console.log(texte);
+              }
+              }
+          })
+    }, 500));
+  });
+  </script>
