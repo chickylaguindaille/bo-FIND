@@ -7,6 +7,7 @@
 $(document).ready(function() {
     var counter = 0;
     var visualcounter = 1
+    
 
  $("#ajouter-input-goodies").click(function() {
         var newInputs = $("<div>", {
@@ -79,16 +80,11 @@ $(document).ready(function() {
             name: "goodies[" + counter + "][file][0][path]",
             class: "form-control p-2",
             id: "path" + counter
-        })).append($("<label>", {
-            for: "titlefile" + counter,
-            class: "form-label",
-            text: "Titre du fichier " + visualcounter
-        })).append($("<input>", {
-            type: "text",
-            name: "goodies[" + counter + "][file][0][title]",
-            class: "form-control",
-            id: "titlefile" + counter
-        })).append($("<hr>"));
+        }))
+        
+
+        
+        .append($("<hr>"));
 
         $("#inputs-container-goodies").append(newInputs);
         counter++;

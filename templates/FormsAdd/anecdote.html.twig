@@ -23,8 +23,13 @@
                     <input type="date" name="anecdote[{{numberanecdote}}][year]" class="form-control" id="anecdote_{{numberanecdote}}_{{association.id??""}}"></input>
                 
                     <label class="form-label">Source</label>
-                    <input type="text" name="anecdote[{{numberanecdote}}][source]" class="form-control" id="anecdote_{{numberanecdote}}_{{association.id??""}}"></input>
-                
+                        <select name="anecdote[{{numberanecdote}}][source]" class="form-select">
+                            {% for name in listes[0]['source']|sort %}
+                                <option value="{{name}}">{{name}}</option>
+                            {% endfor %}
+                        </select>
+
+
                     <label class="form-label">Photo</label><br>
                     <i>{{association['anecdote'][numberanecdote]['path']??"Pas de photo"}}</i>
                     <input type="file" name="anecdote[{{numberanecdote}}][file][0][path]" class="form-control" id="anecdote_{{numberanecdote}}_{{association.id??""}}" value=""></input>

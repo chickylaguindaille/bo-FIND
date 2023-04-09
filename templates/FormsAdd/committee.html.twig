@@ -14,14 +14,19 @@
 
                     <label class="form-label">Année</label>
                         <select id="year" name="committee[year]" class="form-control">
-                            {% for year in range('now'|date('Y'), 1900-1, -1) %}
-                            <option value="{{ year }}">{{ year }}</option>
-                            {% endfor %}
-                        </select>  
+                        {% for year in range('now'|date('Y'), 1900-1, -1) %}
+                        <option value="{{ year }}">{{ year }}</option>
+                        {% endfor %}
+                    </select>  
 
                     <label class="form-label">Fonction</label>
-                    <input type="text" name="committee[function]" class="form-control" id="document_{{numberdocument}}_{{association.id??""}}"></input>
-                    
+                    <select name="committee[function]" class="form-select">
+                        {% for name in listes[0]['functiontype']|sort %}
+                            <option value="{{name}}">{{name}}</option>
+                        {% endfor %}
+                    </select>
+
+
                     <label class="form-label">Nom</label>
                     <input type="text" name="committee[name]" class="form-control" id="document_{{numberdocument}}_{{association.id??""}}"></input>
                 

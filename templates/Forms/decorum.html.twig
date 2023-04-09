@@ -79,7 +79,9 @@ $(document).ready(function() {
             name: "decorum[" + counter + "][file][0][path]",
             class: "form-control p-2",
             id: "path" + counter
-        })).append($("<label>", {
+        }))
+        
+        {# .append($("<label>", {
             for: "titlefile" + counter,
             class: "form-label",
             text: "Titre du fichier " + visualcounter
@@ -88,7 +90,9 @@ $(document).ready(function() {
             name: "decorum[" + counter + "][file][0][title]",
             class: "form-control",
             id: "titlefile" + counter
-        })).append($("<hr>"));
+        })) #}
+        
+        .append($("<hr>"));
 
         $("#inputs-container-decorum").append(newInputs);
         counter++;

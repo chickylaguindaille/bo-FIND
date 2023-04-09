@@ -19,14 +19,25 @@
                     <textarea name="decorum[{{key}}][text]" class="form-control" id="decorum_{{key}}_{{association.id??""}}" rows="3" style="height: 5rem !important;">{{association['decorum'][key]['text']??""}}</textarea>
                     
                     <label class="form-label">Type</label>
-                    <input type="test" name="decorum[{{key}}][type]" class="form-control" id="decorum{{key}}_{{association.id??""}}" value="{{association['decorum'][key]['type']??""}}" ></input>
+                    <select name="decorum[{{key}}][type]" class="form-select">
+                        {% for name in listes[0]['decorumtype']|sort %}
+                            <option {% if association.decorum[key]['type'] == name %} selected {% endif %} value="{{name}}">{{name}}</option>
+                        {% endfor %}
+                    </select>
+
 
                     <label class="form-label">Date</label>
                     <input type="date" name="decorum[{{key}}][year]" class="form-control" id="decorum_{{key}}_{{association.id??""}}" value="{{association['decorum'][key]['year']|date("Y-m-d")}}"></input>
                 
                     <label class="form-label">Source</label>
-                    <input type="text" name="decorum[{{key}}][source]" class="form-control" id="decorum_{{key}}_{{association.id??""}}" value="{{association['decorum'][key]['source']??""}}"></input>
-                
+                    <select name="decorum[{{key}}][source]" class="form-select">
+                        {% for name in listes[0]['source']|sort %}
+                            <option {% if association.decorum[key]['source'] == name %} selected {% endif %} value="{{name}}">{{name}}</option>
+                        {% endfor %}
+                    </select>
+
+
+
                     <label class="form-label">Photo</label><br>
                     <i>{{association['decorum'][key]['file'][0]['path']??"Pas de photo"}}</i>
                     <input type="file" name="decorum[{{key}}][file][0][path]" class="form-control" id="decorum_{{key}}_{{association.id??""}}" value=""></input>

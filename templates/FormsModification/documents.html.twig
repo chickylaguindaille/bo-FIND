@@ -16,14 +16,24 @@
                     <input type="text" name="document[{{key}}][title]" class="form-control" id="document_{{key}}_{{association.id??""}}" value="{{association['document'][key]['title']??""}}"></input>
                 
                     <label class="form-label">Type</label>
-                    <input type="test" name="document[{{key}}][type]" class="form-control" id="document_{{key}}_{{association.id??""}}" value="{{association['document'][key]['type']??""}}" ></input>
+                    <select name="document[{{key}}][type]" class="form-select">
+                        {% for name in listes[0]['documenttype']|sort %}
+                            <option {% if association.document[key]['type'] == name %} selected {% endif %} value="{{name}}">{{name}}</option>
+                        {% endfor %}
+                    </select>
                     
                     <label class="form-label">Date</label>
                     <input type="date" name="document[{{key}}][year]" class="form-control" id="document_{{key}}_{{association.id??""}}" value="{{association['document'][key]['year']|date("Y-m-d")}}"></input>
                 
                     <label class="form-label">Source</label>
-                    <input type="text" name="document[{{key}}][source]" class="form-control" id="document_{{key}}_{{association.id??""}}" value="{{association['document'][key]['source']??""}}"></input>
-                
+                    <select name="document[{{key}}][source]" class="form-select">
+                        {% for name in listes[0]['source']|sort %}
+                            <option {% if association.document[key]['source'] == name %} selected {% endif %} value="{{name}}">{{name}}</option>
+                        {% endfor %}
+                    </select>
+
+
+
                     <label class="form-label">Photo</label><br>
                     <i>{{association['document'][key]['file']['path']??"Pas de photo"}}</i>
                     <input type="file" name="document[{{key}}][file][path]" class="form-control" id="document_{{key}}_{{association.id??""}}" value=""></input>

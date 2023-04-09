@@ -34,24 +34,19 @@
                                                 <div class="row">
                                                     <div class="form-group col-6">
                                                         <label for="type">Type</label>
-                                                            <select name="type" class="form-select" id="type" required="required">
-                                                            {% if association.type is defined %}
-                                                                <option {% if association.type == "Filière" %} selected {% endif %}  value="Filière">Filière</option>
-                                                                <option {% if association.type == "Régionale" %} selected {% endif %}  value="Régionale">Régionale</option>
-                                                                <option {% if association.type == "Cercle" %} selected {% endif %}  value="Cercle">Cercle</option>
-                                                                <option {% if association.type == "Ordre" %} selected {% endif %} value="Ordre">Ordre</option>
-                                                                <option {% if association.type == "Association" %} selected {% endif %}  value="Association">Association</option>
-                                                            {% endif %}
+                                                            <select name="type" class="form-select">
+                                                                {% for name in listes[0]['assotype']|sort %}
+                                                                    <option {% if association.type == name %} selected {% endif %} value="{{name}}">{{name}}</option>
+                                                                {% endfor %}
                                                             </select>
+
                                                     </div>
                                                     <div class="form-group col-6">
                                                         <label for="hat">Couvre-Chef</label>
-                                                            <select name="hat" class="form-select" id="hat" required="required">
-                                                                <option {% if association.hat == "Faluche" %} selected {% endif %} value="Faluche">Faluche</option>
-                                                                <option {% if association.hat == "Calotte" %} selected {% endif %} value="Calotte">Calotte</option>
-                                                                <option {% if association.hat == "Penne" %} selected {% endif %} value="Penne">Penne</option>
-                                                                <option {% if association.hat == "Mixte" %} selected {% endif %} value="Mixte">Mixte</option>
-                                                                <option {% if association.hat == "Aucun" %} selected {% endif %} value="Aucun">Aucun</option>
+                                                            <select name="hat" class="form-select">
+                                                                {% for name in listes[0]['hats']|sort %}
+                                                                    <option {% if association.hat == name %} selected {% endif %} value="{{name}}">{{name}}</option>
+                                                                {% endfor %}
                                                             </select>
                                                     </div>
                                                 </div>

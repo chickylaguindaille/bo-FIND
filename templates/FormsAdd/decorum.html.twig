@@ -18,15 +18,28 @@
                     <label class="form-label">Texte</label>
                     <textarea name="decorum[{{numberdecorum}}][text]" class="form-control" id="anecdote_{{numberdecorum}}_{{association.id??""}}" rows="3" style="height: 5rem !important;"></textarea>
                 
-                    <label class="form-label">Type</label>
-                    <input type="test" name="decorum[{{numberdecorum}}][type]" class="form-control" id="decorum_{{numberdecorum}}_{{association.id??""}}"></input>
-                    
+                    <label class="form-label">Type</label>                        
+                    <select name="decorum[{{numberdecorum}}][type]" class="form-select">
+                        {% for name in listes[0]['decorumtype']|sort %}
+                            <option value="{{name}}">{{name}}</option>
+                        {% endfor %}
+                    </select>
+
+
+
+
                     <label class="form-label">Date</label>
                     <input type="date" name="decorum[{{numberdecorum}}][year]" class="form-control" id="decorum_{{numberdecorum}}_{{association.id??""}}"></input>
                 
                     <label class="form-label">Source</label>
-                    <input type="text" name="decorum[{{numberdecorum}}][source]" class="form-control" id="decorum_{{numberdecorum}}_{{association.id??""}}"></input>
-                
+                    <select name="decorum[{{numberdecorum}}][source]" class="form-select">
+                        {% for name in listes[0]['source']|sort %}
+                            <option value="{{name}}">{{name}}</option>
+                        {% endfor %}
+                    </select>
+
+
+
                     <label class="form-label">Photo</label><br>
                     <i>{{association['decorum'][numberdecorum]['path']??"Pas de photo"}}</i>
                     <input type="file" name="decorum[{{numberdecorum}}][file][0][path]" class="form-control" id="decorum_{{numberdecorum}}_{{association.id??""}}"></input>
