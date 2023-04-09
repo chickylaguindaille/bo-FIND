@@ -1,0 +1,55 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+<script>
+
+function delay(fn, ms) {
+  let timer = 0
+  return function(...args) {
+    clearTimeout(timer)
+    timer = setTimeout(fn.bind(this, ...args), ms || 0)
+  }
+}
+
+$(document).ready(function() {
+  var countrylist;
+
+    $('.searchInputVille').keyup(delay(function(){
+
+  $('#searchInputVilleFrance').keyup(function() {
+    countrylist = "frenchtowns";
+    $('#result-search-france').html('');
+  });
+  $('#searchInputVilleBelgique').keyup(function() {
+    countrylist = "belgiumtowns";
+    $('#result-search-belgium').html('');
+  });
+
+      var texte = $(this).val();
+      
+      console.log(countrylist);
+      {# var tri = $('input[name=tri]:checked').val(); #}
+
+      {# var country = '{{country}}'; #}
+
+          $.ajax({
+              type: 'GET',
+              url: '{{ path('ville_list_change')}}',
+              data: 'texte=' + encodeURIComponent(texte) + '&countrylist=' + countrylist,
+              success: function(data){
+                if(data != ""){
+
+                    if(countrylist == "frenchtowns"){
+                      $('#result-search-france').append(data);
+                    }else if (countrylist == "belgiumtowns"){
+                      $('#result-search-belgium').append(data);
+                      console.log(data);
+                    }
+
+              }else{
+                console.log("nop");
+              }
+              }
+          })
+    }, 200));
+  });
+  </script>

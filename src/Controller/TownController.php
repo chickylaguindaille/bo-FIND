@@ -62,6 +62,7 @@ class TownController extends AbstractController
         $data['page'] = 'ville';
         $town = $this->findApi->getTowns('France');
         $data['frenchtowns'] = $town['data'];
+        // exit(var_dump($data['frenchtowns']));
 
         $town = $this->findApi->getTowns('Belgique');
         $data['belgiumtowns'] = $town['data'];
@@ -69,6 +70,60 @@ class TownController extends AbstractController
         // $data=array();
 
         return $this->render('Villes/villelist.html.twig', $data);
+    }
+
+    /**
+     * @Route("/ville/list/change", name="ville_list_change")
+     * @Template()
+     */
+    public function villeListChange(FindApiService $findApi)
+    {
+        $data['page'] = 'ville';
+
+
+
+        if(isset($_GET['texte'])){
+            $texte = $_GET['texte'];
+            $countrylist = $_GET['countrylist'];
+
+            if($countrylist == "frenchtowns"){
+                $town = $this->findApi->getTowns('France');
+                $towns = $town['data'];
+            }else if($countrylist == "belgiumtowns"){
+                $town = $this->findApi->getTowns('Belgique');
+                $towns = $town['data'];
+            }
+
+            // $tri = $_GET['tri'];
+    
+            $numbervilles = count($towns) - 1;
+            $filterarray = array();
+
+            for ($i = 0; $i <= $numbervilles; $i++) {
+                // if($tri == 'debut')
+                //     if (str_starts_with($ville[$i]['nom'], ucfirst($texte))) {
+                //         array_push($filterarray, $ville[$i]);
+                //     }
+                // if($tri == 'contenu')
+                
+                    if (str_contains(strtolower($towns[$i]['name']), strtolower($texte))) {
+                        array_push($filterarray, $towns[$i]);
+                    }
+            }
+
+            $data['townsfiltered'] = $filterarray;
+            // $data['towns'] = $towns;
+            // exit(var_dump($data));
+            if($countrylist == "frenchtowns"){
+                $data['countrychosenid'] = "result-search-france";
+                $data['countrychosen'] = "frenchtowns";           
+            }else if($countrylist == "belgiumtowns"){
+                $data['countrychosenid'] = "result-search-belgium";
+                $data['countrychosen'] = "belgiumtowns";
+            }
+        }
+
+        return $this->render('Villes/search.villelist.html.twig', $data);
     }
 
     /**

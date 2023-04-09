@@ -26,8 +26,14 @@
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             <div class="card-body pt-1">
                                 <div class="align-items-center d-flex justify-content-between">
-                
-                                    <input class="py-2" type="text" placeholder="Recherche"></input>
+
+
+
+                                    <form name="form" method="GET" id="form">
+                                        <input class="py-2 searchInputVille" id="searchInputVilleFrance" data-country="frenchtown" type="text" placeholder="Recherche"></input>
+                                    </form>
+
+
                                     <h3 class="card-title py-2 m-0">Villes en France</h3>
                                     <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     Ajouter une ville +
@@ -76,7 +82,7 @@
                                     </div>
                                     </div>
                                 <hr>
-                                <div class="table-responsive">
+                                <div class="table-responsive" id="result-search-france">
                                     <table class="table table-striped">
                                     <thead>
                                         <tr>
@@ -195,7 +201,13 @@
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <div class="card-body pt-1">
                                 <div class="align-items-center d-flex justify-content-between">
-                                    <input class="py-2" type="text" placeholder="Recherche"></input>
+
+
+                                     <form name="form" method="GET" id="form">
+                                        <input class="py-2 searchInputVille" id="searchInputVilleBelgique" data-country="belgiumtown" type="text" placeholder="Recherche"></input>
+                                    </form>
+
+
                                     <h3 class="card-title py-2 m-0">Villes en Belgique</h3>
                                     <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                                     Ajouter une ville +
@@ -244,7 +256,7 @@
                                     </div>
                                     </div>
                                 <hr>
-                                <div class="table-responsive">
+                                <div class="table-responsive" id="result-search-belgium">
                                     <table class="table table-striped">
                                     <thead>
                                         <tr>
@@ -363,4 +375,5 @@
             </div>
           </div>
         </div>
+    {% include 'Villes/villelist.js.twig' %}
     {% endblock %}
