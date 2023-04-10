@@ -7,6 +7,30 @@
 $(document).ready(function() {
     var counter = 0;
     var visualcounter = 1
+
+
+
+
+// Chaîne de caractères pour les options du select
+var optionsString = "";
+
+// Boucle Twig pour générer les options
+{% for name in listes[0]['goodiestype']|sort %}
+    optionsString += '<option value="{{name}}">{{name}}</option>';
+{% endfor %}
+
+// Création du select dynamique avec les options générées
+var selectgoodies = $("<select>", {
+    name: "goodies[" + counter + "][type]",
+    class: "form-select"
+}).append($("<option>", {
+    value: "",
+    text: "Sélectionnez un type de décorum",
+    disabled: true,
+    selected: true
+})).append(optionsString);
+
+
     
 
  $("#ajouter-input-goodies").click(function() {
@@ -44,25 +68,8 @@ $(document).ready(function() {
             for: "type" + counter,
             class: "form-label",
             text: "Type de goodies" + visualcounter
-        })).append($("<select>", {
-            name: "goodies[" + counter + "][type]",
-            class: "form-control",
-            id: "type" + counter,
-        }).append($("<option>", {
-            value: "",
-            text: "Sélectionnez un type de goodies",
-            disabled: true,
-            selected: true
-        })).append($("<option>", {
-            value: "PDF",
-            text: "PDF"
-        })).append($("<option>", {
-            value: "DOC",
-            text: "DOC"
-        })).append($("<option>", {
-            value: "PPT",
-            text: "PPT"
-        }))).append($("<label>", {
+        })).append(selectgoodies)
+           .append($("<label>", {
             for: "source" + counter,
             class: "form-label",
             text: "Source du goodies " + visualcounter
