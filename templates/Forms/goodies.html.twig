@@ -9,31 +9,44 @@ $(document).ready(function() {
     var visualcounter = 1
 
 
-
-
 // Chaîne de caractères pour les options du select
-var optionsString = "";
+var optionType = "";
+var optionSource = "";
 
 // Boucle Twig pour générer les options
 {% for name in listes[0]['goodiestype']|sort %}
-    optionsString += '<option value="{{name}}">{{name}}</option>';
+    optionType += '<option value="{{name}}">{{name}}</option>';
 {% endfor %}
 
-// Création du select dynamique avec les options générées
-var selectgoodies = $("<select>", {
-    name: "goodies[" + counter + "][type]",
-    class: "form-select"
-}).append($("<option>", {
-    value: "",
-    text: "Sélectionnez un type de décorum",
-    disabled: true,
-    selected: true
-})).append(optionsString);
+{% for name in listes[0]['source']|sort %}
+    optionSource += '<option value="{{name}}">{{name}}</option>';
+{% endfor %}
 
 
-    
+        $("#ajouter-input-goodies").click(function() {
 
- $("#ajouter-input-goodies").click(function() {
+        // Création du select dynamique avec les options générées
+        var selectType = $("<select>", {
+            name: "goodies[" + counter + "][type]",
+            class: "form-select"
+        }).append($("<option>", {
+            value: "",
+            text: "Sélectionnez un type de goodies",
+            disabled: true,
+            selected: true
+        })).append(optionType);
+
+        var selectSource = $("<select>", {
+            name: "goodies[" + counter + "][source]",
+            class: "form-select"
+        }).append($("<option>", {
+            value: "",
+            text: "Sélectionnez une source de goodies",
+            disabled: true,
+            selected: true
+        })).append(optionSource);
+
+
         var newInputs = $("<div>", {
             class: "form-group mb-3"
         }).append($("<label>", {
@@ -68,17 +81,11 @@ var selectgoodies = $("<select>", {
             for: "type" + counter,
             class: "form-label",
             text: "Type de goodies" + visualcounter
-        })).append(selectgoodies)
+        }))
+           .append(selectType)
+           .append(selectSource)
+           
            .append($("<label>", {
-            for: "source" + counter,
-            class: "form-label",
-            text: "Source du goodies " + visualcounter
-        })).append($("<input>", {
-            type: "text",
-            name: "goodies[" + counter + "][source]",
-            class: "form-control",
-            id: "source" + counter
-        })).append($("<label>", {
             for: "path" + counter,
             class: "form-label",
             text: "Fichier " + visualcounter

@@ -8,7 +8,43 @@ $(document).ready(function() {
     var counter = 0;
     var visualcounter = 1
 
+    // Chaîne de caractères pour les options du select
+    var optionType = "";
+    var optionSource = "";
+
+    // Boucle Twig pour générer les options
+    {% for name in listes[0]['decorumtype']|sort %}
+        optionType += '<option value="{{name}}">{{name}}</option>';
+    {% endfor %}
+
+    {% for name in listes[0]['source']|sort %}
+        optionSource += '<option value="{{name}}">{{name}}</option>';
+    {% endfor %}
+
+
  $("#ajouter-input-decorum").click(function() {
+
+        // Création du select dynamique avec les options générées
+        var selectType = $("<select>", {
+            name: "decorum[" + counter + "][type]",
+            class: "form-select"
+        }).append($("<option>", {
+            value: "",
+            text: "Sélectionnez un type de decorum",
+            disabled: true,
+            selected: true
+        })).append(optionType);
+
+        var selectSource = $("<select>", {
+            name: "decorum[" + counter + "][source]",
+            class: "form-select"
+        }).append($("<option>", {
+            value: "",
+            text: "Sélectionnez une source de decorum",
+            disabled: true,
+            selected: true
+        })).append(optionSource);
+
         var newInputs = $("<div>", {
             class: "form-group mb-3"
         }).append($("<label>", {
@@ -39,38 +75,12 @@ $(document).ready(function() {
             name: "decorum[" + counter + "][year]",
             class: "form-control",
             id: "year" + counter
-        })).append($("<label>", {
-            for: "type" + counter,
-            class: "form-label",
-            text: "Type de decorum" + visualcounter
-        })).append($("<select>", {
-            name: "decorum[" + counter + "][type]",
-            class: "form-control",
-            id: "type" + counter,
-        }).append($("<option>", {
-            value: "",
-            text: "Sélectionnez un type de decorum",
-            disabled: true,
-            selected: true
-        })).append($("<option>", {
-            value: "PDF",
-            text: "PDF"
-        })).append($("<option>", {
-            value: "DOC",
-            text: "DOC"
-        })).append($("<option>", {
-            value: "PPT",
-            text: "PPT"
-        }))).append($("<label>", {
-            for: "source" + counter,
-            class: "form-label",
-            text: "Source du decorum " + visualcounter
-        })).append($("<input>", {
-            type: "text",
-            name: "decorum[" + counter + "][source]",
-            class: "form-control",
-            id: "source" + counter
-        })).append($("<label>", {
+        }))
+        
+           .append(selectType)
+           .append(selectSource)
+        
+        .append($("<label>", {
             for: "path" + counter,
             class: "form-label",
             text: "Fichier " + visualcounter

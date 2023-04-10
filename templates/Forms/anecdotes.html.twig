@@ -8,7 +8,26 @@ $(document).ready(function() {
     var counter = 0;
     var visualcounter = 1
 
+    // Chaîne de caractères pour les options du select
+    var optionSource = "";
+
+    // Boucle Twig pour générer les options
+    {% for name in listes[0]['source']|sort %}
+        optionSource += '<option value="{{name}}">{{name}}</option>';
+    {% endfor %}
+
     $("#ajouter-input-anecdote").click(function() {
+
+        var selectSource = $("<select>", {
+            name: "anecdote[" + counter + "][source]",
+            class: "form-select"
+        }).append($("<option>", {
+            value: "",
+            text: "Sélectionnez une source pour l'anecdote",
+            disabled: true,
+            selected: true
+        })).append(optionSource);
+
         var newInputs = $("<div>", {
             class: "form-group mb-3"
         }).append($("<label>", {
@@ -39,16 +58,11 @@ $(document).ready(function() {
             name: "anecdote[" + counter + "][year]",
             class: "form-control",
             id: "year" + counter
-        })).append($("<label>", {
-            for: "source" + counter,
-            class: "form-label",
-            text: "Source de l'anecdote " + visualcounter
-        })).append($("<input>", {
-            type: "text",
-            name: "anecdote[" + counter + "][source]",
-            class: "form-control",
-            id: "source" + counter
-        })).append($("<label>", {
+        }))
+        
+        .append(selectSource)
+
+        .append($("<label>", {
             for: "file" + counter,
             class: "form-label",
             text: "Fichier " + visualcounter

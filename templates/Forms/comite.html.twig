@@ -8,6 +8,14 @@ $(document).ready(function() {
     var counter = 0;
     var visualcounter = 1;
 
+    // Chaîne de caractères pour les options du select
+    var optionType = "";
+
+    // Boucle Twig pour générer les options
+    {% for name in listes[0]['functiontype']|sort %}
+        optionType += '<option value="{{name}}">{{name}}</option>';
+    {% endfor %}
+
     var maxYear = new Date().getFullYear();
     var minYear = 1900;
     var yearOptions = '';
@@ -17,10 +25,21 @@ $(document).ready(function() {
     }
 
     $("#ajouter-input-comite").click(function() {
+
+        // Création du select dynamique avec les options générées
+        var selectType = $("<select>", {
+            name: "committee[" + counter + "][type]",
+            class: "form-select"
+        }).append($("<option>", {
+            value: "",
+            text: "Sélectionnez un type de comité",
+            disabled: true,
+            selected: true
+        })).append(optionType);
+
         var newInputs = $("<div>", {
             class: "form-group mb-3"
         })
-
 
 {# SELECT ANEEE #}
         .append($("<select>", {
@@ -36,25 +55,7 @@ $(document).ready(function() {
     
 
 {# SELECT POSTE #}
-        .append($("<select>", {
-            name: "committee[" + counter + "][type]",
-            class: "form-control",
-            id: "type" + counter,
-        }).append($("<option>", {
-            value: "",
-            text: "Sélectionnez un type de comite",
-            disabled: true,
-            selected: true
-        })).append($("<option>", {
-            value: "GM",
-            text: "GM"
-        })).append($("<option>", {
-            value: "GC",
-            text: "GC"
-        })).append($("<option>", {
-            value: "Président",
-            text: "Président"
-        })))        
+        .append(selectType)     
         
         .append($("<label>", {
             for: "name" + counter,
