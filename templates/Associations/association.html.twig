@@ -87,6 +87,18 @@
                                         <td scope="row">{{association.hat??"<i>Pas de couvre-chef</i>"}}</td>
                                     </tr>
                                     <tr>
+                                        <th scope="row">Couleurs</th>
+                                        <td scope="row">{{association.additionalinformations.colorassembled??"<i>Pas de couleurs</i>"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Devise</th>
+                                        <td scope="row">{% if association.additionalinformations.scream != "" %}{{association.additionalinformations.scream??"<i>Pas de devise</i>"}}{% else %}<i>Pas de devise</i>{% endif %}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Type</th>
+                                        <td scope="row">{{association.additionalinformations.gendertype??"<i>?</i>"}}</td>
+                                    </tr>
+                                    <tr>
                                         <td></td>
                                         <td class="text-end">                              
                                             <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_information_{{association.id}}">

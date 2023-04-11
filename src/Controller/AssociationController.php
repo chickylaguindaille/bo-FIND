@@ -59,7 +59,15 @@ class AssociationController extends AbstractController
     {
         $inputData = $request->request->all();
 
+        $tabcolor=array();
+        if(isset($inputData['additionalinformations']['color'])){
+            $tabcolor = $inputData['additionalinformations']['color'];
 
+            $tabcolor = array_values($inputData['additionalinformations']['color']);
+            $string_color = implode(", ", $tabcolor);
+
+            $inputData['additionalinformations']['colorassembled'] = $string_color;
+        }
 
         $inputData['creation'] = strtotime($inputData['creation']);
 
@@ -275,7 +283,11 @@ class AssociationController extends AbstractController
         $data['logo'] = $savelogoasso;
     }
 
-        // exit(var_dump($data));
+
+    if (!empty($tabcolor)){
+        $data['additionalinformations']['color'] = $tabcolor;
+    }
+
 
         $createassociation = $this->findApi->createAssociation(json_encode($data));
         
@@ -362,11 +374,32 @@ class AssociationController extends AbstractController
      */
     public function associationPatch(Request $request, FindApiService $findApi)
     {
+
         $id = $request->get('id');
 
         $association = $this->findApi->getAssociation($id);
         $inputData = $request->request->all();
         $filelogo = $request->files->get('logo');
+
+
+        $tabcolor=array();
+
+        if(isset($inputData['additionalinformations']['color'])){
+
+            foreach ($inputData['additionalinformations']['color'] as $key => $value) {
+                if ($value === '') {
+                    unset($inputData['additionalinformations']['color'][$key]);
+                }
+            }
+
+            $tabcolor = array_values($inputData['additionalinformations']['color']);
+            $string_color = implode(", ", $tabcolor);
+
+
+            $inputData['additionalinformations']['colorassembled'] = $string_color;
+        }
+
+        // exit(var_dump($inputData));
 
 
     // INFORMATIONS
@@ -648,10 +681,9 @@ class AssociationController extends AbstractController
         }
     }
 
-
-    // exit(var_dump("stop"));
-
-    // exit(var_dump(json_encode($data)));
+    if (!empty($tabcolor)){
+        $data['additionalinformations']['color'] = $tabcolor;
+    }
 
         $patchassociation = $this->findApi->patchAssociation(json_encode($data), $id);
         

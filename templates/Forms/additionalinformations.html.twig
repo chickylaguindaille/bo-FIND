@@ -1,0 +1,48 @@
+
+    <div class="form-group col-12">
+		<label class="form-label" for="nombre-selects">Nombre de couleurs de l'association</label>
+		<select id="nombre-selects" name="nombre-selects" onchange="afficherSelects()">
+            <option value="0">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+		</select>
+        <div id="div-selects"></div>
+    </div>
+    <div class="form-group col-4">
+        <label for="author">Cris/Devise</label>
+        <input type="text" name="additionalinformations[scream]" class="form-control inputville" id="scream">
+    </div>
+    <div class="form-group col-4">
+        <label class="form-label" for="year">Sexe</label>
+            <select class="form-control" name="additionalinformations[gendertype]" id="gendertype">
+                <option value="Mixte">Mixte</option>
+                <option value="Masculin">Masculin</option>
+                <option value="Féminin">Féminin</option>
+            </select>
+    </div>
+
+	<script>
+		function afficherSelects() {
+			var nombre = document.getElementById("nombre-selects").value;
+			var divSelects = document.getElementById("div-selects");
+			var html = "";
+			for (var i = 0; (i+1) <= nombre; i++) {
+				html += "<select id='select-couleur-" + i + "' name='additionalinformations[color][" + i + "]'>";
+				html += "<option value='Azur'>Azur</option>";
+				html += "<option value='Argent'>Argent</option>";
+				html += "<option value='Gueule'>Gueule</option>";
+                html += "<option value='Or'>Or</option>";
+                html += "<option value='Sable'>Sable</option>";
+                html += "<option value='Sinople'>Sinople</option>";
+                html += "<option value='Bleu Roi'>Bleu Roi</option>";
+                html += "<option value='Sang'>Sang</option>";
+                html += "<option value='Emeraude'>Emeraude</option>";
+				html += "</select>";
+			}
+			divSelects.innerHTML = html;
+		}
+	</script>

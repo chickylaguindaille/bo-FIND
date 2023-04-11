@@ -55,13 +55,48 @@
                                                     <textarea name="resume" class="form-control" id="resume" rows="3" style="height: 5rem !important;">{{association.resume}}</textarea>
                                                 </div>
 
-
-
                                                 <div class="form-group">
                                                     <label for="logo">Logo</label>
                                                     <div class="pb-2"><i>{{association.logo}}</i></div>
                                                     <input type="file" name="logo" class="form-control inputville p-2" id="logo">
                                                 </div>
+
+    <div class="form-group col-12">
+		<label class="form-label" for="nombre-selects">Nombre de couleurs de l'association</label><br>
+		
+
+        <div>
+            {% for i in 0..5 %}
+                <select id="nombre-selects" name="additionalinformations[color][{{i}}]">
+                <option value="">/</option>
+                {% for option in ['Azur', 'Argent', 'Gueule', 'Or', 'Sable', 'Sinople', 'Bleu Roi', 'Sang', 'Emeraude'] %}
+                    {% if association.additionalinformations.color[i] is defined and option == association.additionalinformations.color[i] %}
+                    <option value="{{ option }}" selected>{{ option }}</option>
+                    {% else %}
+                    <option value="{{ option }}">{{ option }}</option>
+                    {% endif %}
+                {% endfor %}
+                </select>
+            {% endfor %}
+        </div>
+
+       
+    </div>
+    <div class="form-group col-4">
+        <label for="author">Cris/Devise</label>
+        <input type="text" name="additionalinformations[scream]" class="form-control inputville" id="scream" value="{{association.additionalinformations.scream??""}}">
+    </div>
+    <div class="form-group col-4">
+        <label class="form-label" for="year">Sexe</label>
+            <select class="form-control" name="additionalinformations[gendertype]" id="gendertype">
+                <option {% if association.additionalinformations.gendertype == "Mixte" %}selected{% endif %} value="Mixte">Mixte</option>
+                <option {% if association.additionalinformations.gendertype == "Masculin" %}selected{% endif %} value="Masculin">Masculin</option>
+                <option {% if association.additionalinformations.gendertype == "Féminin" %}selected{% endif %} value="Féminin">Féminin</option>
+            </select>
+    </div>
+
+
+
                                 
                             </div>
                             <div class="modal-footer">
