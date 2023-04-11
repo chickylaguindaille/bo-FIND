@@ -25,10 +25,97 @@
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             <div class="card-body">
                                 <div class="align-items-center d-flex justify-content-between">
-                
-                                    <form name="form" method="GET" id="form">
-                                        <input class="py-2" id="searchInputAssociation" type="text" placeholder="Recherche"></input>
-                                    </form>
+
+                                    <div class="d-flex">
+                                        <form name="form" method="GET" id="form">
+                                            <input class="py-2" id="searchInputAssociation" type="text" placeholder="Recherche"></input>
+                                        </form>
+
+                                        <!-- Button trigger modal tri -->
+                                        <button type="button" class="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <span class="mx-2">Filtrer</span><i class="bi bi-chevron-down"></i>
+                                        </button>
+                                    </div>
+
+                                    <!-- Modal tri -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Filtrer la recherche</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div class="form-group col-12">
+                                                    <label for="hat">Pays</label>
+                                                    <select name="hat" class="form-select" id="hat" {{required}}>
+                                                        <option value="">/</option>
+                                                        <option value="France">France</option>
+                                                        <option value="Belgique">Belgique</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group col-12">
+                                                    <label for="town">Région</label>
+                                                    <select name="town" class="form-select" id="town" {{required}}>
+                                                        <option value="">/</option>
+                                                        {% for name in regions|sort %}
+                                                            <option value="{{name}}">{{name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group col-12">
+                                                    <label for="town">Ville</label>
+                                                    <select name="town" class="form-select" id="town" {{required}}>
+                                                        <option value="">/</option>
+                                                        {% for name in towns|sort %}
+                                                            <option value="{{name}}">{{name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group col-12">
+                                                    <label for="type">Type</label>
+                                                    <select name="type" class="form-select" id="type" {{required}}>
+                                                        <option value="">/</option>
+                                                        {% for name in listes[0]['assotype']|sort %}
+                                                            <option value="{{name}}">{{name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group col-12">
+                                                    <label for="hat">Couvre-Chef</label>
+                                                    <select name="hat" class="form-select" id="hat" {{required}}>
+                                                        <option value="">/</option>
+                                                        {% for name in listes[0]['hats']|sort %}
+                                                            <option value="{{name}}">{{name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group col-12">
+                                                    <label for="hat">Genre</label>
+                                                    <select name="hat" class="form-select" id="hat" {{required}}>
+                                                        <option value="">/</option>
+                                                        <option value="Mixte">Mixte</option>
+                                                        <option value="Masculin">Masculin</option>
+                                                        <option value="Féminin">Féminin</option>
+                                                    </select>
+                                                </div>
+
+
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                                <button type="button" class="btn btn-primary">Trier</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
 
                                     <h3 class="card-title py-2 m-0">Toutes les Associations</h3>
