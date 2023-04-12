@@ -62,7 +62,7 @@ class TownController extends AbstractController
         $data['page'] = 'ville';
         $town = $this->findApi->getTowns('France');
         $data['frenchtowns'] = $town['data'];
-        exit(var_dump($data['frenchtowns']));
+        // exit(var_dump($data['frenchtowns']));
 
         $town = $this->findApi->getTowns('Belgique');
         $data['belgiumtowns'] = $town['data'];
