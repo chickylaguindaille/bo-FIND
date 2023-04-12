@@ -2,6 +2,18 @@
 
 <script>
 
+function delayWithSpinner(fn, ms) {
+  let timer = 0;
+  return function(...args) {
+    $('.loaderspinner').show(); // Afficher le spinner
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(this, args);
+      $('.loaderspinner').hide(); // Masquer le spinner
+    }, ms || 0);
+  };
+}
+
 function delay(fn, ms) {
   let timer = 0
   return function(...args) {
@@ -10,24 +22,34 @@ function delay(fn, ms) {
   }
 }
 
+    $('.searchInputVille').keyup(function(){
+      var id = $(this).attr("id");
+      if(id=="searchInputVilleFrance"){
+        $('#result-search-france').html('');
+      };
+      if(id=="searchInputVilleBelgique"){
+        $('#result-search-belgium').html('');
+      };
+    });
+
+
 $(document).ready(function() {
   var countrylist;
 
-    $('.searchInputVille').keyup(delay(function(){
+    $('.searchInputVille').keyup(delayWithSpinner(function(){
 
       var id = $(this).attr("id");
-      console.log(id);
 
-  if(id=="searchInputVilleFrance"){
-    countrylist = "frenchtowns";
-    var region = $("#regionfilterfrance").val();
-    $('#result-search-france').html('');
-  };
-  if(id=="searchInputVilleBelgique"){
-    countrylist = "belgiumtowns";
-    var region = $("#regionfilterbelgium").val();
-    $('#result-search-belgium').html('');
-  };
+      if(id=="searchInputVilleFrance"){
+        countrylist = "frenchtowns";
+        var region = $("#regionfilterfrance").val();
+        $('#result-search-france').html('');
+      };
+      if(id=="searchInputVilleBelgique"){
+        countrylist = "belgiumtowns";
+        var region = $("#regionfilterbelgium").val();
+        $('#result-search-belgium').html('');
+      };
 
       var texte = $(this).val();
       
@@ -57,10 +79,12 @@ $(document).ready(function() {
   });
 
 
-
+    $('.btntrier').click(function(){
+      $('#result-search').html('');
+    });
 
     $(document).ready(function(){
-    $('.btntrier').click(delay(function(){
+    $('.btntrier').click(delayWithSpinner(function(){
 
       var id = $(this).attr("id");
 

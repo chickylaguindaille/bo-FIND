@@ -115,8 +115,9 @@ class TownController extends AbstractController
             }
 
             $data['townsfiltered'] = $filterarray;
-            // $data['towns'] = $towns;
-            // exit(var_dump($data));
+            if(empty($data['townsfiltered'])){
+                $data['emptyarray'] = true;
+            }
             if($countrylist == "frenchtowns"){
                 $data['countrychosenid'] = "result-search-france";
                 $data['countrychosen'] = "frenchtowns";           

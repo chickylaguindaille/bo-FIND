@@ -797,6 +797,10 @@ class AssociationController extends AbstractController
             }
 
             $data['associations'] = $filterarray;
+            if(empty($data['associations'])){
+                $data['emptyarray'] = true;
+            }
+            // exit(var_dump($data));
 
 
         return $this->render('Associations/search.associationlist.html.twig', $data);
