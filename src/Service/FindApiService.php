@@ -70,9 +70,9 @@ class FindApiService extends FindService
 	//------------------------------------------------------------------------------------------------------------------
 	// Association
 	//------------------------------------------------------------------------------------------------------------------
-	public function getAssociations()
+	public function getAssociations($country = null ,$region = null, $town = null, $typeasso = null, $hat = null, $gendertype = null)
 	{
-		return $this->request(null, 'GET', 'api/associations');
+		return $this->request(null, 'GET', 'api/associations?country=' . $country . '&region=' . $region. '&town=' . $town. '&type=' . $typeasso. '&hat=' . $hat. '&town=' . $town. '&gendertype=' . $gendertype);
 	}
 
 	public function getAssociation($id)

@@ -92,7 +92,7 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">Devise</th>
-                                        <td scope="row">{% if association.additionalinformations.scream != "" %}{{association.additionalinformations.scream??"<i>Pas de devise</i>"}}{% else %}<i>Pas de devise</i>{% endif %}</td>
+                                        <td scope="row">{% if association.additionalinformations.scream is defined and association.additionalinformations.scream != "" %}{{association.additionalinformations.scream??"<i>Pas de devise</i>"}}{% else %}<i>Pas de devise</i>{% endif %}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Type</th>

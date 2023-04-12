@@ -13,8 +13,8 @@
         <div class="form-group col-6">
             <label for="town">Ville</label>
             <select name="town" class="form-select" id="town" {{required}}>
-                {% for name in towns|sort %}
-                    <option value="{{name}}">{{name}}</option>
+                {% for ville in towns|sort %}
+                    <option value="{{ville.id}}">{{ville.name}}</option>
                 {% endfor %}
             </select>
         </div>

@@ -21,8 +21,8 @@
                                                     <div class="form-group col-6">
                                                         <label for="town">Ville</label>
                                                             <select name="town" class="form-select" id="town">
-                                                                {% for name in towns|sort %}
-                                                                    <option {% if association.town == name %} selected {% endif %} value="{{name}}">{{name}}</option>
+                                                                {% for town in towns|sort %}
+                                                                    <option {% if association.town == town.name %} selected {% endif %} value="{{town.id}}">{{town.name}}</option>
                                                                 {% endfor %}
                                                             </select>
                                                     </div>
@@ -89,9 +89,9 @@
     <div class="form-group col-4">
         <label class="form-label" for="year">Sexe</label>
             <select class="form-control" name="additionalinformations[gendertype]" id="gendertype">
-                <option {% if association.additionalinformations.gendertype == "Mixte" %}selected{% endif %} value="Mixte">Mixte</option>
-                <option {% if association.additionalinformations.gendertype == "Masculin" %}selected{% endif %} value="Masculin">Masculin</option>
-                <option {% if association.additionalinformations.gendertype == "Féminin" %}selected{% endif %} value="Féminin">Féminin</option>
+                <option {% if association.additionalinformations.scream is defined and association.additionalinformations.gendertype == "Mixte" %}selected{% endif %} value="Mixte">Mixte</option>
+                <option {% if association.additionalinformations.scream is defined and association.additionalinformations.gendertype == "Masculin" %}selected{% endif %} value="Masculin">Masculin</option>
+                <option {% if association.additionalinformations.scream is defined and association.additionalinformations.gendertype == "Féminin" %}selected{% endif %} value="Féminin">Féminin</option>
             </select>
     </div>
 

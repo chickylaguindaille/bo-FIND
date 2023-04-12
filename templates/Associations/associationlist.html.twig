@@ -32,13 +32,13 @@
                                         </form>
 
                                         <!-- Button trigger modal tri -->
-                                        <button type="button" class="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <button type="button" class="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#Modalfilter">
                                         <span class="mx-2">Filtrer</span><i class="bi bi-chevron-down"></i>
                                         </button>
                                     </div>
 
                                     <!-- Modal tri -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="Modalfilter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                             <div class="modal-header">
@@ -49,7 +49,7 @@
 
                                                 <div class="form-group col-12">
                                                     <label for="hat">Pays</label>
-                                                    <select name="hat" class="form-select" id="hat" {{required}}>
+                                                    <select name="hat" class="form-select" id="countryfilter" {{required}}>
                                                         <option value="">/</option>
                                                         <option value="France">France</option>
                                                         <option value="Belgique">Belgique</option>
@@ -58,7 +58,7 @@
 
                                                 <div class="form-group col-12">
                                                     <label for="town">Région</label>
-                                                    <select name="town" class="form-select" id="town" {{required}}>
+                                                    <select name="town" class="form-select" id="regionfilter" {{required}}>
                                                         <option value="">/</option>
                                                         {% for name in regions|sort %}
                                                             <option value="{{name}}">{{name}}</option>
@@ -68,17 +68,17 @@
 
                                                 <div class="form-group col-12">
                                                     <label for="town">Ville</label>
-                                                    <select name="town" class="form-select" id="town" {{required}}>
+                                                    <select name="town" class="form-select" id="townfilter" {{required}}>
                                                         <option value="">/</option>
-                                                        {% for name in towns|sort %}
-                                                            <option value="{{name}}">{{name}}</option>
+                                                        {% for town in towns|sort %}
+                                                            <option value="{{town.name}}">{{town.name}}</option>
                                                         {% endfor %}
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group col-12">
                                                     <label for="type">Type</label>
-                                                    <select name="type" class="form-select" id="type" {{required}}>
+                                                    <select name="type" class="form-select" id="typefilter" {{required}}>
                                                         <option value="">/</option>
                                                         {% for name in listes[0]['assotype']|sort %}
                                                             <option value="{{name}}">{{name}}</option>
@@ -88,7 +88,7 @@
 
                                                 <div class="form-group col-12">
                                                     <label for="hat">Couvre-Chef</label>
-                                                    <select name="hat" class="form-select" id="hat" {{required}}>
+                                                    <select name="hat" class="form-select" id="hatfilter" {{required}}>
                                                         <option value="">/</option>
                                                         {% for name in listes[0]['hats']|sort %}
                                                             <option value="{{name}}">{{name}}</option>
@@ -98,7 +98,7 @@
 
                                                 <div class="form-group col-12">
                                                     <label for="hat">Genre</label>
-                                                    <select name="hat" class="form-select" id="hat" {{required}}>
+                                                    <select name="hat" class="form-select" id="genderfilter" {{required}}>
                                                         <option value="">/</option>
                                                         <option value="Mixte">Mixte</option>
                                                         <option value="Masculin">Masculin</option>
@@ -111,7 +111,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                                <button type="button" class="btn btn-primary">Trier</button>
+                                                <button id="btntrier" type="button" class="btn btn-primary" data-bs-dismiss="modal">Trier</button>
                                             </div>
                                             </div>
                                         </div>

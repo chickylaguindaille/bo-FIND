@@ -59,6 +59,12 @@ class AssociationController extends AbstractController
     {
         $inputData = $request->request->all();
 
+        // AJOUT DU PAYS ET DE LA RÉGION
+        $town = $this->findApi->getTown($inputData['town']);
+        $inputData['town'] = $town['name'];
+        $inputData['region'] = $town['region'];
+        $inputData['country'] = $town['country'];
+
         $tabcolor=array();
         if(isset($inputData['additionalinformations']['color'])){
             $tabcolor = $inputData['additionalinformations']['color'];
@@ -67,6 +73,8 @@ class AssociationController extends AbstractController
             $string_color = implode(", ", $tabcolor);
 
             $inputData['additionalinformations']['colorassembled'] = $string_color;
+        }else{
+            $inputData['additionalinformations']=array();
         }
 
         $inputData['creation'] = strtotime($inputData['creation']);
@@ -276,7 +284,7 @@ class AssociationController extends AbstractController
         if($inputData['sing']['text'] == ""){
             unset($inputData['sing']['text']);
         }
-
+        // exit(var_dump($inputData));
         $data = $inputData;
         $data['folderid'] = 'associations/' . $id;
         if(isset($savelogoasso)){
@@ -287,7 +295,7 @@ class AssociationController extends AbstractController
     if (!empty($tabcolor)){
         $data['additionalinformations']['color'] = $tabcolor;
     }
-
+// exit(var_dump($data));
 
         $createassociation = $this->findApi->createAssociation(json_encode($data));
         
@@ -315,7 +323,8 @@ class AssociationController extends AbstractController
 
         $town = $this->findApi->getTowns(null);
         // exit(var_dump($town));
-        $data['towns'] = array_column($town['data'], 'name');
+        // $data['towns'] = array_column($town['data'], 'name');
+        $data['towns'] = $town['data'];
         $data['regions'] = array_unique(array_column($town['data'], 'region'));
 
         // exit(var_dump($data['regions']));
@@ -337,7 +346,8 @@ class AssociationController extends AbstractController
         $data['page'] = 'association';
 
         $town = $this->findApi->getTowns(null);
-        $data['towns'] = array_column($town['data'], 'name');
+        // $data['towns'] = array_column($town['data'], 'name');
+        $data['towns'] = $town['data'];
 
         $listes = $this->findApi->getListes();
         $data['listes'] = $listes['data'];
@@ -384,6 +394,11 @@ class AssociationController extends AbstractController
         $inputData = $request->request->all();
         $filelogo = $request->files->get('logo');
 
+        // MODIFICATION DU PAYS ET DE LA RÉGION
+        $town = $this->findApi->getTown($inputData['town']);
+        $inputData['town'] = $town['name'];
+        $inputData['region'] = $town['region'];
+        $inputData['country'] = $town['country'];
 
         $tabcolor=array();
 
@@ -759,8 +774,14 @@ class AssociationController extends AbstractController
 
         if(isset($_GET['texte'])){
             $texte = $_GET['texte'];
+            $country = $_GET['country'];
+            $region = $_GET['region'];
+            $town = $_GET['town'];
+            $assotype = $_GET['assotype'];
+            $hat = $_GET['hat'];
+            $gender = $_GET['gender'];
 
-            $associations = $this->findApi->getAssociations();
+            $associations = $this->findApi->getAssociations($country, $region, $town, $assotype, $hat, $gender);
             $associations = $associations['data'];
     
             $numberassociations = count($associations) - 1;
