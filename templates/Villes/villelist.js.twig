@@ -15,26 +15,29 @@ $(document).ready(function() {
 
     $('.searchInputVille').keyup(delay(function(){
 
-  $('#searchInputVilleFrance').keyup(function() {
+      var id = $(this).attr("id");
+      console.log(id);
+
+  if(id=="searchInputVilleFrance"){
     countrylist = "frenchtowns";
+    var region = $("#regionfilterfrance").val();
     $('#result-search-france').html('');
-  });
-  $('#searchInputVilleBelgique').keyup(function() {
+  };
+  if(id=="searchInputVilleBelgique"){
     countrylist = "belgiumtowns";
+    var region = $("#regionfilterbelgium").val();
     $('#result-search-belgium').html('');
-  });
+  };
 
       var texte = $(this).val();
       
       console.log(countrylist);
       {# var tri = $('input[name=tri]:checked').val(); #}
 
-      {# var country = '{{country}}'; #}
-
           $.ajax({
               type: 'GET',
               url: '{{ path('ville_list_change')}}',
-              data: 'texte=' + encodeURIComponent(texte) + '&countrylist=' + countrylist,
+              data: 'texte=' + encodeURIComponent(texte) + '&countrylist=' + countrylist + '&region=' + region,
               success: function(data){
                 if(data != ""){
 
@@ -47,6 +50,45 @@ $(document).ready(function() {
 
               }else{
                 console.log("nop");
+              }
+              }
+          })
+    }, 500));
+  });
+
+
+
+
+    $(document).ready(function(){
+    $('.btntrier').click(delay(function(){
+
+      var id = $(this).attr("id");
+
+    if(id=="btntrierfrench"){
+      $('#result-search-france').html('');
+      var region = $("#regionfilterfrance").val();
+      var texte = $('#searchInputVilleFrance').val();
+      countrylist = "frenchtowns";
+    }else if(id=="btntrierbelgium"){
+      $('#result-search-belgium').html('');
+      var region = $("#regionfilterbelgium").val();
+      var texte = $('#searchInputVilleBelgique').val();
+      countrylist = "belgiumtowns";
+      }
+
+      //{# var tri = $('input[name=tri]:checked').val(); #}
+
+          $.ajax({
+              type: 'GET',
+              url: '{{ path('ville_list_change')}}',
+              data: 'texte=' + encodeURIComponent(texte)  + '&countrylist=' + countrylist + '&region=' + region,
+              success: function(data){
+                if(data != ""){
+                      if(id=="btntrierfrench"){
+                        $('#result-search-france').append(data);
+                      }else if(id=="btntrierbelgium"){
+                        $('#result-search-belgium').append(data);
+                      }
               }
               }
           })
