@@ -59,15 +59,17 @@ class TownController extends AbstractController
      */
     public function villeList(FindApiService $findApi)
     {
+        $data['required'] = $_ENV['REQUIRED_INPUT'];
+
         $data['page'] = 'ville';
         $town = $this->findApi->getTowns('France');
         $data['frenchtowns'] = $town['data'];
-        // exit(var_dump($data['frenchtowns']));
+        $data['frenchregions'] = array_unique(array_column($town['data'], 'region'));
 
         $town = $this->findApi->getTowns('Belgique');
         $data['belgiumtowns'] = $town['data'];
 
-        // $data=array();
+        $data['belgiumregions'] = array_unique(array_column($town['data'], 'region'));
 
         return $this->render('Villes/villelist.html.twig', $data);
     }
@@ -82,15 +84,16 @@ class TownController extends AbstractController
 
 
 
-        if(isset($_GET['texte'])){
+        if(isset($_GET['region'])){
             $texte = $_GET['texte'];
             $countrylist = $_GET['countrylist'];
+            $region = $_GET['region'];
 
             if($countrylist == "frenchtowns"){
-                $town = $this->findApi->getTowns('France');
+                $town = $this->findApi->getTowns('France', $region);
                 $towns = $town['data'];
             }else if($countrylist == "belgiumtowns"){
-                $town = $this->findApi->getTowns('Belgique');
+                $town = $this->findApi->getTowns('Belgique', $region);
                 $towns = $town['data'];
             }
 
@@ -112,8 +115,9 @@ class TownController extends AbstractController
             }
 
             $data['townsfiltered'] = $filterarray;
-            // $data['towns'] = $towns;
-            // exit(var_dump($data));
+            if(empty($data['townsfiltered'])){
+                $data['emptyarray'] = true;
+            }
             if($countrylist == "frenchtowns"){
                 $data['countrychosenid'] = "result-search-france";
                 $data['countrychosen'] = "frenchtowns";           

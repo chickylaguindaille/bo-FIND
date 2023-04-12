@@ -2,6 +2,17 @@
 
 <script>
 
+function delayWithSpinner(fn, ms) {
+  let timer = 0;
+  return function(...args) {
+    $('#loaderspinner').show(); // Afficher le spinner
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(this, args);
+      $('#loaderspinner').hide(); // Masquer le spinner
+    }, ms || 0);
+  };
+}
 
 function delay(fn, ms) {
   let timer = 0
@@ -11,8 +22,13 @@ function delay(fn, ms) {
   }
 }
 
+    $('#searchInputAssociation').keyup(function(){
+      $('#result-search').html('');
+    });
+
+
   $(document).ready(function(){
-    $('#searchInputAssociation').keyup(delay(function(){
+    $('#searchInputAssociation').keyup(delayWithSpinner(function(){
 
       $('#result-search').html('');
       var texte = $(this).val();
@@ -24,7 +40,7 @@ function delay(fn, ms) {
       var hat = $("#hatfilter").val();
       var gender = $("#genderfilter").val();
 
-      console.log(country + region + town + assotype + hat + gender);
+      {# console.log(country + region + town + assotype + hat + gender); #}
 
       {# var tri = $('input[name=tri]:checked').val(); #}
 
@@ -43,8 +59,12 @@ function delay(fn, ms) {
   });
 
 
+    $('#btntrier').click(function(){
+      $('#result-search').html('');
+    });
+
     $(document).ready(function(){
-    $('#btntrier').click(delay(function(){
+    $('#btntrier').click(delayWithSpinner(function(){
 
       $('#result-search').html('');
       var texte = $(this).val();
@@ -67,8 +87,8 @@ function delay(fn, ms) {
               success: function(data){
                 if(data != ""){
                     $('#result-search').append(data);
-                    {# console.log(texte); #}
-              }
+                    console.log(data);
+                };
               }
           })
     }, 500));

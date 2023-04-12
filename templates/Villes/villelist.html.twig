@@ -28,10 +28,47 @@
                                 <div class="align-items-center d-flex justify-content-between">
 
 
+                                    <div class="d-flex">
+                                        <form name="form" method="GET" id="form">
+                                            <input class="py-2 searchInputVille" id="searchInputVilleFrance" data-country="frenchtown" type="text" placeholder="Recherche"></input>
+                                        </form>
+                                        <!-- Button trigger modal tri -->
+                                        <button type="button" class="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#Modalfilter">
+                                        <span class="mx-2">Filtrer</span><i class="bi bi-chevron-down"></i>
+                                        </button>
+                                    </div>
 
-                                    <form name="form" method="GET" id="form">
-                                        <input class="py-2 searchInputVille" id="searchInputVilleFrance" data-country="frenchtown" type="text" placeholder="Recherche"></input>
-                                    </form>
+                                {# MODAL FILTER #}
+                                    <div class="modal fade" id="Modalfilter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Filtrer la recherche</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div class="form-group col-12">
+                                                    <label for="town">Région</label>
+                                                    <select name="town" class="form-select" id="regionfilterfrance" {{required}}>
+                                                        <option value="">/</option>
+                                                        {% for name in frenchregions|sort %}
+                                                            <option value="{{name}}">{{name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                                <button id="btntrierfrench" type="button" class="btn btn-primary btntrier" data-bs-dismiss="modal">Trier</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {# MODAL FILTER #}
+
+
+
 
 
                                     <h3 class="card-title py-2 m-0">Villes en France</h3>
@@ -40,7 +77,7 @@
                                     </button>
                                 </div>
 
-                                    <!-- Modal -->
+                                    <!-- Modal add-->
                                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -193,6 +230,9 @@
                                     </tbody>
                                     </table>
                                 </div>
+                                <div id="loaderspinner" class="text-center loaderspinner" style="display:none;">
+                                    <img src="{{ asset("assets/spinner.gif") }}" class="" style="height: 100px;" alt="loading...">
+                                </div>
                             </div>
                         </div>
 
@@ -202,10 +242,44 @@
                             <div class="card-body pt-1">
                                 <div class="align-items-center d-flex justify-content-between">
 
+                                    <div class="d-flex">
+                                        <form name="form" method="GET" id="form">
+                                            <input class="py-2 searchInputVille" id="searchInputVilleBelgique" data-country="belgiumtown" type="text" placeholder="Recherche"></input>
+                                        </form>
+                                    <!-- Button trigger modal tri -->
+                                        <button type="button" class="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#belgiumModalLabel">
+                                        <span class="mx-2">Filtrer</span><i class="bi bi-chevron-down"></i>
+                                        </button>
+                                    </div>
 
-                                     <form name="form" method="GET" id="form">
-                                        <input class="py-2 searchInputVille" id="searchInputVilleBelgique" data-country="belgiumtown" type="text" placeholder="Recherche"></input>
-                                    </form>
+                                    {# MODAL FILTER #}
+                                    <div class="modal fade" id="belgiumModalLabel" tabindex="-1" aria-labelledby="belgiumModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="belgiumModalLabel">Filtrer la recherche</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div class="form-group col-12">
+                                                    <label for="town">Région</label>
+                                                    <select name="town" class="form-select" id="regionfilterbelgium" {{required}}>
+                                                        <option value="">/</option>
+                                                        {% for name in belgiumregions|sort %}
+                                                            <option value="{{name}}">{{name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                                <button id="btntrierbelgium" type="button" class="btn btn-primary btntrier" data-bs-dismiss="modal">Trier</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {# MODAL FILTER #}
 
 
                                     <h3 class="card-title py-2 m-0">Villes en Belgique</h3>
@@ -366,6 +440,9 @@
                                         {% endfor %}
                                     </tbody>
                                     </table>
+                                </div>
+                                <div id="loaderspinner" class="text-center loaderspinner" style="display:none;">
+                                    <img src="{{ asset("assets/spinner.gif") }}" class="" style="height: 100px;" alt="loading...">
                                 </div>
                             </div>
                         </div>

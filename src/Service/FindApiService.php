@@ -23,9 +23,9 @@ class FindApiService extends FindService
 	//------------------------------------------------------------------------------------------------------------------
 	// Town
 	//------------------------------------------------------------------------------------------------------------------
-	public function getTowns($country)
+	public function getTowns($country = null, $region = null)
 	{
-		return $this->request(null, 'GET', 'api/villes?country=' . $country);
+		return $this->request(null, 'GET', 'api/villes?country=' . $country . '&region=' . $region);
 	}
 
 	public function getTown($id)

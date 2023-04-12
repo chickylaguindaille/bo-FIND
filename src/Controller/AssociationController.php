@@ -318,6 +318,8 @@ class AssociationController extends AbstractController
         $associations = $this->findApi->getAssociations();
 
         $listes = $this->findApi->getListes();
+
+
         $data['listes'] = $listes['data'];
         // exit(var_dump($data['listes'][0]['hats']));
 
@@ -795,6 +797,10 @@ class AssociationController extends AbstractController
             }
 
             $data['associations'] = $filterarray;
+            if(empty($data['associations'])){
+                $data['emptyarray'] = true;
+            }
+            // exit(var_dump($data));
 
 
         return $this->render('Associations/search.associationlist.html.twig', $data);

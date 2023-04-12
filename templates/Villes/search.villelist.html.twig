@@ -1,4 +1,4 @@
-<div class="table-responsive" id="{{countrychosenid}}">
+<div class="table-responsive" id="{{countrychosenid??""}}">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -109,3 +109,4 @@
         </tbody>
     </table>
 </div>
+{% if emptyarray is defined %}<div class="text-center pt-5 pb-4" style="font-weight:bold;">Aucun résultat</div>{% endif %}

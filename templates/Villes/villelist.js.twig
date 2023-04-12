@@ -2,6 +2,18 @@
 
 <script>
 
+function delayWithSpinner(fn, ms) {
+  let timer = 0;
+  return function(...args) {
+    $('.loaderspinner').show(); // Afficher le spinner
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(this, args);
+      $('.loaderspinner').hide(); // Masquer le spinner
+    }, ms || 0);
+  };
+}
+
 function delay(fn, ms) {
   let timer = 0
   return function(...args) {
@@ -10,31 +22,44 @@ function delay(fn, ms) {
   }
 }
 
+    $('.searchInputVille').keyup(function(){
+      var id = $(this).attr("id");
+      if(id=="searchInputVilleFrance"){
+        $('#result-search-france').html('');
+      };
+      if(id=="searchInputVilleBelgique"){
+        $('#result-search-belgium').html('');
+      };
+    });
+
+
 $(document).ready(function() {
   var countrylist;
 
-    $('.searchInputVille').keyup(delay(function(){
+    $('.searchInputVille').keyup(delayWithSpinner(function(){
 
-  $('#searchInputVilleFrance').keyup(function() {
-    countrylist = "frenchtowns";
-    $('#result-search-france').html('');
-  });
-  $('#searchInputVilleBelgique').keyup(function() {
-    countrylist = "belgiumtowns";
-    $('#result-search-belgium').html('');
-  });
+      var id = $(this).attr("id");
+
+      if(id=="searchInputVilleFrance"){
+        countrylist = "frenchtowns";
+        var region = $("#regionfilterfrance").val();
+        $('#result-search-france').html('');
+      };
+      if(id=="searchInputVilleBelgique"){
+        countrylist = "belgiumtowns";
+        var region = $("#regionfilterbelgium").val();
+        $('#result-search-belgium').html('');
+      };
 
       var texte = $(this).val();
       
       console.log(countrylist);
       {# var tri = $('input[name=tri]:checked').val(); #}
 
-      {# var country = '{{country}}'; #}
-
           $.ajax({
               type: 'GET',
               url: '{{ path('ville_list_change')}}',
-              data: 'texte=' + encodeURIComponent(texte) + '&countrylist=' + countrylist,
+              data: 'texte=' + encodeURIComponent(texte) + '&countrylist=' + countrylist + '&region=' + region,
               success: function(data){
                 if(data != ""){
 
@@ -47,6 +72,47 @@ $(document).ready(function() {
 
               }else{
                 console.log("nop");
+              }
+              }
+          })
+    }, 500));
+  });
+
+
+    $('.btntrier').click(function(){
+      $('#result-search').html('');
+    });
+
+    $(document).ready(function(){
+    $('.btntrier').click(delayWithSpinner(function(){
+
+      var id = $(this).attr("id");
+
+    if(id=="btntrierfrench"){
+      $('#result-search-france').html('');
+      var region = $("#regionfilterfrance").val();
+      var texte = $('#searchInputVilleFrance').val();
+      countrylist = "frenchtowns";
+    }else if(id=="btntrierbelgium"){
+      $('#result-search-belgium').html('');
+      var region = $("#regionfilterbelgium").val();
+      var texte = $('#searchInputVilleBelgique').val();
+      countrylist = "belgiumtowns";
+      }
+
+      //{# var tri = $('input[name=tri]:checked').val(); #}
+
+          $.ajax({
+              type: 'GET',
+              url: '{{ path('ville_list_change')}}',
+              data: 'texte=' + encodeURIComponent(texte)  + '&countrylist=' + countrylist + '&region=' + region,
+              success: function(data){
+                if(data != ""){
+                      if(id=="btntrierfrench"){
+                        $('#result-search-france').append(data);
+                      }else if(id=="btntrierbelgium"){
+                        $('#result-search-belgium').append(data);
+                      }
               }
               }
           })
