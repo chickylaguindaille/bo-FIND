@@ -645,8 +645,9 @@ class AssociationController extends AbstractController
 
     // CHANT
     if (isset($inputData['sing'])){
-        $data = $inputData;
+        $data = nl2br($inputData['sing']['text']);
         $redirect = "chant";
+        // exit(var_dump($data));
     }
 
     // COMMITTEE
