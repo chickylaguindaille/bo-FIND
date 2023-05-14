@@ -21,7 +21,7 @@
                     <label class="form-label">Type</label>
                     <select name="decorum[{{key}}][type]" class="form-select">
                         {% for name in listes[0]['decorumtype']|sort %}
-                            <option {% if association.decorum[key]['type'] == name %} selected {% endif %} value="{{name}}">{{name}}</option>
+                            <option {% if association.decorum[key]['type'] is defined and association.decorum[key]['type'] == name %} selected {% endif %} value="{{name}}">{{name}}</option>
                         {% endfor %}
                     </select>
 
@@ -32,7 +32,7 @@
                     <label class="form-label">Source</label>
                     <select name="decorum[{{key}}][source]" class="form-select">
                         {% for name in listes[0]['source']|sort %}
-                            <option {% if association.decorum[key]['source'] == name %} selected {% endif %} value="{{name}}">{{name}}</option>
+                            <option {% if association.decorum[key]['source'] is defined and association.decorum[key]['source'] == name %} selected {% endif %} value="{{name}}">{{name}}</option>
                         {% endfor %}
                     </select>
 

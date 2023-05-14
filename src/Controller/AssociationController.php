@@ -394,13 +394,16 @@ class AssociationController extends AbstractController
 
         $association = $this->findApi->getAssociation($id);
         $inputData = $request->request->all();
+        // exit(var_dump($inputData));
         $filelogo = $request->files->get('logo');
 
         // MODIFICATION DU PAYS ET DE LA RÉGION
-        $town = $this->findApi->getTown($inputData['town']);
-        $inputData['town'] = $town['name'];
-        $inputData['region'] = $town['region'];
-        $inputData['country'] = $town['country'];
+        if(isset($inputData['town'])){
+            $town = $this->findApi->getTown($inputData['town']);
+            $inputData['town'] = $town['name'];
+            $inputData['region'] = $town['region'];
+            $inputData['country'] = $town['country'];
+        }
 
         $tabcolor=array();
 
@@ -654,9 +657,9 @@ class AssociationController extends AbstractController
                 $function = $inputData['committee']['function'];
                 // exit(var_dump($association));
                 if (!isset($association['committee'][$year])){
-                    exit(var_dump($inputData));
+                    // exit(var_dump($inputData));
                     $association['committee'][$year] = array();
-                    exit(var_dump("annee"));
+                    // exit(var_dump("annee"));
                 }
                 if (!isset($association['committee'][$year][$function])){
                     $association['committee'][$year][$function] = array();

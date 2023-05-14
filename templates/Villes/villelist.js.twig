@@ -2,6 +2,14 @@
 
 <script>
 
+$(document).ready(function () {
+    $('#result-search-france').DataTable();
+});
+$(document).ready(function () {
+    $('#result-search-belgium').DataTable();
+});
+
+
 function delayWithSpinner(fn, ms) {
   let timer = 0;
   return function(...args) {
@@ -53,8 +61,7 @@ $(document).ready(function() {
 
       var texte = $(this).val();
       
-      console.log(countrylist);
-      {# var tri = $('input[name=tri]:checked').val(); #}
+
 
           $.ajax({
               type: 'GET',
@@ -100,7 +107,7 @@ $(document).ready(function() {
       countrylist = "belgiumtowns";
       }
 
-      //{# var tri = $('input[name=tri]:checked').val(); #}
+
 
           $.ajax({
               type: 'GET',

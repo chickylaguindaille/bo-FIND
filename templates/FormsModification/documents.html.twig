@@ -28,7 +28,7 @@
                     <label class="form-label">Source</label>
                     <select name="document[{{key}}][source]" class="form-select">
                         {% for name in listes[0]['source']|sort %}
-                            <option {% if association.document[key]['source'] == name %} selected {% endif %} value="{{name}}">{{name}}</option>
+                            <option {% if association.document[key]['source'] is defined and association.document[key]['source'] == name %} selected {% endif %} value="{{name}}">{{name}}</option>
                         {% endfor %}
                     </select>
 

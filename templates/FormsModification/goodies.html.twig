@@ -20,7 +20,7 @@
                     <label class="form-label">Type</label>
                     <select name="goodies[{{key}}][type]" class="form-select">
                         {% for name in listes[0]['goodiestype']|sort %}
-                            <option {% if association.goodies[key]['type'] == name %} selected {% endif %} value="{{name}}">{{name}}</option>
+                            <option {% if association.goodies[key]['type'] is defined and association.goodies[key]['type'] == name %} selected {% endif %} value="{{name}}">{{name}}</option>
                         {% endfor %}
                     </select>
 
@@ -31,7 +31,7 @@
                     <label class="form-label">Source</label>
                     <select name="goodies[{{key}}][source]" class="form-select">
                         {% for name in listes[0]['source']|sort %}
-                            <option {% if association.goodies[key]['source'] == name %} selected {% endif %} value="{{name}}">{{name}}</option>
+                            <option {% if association.goodies[key]['source'] is defined and association.goodies[key]['source'] == name %} selected {% endif %} value="{{name}}">{{name}}</option>
                         {% endfor %}
                     </select>
 
