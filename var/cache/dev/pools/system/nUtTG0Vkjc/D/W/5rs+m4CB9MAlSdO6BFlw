@@ -1,0 +1,3 @@
+<?php //App%255CController%255CBaseController%2523formatSearchJson
+
+return [PHP_INT_MAX, []];

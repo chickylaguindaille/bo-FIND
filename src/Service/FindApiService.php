@@ -123,4 +123,37 @@ class FindApiService extends FindService
 		return $this->request(null, 'GET', 'api/listes');
 	}
 
+	//------------------------------------------------------------------------------------------------------------------
+	// Users
+	//------------------------------------------------------------------------------------------------------------------
+	public function getUsers()
+	{
+		return $this->request(null, 'GET', 'api/users');
+	}
+
+	public function getUser($id)
+	{
+		return $this->request(null, 'GET', 'api/users/' .$id);
+	}
+
+	public function patchUser($data, $id)
+	{;
+		$findApiUrl = $_ENV['FIND_API_URL'];
+		$client = HttpClient::create();
+		$response = $client->request('PATCH', $findApiUrl . 'api/users/' . $id , [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+            'body' => $data,
+        ]);
+
+		return $response;
+	}
+
+	public function deleteUser($id)
+	{
+		return $this->request(null, 'DELETE', 'api/users/' .$id);
+	}
+
+
 }

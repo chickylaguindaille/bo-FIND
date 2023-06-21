@@ -319,7 +319,6 @@ class AssociationController extends AbstractController
 
         $listes = $this->findApi->getListes();
 
-
         $data['listes'] = $listes['data'];
         // exit(var_dump($data['listes'][0]['hats']));
 

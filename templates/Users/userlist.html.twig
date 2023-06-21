@@ -1,0 +1,360 @@
+{% extends "layout.html.twig" %}
+
+{# {% block title %}Accueil{% endblock %} #}
+
+{% block content %}
+
+{% include 'Villes/villelist.css.twig' %}
+
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+
+                    <div class="tab-content" id="pills-tabContent">
+                        {# FRANCE #}
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                            <div class="card-body pt-1">
+                                <div class="align-items-center d-flex justify-content-between">
+
+
+                                    <div class="d-flex">
+                                        <form name="form" method="GET" id="form">
+                                            <input class="py-2 searchInputVille" id="searchInputVilleFrance" data-country="frenchtown" type="text" placeholder="Recherche"></input>
+                                        </form>
+                                        <!-- Button trigger modal tri -->
+                                        <button type="button" class="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#Modalfilter">
+                                        <span class="mx-2">Filtrer</span><i class="bi bi-chevron-down"></i>
+                                        </button>
+                                    </div>
+
+                                {# MODAL FILTER #}
+                                    {# <div class="modal fade" id="Modalfilter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Filtrer la recherche</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div class="form-group col-12">
+                                                    <label for="town">Région</label>
+                                                    <select name="town" class="form-select" id="regionfilterfrance" {{required}}>
+                                                        <option value="">/</option>
+                                                        {% for name in frenchregions|sort %}
+                                                            <option value="{{name}}">{{name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                                <button id="btntrierfrench" type="button" class="btn btn-primary btntrier" data-bs-dismiss="modal">Trier</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div> #}
+                                {# MODAL FILTER #}
+
+
+
+
+
+                                    <h3 class="card-title py-2 m-0">Utilisateurs</h3>
+
+
+                                    {# <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Ajouter une ville +
+                                    </button> #}
+                                </div>
+{# 
+                                    <!-- Modal add-->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Ajouter une ville</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="forms-sample" action="{{ path('ville_add') }}" method="post" enctype="multipart/form-data">
+                                                <div class="form-group">
+                                                <label for="name">Nom de la ville</label>
+                                                <input type="text" name="name" class="form-control inputville"  id="name" required="required">
+                                                </div>
+                                                <div class="form-group">
+                                                <label for="region">Région</label>
+                                                <input type="text" name="region" class="form-control inputville" id="region" required="required">
+                                                </div>
+                                                <div class="form-group">
+                                                <label for="country">Pays</label>
+                                                    <select name="country" class="form-select" id="country" required="required">
+                                                        <option value="France">France</option>
+                                                        <option value="Belgique">Belgique</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="blason">Blason</label>
+                                                    <input type="file" name="blason" class="form-control inputville p-2" id="blason" required="required">
+                                                </div>
+                    
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                                            
+                                        </div>
+                                        </form>
+                                        </div>
+                                    </div>
+                                    </div> #}
+                                <hr>
+                                <div class="table-responsive" id="result-search-france">
+                                    <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                        <th>
+                                            Photo
+                                        </th>
+                                        <th>
+                                            Nom
+                                        </th>
+                                        <th>
+                                            Prénom
+                                        </th>
+                                        <th>
+                                            Surnom
+                                        </th>
+                                        <th>
+                                            Email
+                                        </th>
+                                        <th>
+                                            Activé
+                                        </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for user in users %}
+                                            <tr>
+                                            <td class="py-1">
+                                                {% if user.imgprofile is defined and user.imgprofile is not empty %}
+                                                    <img src="{{ asset(user.imgprofile) }}" alt="image"/>
+                                                {% else %}
+                                                    <img src="{{ asset('assets/profil_vide.jpg') }}" alt="image"/>
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {{user.lastname}}
+                                            </td>
+                                            <td>
+                                                {{user.firstname}}
+                                            </td>
+                                            <td>
+                                                {{user.username}}
+                                            </td>
+                                            <td>
+                                                {{user.email}}
+                                            </td>
+                                            <td>
+                                                {% if user.isActive is defined and user.isActive == 1 %}
+                                                    Oui
+                                                {% else %}
+                                                    Non
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                <!-- Button trigger modal -->
+                                                        <button type="button" class="btn btn-outline-primary p-2 mx-2" data-bs-toggle="modal" data-bs-target="#modal_{{user.id}}">
+                                                        Modifier
+                                                        </button>
+                                                        <button type="button" class="btn btn-outline-danger p-2" data-bs-toggle="modal" data-bs-target="#modalsuppr_{{user.id}}">
+                                                        Supprimer
+                                                        </button>
+
+                                                        <!-- Modal Modifier-->
+                                                        <div class="modal fade" id="modal_{{user.id}}" tabindex="-1" role="dialog" aria-labelledby="modal_{{user.id}}" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLongTitle">Modifier {{user.firstname}}</h5>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form class="forms-sample" action="{{ path('user_patch', {'id': user.id, 'email': user.email}) }}" method="post" enctype="multipart/form-data">
+                                                                        <div class="form-group">
+                                                                            <label for="name">Nom</label>
+                                                                            <input type="text" class="form-control inputville" name="lastname"  id="name" value="{{user.lastname}}" required="required">
+                                                                        </div>
+                                                                            <div class="form-group">
+                                                                            <label for="region">Prénom</label>
+                                                                        <input type="text" class="form-control inputville" name="firstname" id="region" value="{{user.firstname??""}}" required="required">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="region">Surnom</label>
+                                                                            <input type="text" class="form-control inputville" name="username" id="region" value="{{user.username??""}}" required="required">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                        <label for="country">Activé</label>
+                                                                            <select name="isActive" class="form-select" id="country" required="required">
+                                                                                <option value="true" {% if user.isActive??"" == true %}selected{% endif %}>Oui</option>
+                                                                                <option value="false" {% if user.isActive??"" == false %}selected{% endif %}>Non</option>
+                                                                            </select>                                                                        
+                                                                            </div>
+                                                                        {# <div class="form-group">
+                                                                            <label for="blason">Blason</label>
+                                                                            <div class="pb-2"><i>{{user.imgprofile??""}}</i></div>
+                                                                            <input type="file" class="form-control inputville p-2" name="blason" id="blason" value="{{town.imgprofile??""}}">
+                                                                        </div> #}
+                                                                        <div class="form-check-label">
+                                                                            <label for="">Envoyer un email ({{user.email??""}})</label><br>
+                                                                            <input type="checkbox" class="checkbox mt-2" name="sendemail" checked>
+                                                                        </div>
+                                                                    
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                                                    <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                                                                </div>
+                                                                </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Modal Supprimer-->
+                                                        <div class="modal fade" id="modalsuppr_{{user.id}}" tabindex="-1" role="dialog" aria-labelledby="modalsuppr_{{user.id}}" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLongTitle">Supprimer {{user.firstname}}</h5>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Etes vous sûr de vouloir supprimer {{user.firstname}} ?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    {# <a href="{{ path('ville_delete') }}"><button type="button" class="btn btn-danger" data-bs-dismiss="modal">Supprimer</button></a> #}
+                                                                    <a class="btn btn-danger" href="{{ path('user_delete', {'id': user.id}) }}" role="button">Supprimer</a>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                            </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    </table>
+                                </div>
+                                <div id="loaderspinner" class="text-center loaderspinner" style="display:none;">
+                                    <img src="{{ asset("assets/spinner.gif") }}" class="" style="height: 100px;" alt="loading...">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        {# BELGIQUE #}
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <div class="card-body pt-1">
+                                <div class="align-items-center d-flex justify-content-between">
+
+                                    <div class="d-flex">
+                                        <form name="form" method="GET" id="form">
+                                            <input class="py-2 searchInputVille" id="searchInputVilleBelgique" data-country="belgiumtown" type="text" placeholder="Recherche"></input>
+                                        </form>
+                                    <!-- Button trigger modal tri -->
+                                        <button type="button" class="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#belgiumModalLabel">
+                                        <span class="mx-2">Filtrer</span><i class="bi bi-chevron-down"></i>
+                                        </button>
+                                    </div>
+
+                                    {# MODAL FILTER #}
+                                    {# <div class="modal fade" id="belgiumModalLabel" tabindex="-1" aria-labelledby="belgiumModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="belgiumModalLabel">Filtrer la recherche</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div class="form-group col-12">
+                                                    <label for="town">Région</label>
+                                                    <select name="town" class="form-select" id="regionfilterbelgium" {{required}}>
+                                                        <option value="">/</option>
+                                                        {% for name in belgiumregions|sort %}
+                                                            <option value="{{name}}">{{name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                                <button id="btntrierbelgium" type="button" class="btn btn-primary btntrier" data-bs-dismiss="modal">Trier</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div> #}
+                                {# MODAL FILTER #}
+
+
+                                    <h3 class="card-title py-2 m-0">Villes en Belgique</h3>
+                                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                    Ajouter une ville +
+                                    </button>
+                                </div>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Ajouter une ville</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="forms-sample" action="{{ path('ville_add') }}" method="post" enctype="multipart/form-data">
+                                                <div class="form-group">
+                                                <label for="name">Nom de la ville</label>
+                                                <input type="text" name="name" class="form-control inputville"  id="name" required="required">
+                                                </div>
+                                                <div class="form-group">
+                                                <label for="region">Région</label>
+                                                <input type="text" name="region" class="form-control inputville" id="region" required="required">
+                                                </div>
+                                                <div class="form-group">
+                                                <label for="country">Pays</label>
+                                                    <select name="country" class="form-select" id="country" required="required">
+                                                        <option value="Belgique" selected>Belgique</option>
+                                                        <option value="France">France</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="blason">Blason</label>
+                                                    <input type="file" name="blason" class="form-control inputville p-2" id="blason" required="required">
+                                                </div>
+                    
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                                            
+                                        </div>
+                                        </form>
+                                        </div>
+                                    </div>
+                                    </div>
+                                <hr>
+
+                            </div>
+                        </div>
+                    </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+    {% include 'Villes/villelist.js.twig' %}
+    {% endblock %}

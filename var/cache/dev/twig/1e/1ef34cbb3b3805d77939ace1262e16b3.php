@@ -1,0 +1,444 @@
+<?php
+
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Extension\SandboxExtension;
+use Twig\Markup;
+use Twig\Sandbox\SecurityError;
+use Twig\Sandbox\SecurityNotAllowedTagError;
+use Twig\Sandbox\SecurityNotAllowedFilterError;
+use Twig\Sandbox\SecurityNotAllowedFunctionError;
+use Twig\Source;
+use Twig\Template;
+
+/* inc/navbar.html.twig */
+class __TwigTemplate_7fa23b2f45a251963a77aaf1aede04f0 extends Template
+{
+    private $source;
+    private $macros = [];
+
+    public function __construct(Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->source = $this->getSourceContext();
+
+        $this->parent = false;
+
+        $this->blocks = [
+        ];
+    }
+
+    protected function doDisplay(array $context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "inc/navbar.html.twig"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "inc/navbar.html.twig"));
+
+        // line 1
+        echo "<div class=\"container-scroller\">
+    <!-- partial:partials/_navbar.html -->
+    <nav class=\"navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row\">
+      <div class=\"text-center navbar-brand-wrapper d-flex align-items-center justify-content-start\">
+        <div class=\"me-3\">
+          <button class=\"navbar-toggler navbar-toggler align-self-center\" type=\"button\" data-bs-toggle=\"minimize\">
+            <span class=\"icon-menu\"></span>
+          </button>
+        </div>
+        <div>
+          <a class=\"navbar-brand brand-logo\" href=\"";
+        // line 11
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
+        echo "\">
+            <img src=\"";
+        // line 12
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("logos/Logo512.png"), "html", null, true);
+        echo "\" alt=\"logo\" />
+          </a>
+          <a class=\"navbar-brand brand-logo-mini\" href=\"";
+        // line 14
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
+        echo "\">
+            <img src=\"";
+        // line 15
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("logos/Logo512.png"), "html", null, true);
+        echo "\" alt=\"logo\" />
+          </a>
+        </div>
+      </div>
+      <div class=\"navbar-menu-wrapper d-flex align-items-top\"> 
+        <ul class=\"navbar-nav\">
+          <li class=\"nav-item font-weight-semibold d-none d-lg-block ms-0\">
+            <h1 class=\"welcome-text\">Salut, <span class=\"text-black fw-bold\">Chicken</span></h1>
+            <h3 class=\"welcome-sub-text\">Folklore Is Not Dead ! </h3>
+          </li>
+        </ul>
+        <ul class=\"navbar-nav ms-auto\">
+          <li class=\"nav-item dropdown d-none d-lg-block\">
+            <a class=\"nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split\" id=\"messageDropdown\" href=\"#\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"> Select Category </a>
+            <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0\" aria-labelledby=\"messageDropdown\">
+              <a class=\"dropdown-item py-3\" >
+                <p class=\"mb-0 font-weight-medium float-left\">Select category</p>
+              </a>
+              <div class=\"dropdown-divider\"></div>
+              <a class=\"dropdown-item preview-item\">
+                <div class=\"preview-item-content flex-grow py-2\">
+                  <p class=\"preview-subject ellipsis font-weight-medium text-dark\">Bootstrap Bundle </p>
+                  <p class=\"fw-light small-text mb-0\">This is a Bundle featuring 16 unique dashboards</p>
+                </div>
+              </a>
+              <a class=\"dropdown-item preview-item\">
+                <div class=\"preview-item-content flex-grow py-2\">
+                  <p class=\"preview-subject ellipsis font-weight-medium text-dark\">Angular Bundle</p>
+                  <p class=\"fw-light small-text mb-0\">Everything you’ll ever need for your Angular projects</p>
+                </div>
+              </a>
+              <a class=\"dropdown-item preview-item\">
+                <div class=\"preview-item-content flex-grow py-2\">
+                  <p class=\"preview-subject ellipsis font-weight-medium text-dark\">VUE Bundle</p>
+                  <p class=\"fw-light small-text mb-0\">Bundle of 6 Premium Vue Admin Dashboard</p>
+                </div>
+              </a>
+              <a class=\"dropdown-item preview-item\">
+                <div class=\"preview-item-content flex-grow py-2\">
+                  <p class=\"preview-subject ellipsis font-weight-medium text-dark\">React Bundle</p>
+                  <p class=\"fw-light small-text mb-0\">Bundle of 8 Premium React Admin Dashboard</p>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class=\"nav-item d-none d-lg-block\">
+            <div id=\"datepicker-popup\" class=\"input-group date datepicker navbar-date-picker\">
+              <span class=\"input-group-addon input-group-prepend border-right\">
+                <span class=\"icon-calendar input-group-text calendar-icon\"></span>
+              </span>
+              <input type=\"text\" class=\"form-control\">
+            </div>
+          </li>
+          <li class=\"nav-item\">
+            <form class=\"search-form\" action=\"#\">
+              <i class=\"icon-search\"></i>
+              <input type=\"search\" class=\"form-control\" placeholder=\"Search Here\" title=\"Search here\">
+            </form>
+          </li>
+          <li class=\"nav-item dropdown\">
+            <a class=\"nav-link count-indicator\" id=\"notificationDropdown\" href=\"#\" data-bs-toggle=\"dropdown\">
+              <i class=\"icon-mail icon-lg\"></i>
+            </a>
+            <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0\" aria-labelledby=\"notificationDropdown\">
+              <a class=\"dropdown-item py-3 border-bottom\">
+                <p class=\"mb-0 font-weight-medium float-left\">Soumissions </p>
+                <span class=\"badge badge-pill badge-primary float-right\">View all</span>
+              </a>
+              <a class=\"dropdown-item preview-item py-3\">
+                <div class=\"preview-thumbnail\">
+                  <i class=\"mdi mdi-alert m-auto text-primary\"></i>
+                </div>
+                <div class=\"preview-item-content\">
+                  <h6 class=\"preview-subject fw-normal text-dark mb-1\">Soumission ville</h6>
+                  <p class=\"fw-light small-text mb-0\"> La ville Caen a été soumise </p>
+                </div>
+              </a>
+              <a class=\"dropdown-item preview-item py-3\">
+                <div class=\"preview-thumbnail\">
+                  <i class=\"mdi mdi-settings m-auto text-primary\"></i>
+                </div>
+                <div class=\"preview-item-content\">
+                  <h6 class=\"preview-subject fw-normal text-dark mb-1\">Soumission association</h6>
+                  <p class=\"fw-light small-text mb-0\"> L'association ALF a été soumise </p>
+                </div>
+              </a>
+              <a class=\"dropdown-item preview-item py-3\">
+                <div class=\"preview-thumbnail\">
+                  <i class=\"mdi mdi-airballoon m-auto text-primary\"></i>
+                </div>
+                <div class=\"preview-item-content\">
+                  <h6 class=\"preview-subject fw-normal text-dark mb-1\">Soumission association</h6>
+                  <p class=\"fw-light small-text mb-0\"> L'association ARE a été soumise </p>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class=\"nav-item dropdown\"> 
+            <a class=\"nav-link count-indicator\" id=\"countDropdown\" href=\"#\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
+              <i class=\"icon-bell\"></i>
+              <span class=\"count\"></span>
+            </a>
+            <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0\" aria-labelledby=\"countDropdown\">
+              <a class=\"dropdown-item py-3\">
+                <p class=\"mb-0 font-weight-medium float-left\">Modifications </p>
+                <span class=\"badge badge-pill badge-primary float-right\">Voir toutes</span>
+              </a>
+              <div class=\"dropdown-divider\"></div>
+              <a class=\"dropdown-item preview-item\">
+                <div class=\"preview-thumbnail\">
+                  <img src=\"";
+        // line 125
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("logos/Logo512.png"), "html", null, true);
+        echo "\" alt=\"image\" class=\"img-sm profile-pic\">
+                </div>
+                <div class=\"preview-item-content flex-grow py-2\">
+                  <p class=\"preview-subject ellipsis font-weight-medium text-dark\">Etienne Leroy </p>
+                  <p class=\"fw-light small-text mb-0\"> La ville Lille a été créée </p>
+                </div>
+              </a>
+              <a class=\"dropdown-item preview-item\">
+                <div class=\"preview-thumbnail\">
+                  <img src=\"";
+        // line 134
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("logos/Logo512.png"), "html", null, true);
+        echo "\" alt=\"image\" class=\"img-sm profile-pic\">
+                </div>
+                <div class=\"preview-item-content flex-grow py-2\">
+                  <p class=\"preview-subject ellipsis font-weight-medium text-dark\">Leroy Etienne </p>
+                  <p class=\"fw-light small-text mb-0\"> L'associatition Interfilière - Paris a été modifiée  </p>
+                </div>
+              </a>
+              <a class=\"dropdown-item preview-item\">
+                <div class=\"preview-thumbnail\">
+                  <img src=\"";
+        // line 143
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("logos/Logo512.png"), "html", null, true);
+        echo "\" alt=\"image\" class=\"img-sm profile-pic\">
+                </div>
+                <div class=\"preview-item-content flex-grow py-2\">
+                  <p class=\"preview-subject ellipsis font-weight-medium text-dark\">Leroy Etienne </p>
+                  <p class=\"fw-light small-text mb-0\"> L'associatition Interfilière - Paris a été créée </p>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class=\"nav-item dropdown d-none d-lg-block user-dropdown\">
+            <a class=\"nav-link\" id=\"UserDropdown\" href=\"#\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
+              <img class=\"img-xs rounded-circle\" src=\"";
+        // line 154
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("logos/Logo512.png"), "html", null, true);
+        echo "\" alt=\"Profile image\"> </a>
+            <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown\" aria-labelledby=\"UserDropdown\">
+              <div class=\"dropdown-header text-center\">
+                <img class=\"img-md rounded-circle\" src=\"";
+        // line 157
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("logos/Logo72.png"), "html", null, true);
+        echo "\" alt=\"Profile image\">
+                <p class=\"mb-1 mt-3 font-weight-semibold\">Allen Moreno</p>
+                <p class=\"fw-light text-muted mb-0\">allenmoreno@gmail.com</p>
+              </div>
+              <a class=\"dropdown-item\"><i class=\"dropdown-item-icon mdi mdi-account-outline text-primary me-2\"></i> My Profile <span class=\"badge badge-pill badge-danger\">1</span></a>
+              <a class=\"dropdown-item\"><i class=\"dropdown-item-icon mdi mdi-message-text-outline text-primary me-2\"></i> Messages</a>
+              <a class=\"dropdown-item\"><i class=\"dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2\"></i> Activity</a>
+              <a class=\"dropdown-item\"><i class=\"dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2\"></i> FAQ</a>
+              <a class=\"dropdown-item\"><i class=\"dropdown-item-icon mdi mdi-power text-primary me-2\"></i>Sign Out</a>
+            </div>
+          </li>
+        </ul>
+        <button class=\"navbar-toggler navbar-toggler-right d-lg-none align-self-center\" type=\"button\" data-bs-toggle=\"offcanvas\">
+          <span class=\"mdi mdi-menu\"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->";
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+    }
+
+    public function getTemplateName()
+    {
+        return "inc/navbar.html.twig";
+    }
+
+    public function isTraitable()
+    {
+        return false;
+    }
+
+    public function getDebugInfo()
+    {
+        return array (  225 => 157,  219 => 154,  205 => 143,  193 => 134,  181 => 125,  68 => 15,  64 => 14,  59 => 12,  55 => 11,  43 => 1,);
+    }
+
+    public function getSourceContext()
+    {
+        return new Source("<div class=\"container-scroller\">
+    <!-- partial:partials/_navbar.html -->
+    <nav class=\"navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row\">
+      <div class=\"text-center navbar-brand-wrapper d-flex align-items-center justify-content-start\">
+        <div class=\"me-3\">
+          <button class=\"navbar-toggler navbar-toggler align-self-center\" type=\"button\" data-bs-toggle=\"minimize\">
+            <span class=\"icon-menu\"></span>
+          </button>
+        </div>
+        <div>
+          <a class=\"navbar-brand brand-logo\" href=\"{{ path('home')}}\">
+            <img src=\"{{ asset(\"logos/Logo512.png\") }}\" alt=\"logo\" />
+          </a>
+          <a class=\"navbar-brand brand-logo-mini\" href=\"{{ path('home')}}\">
+            <img src=\"{{ asset(\"logos/Logo512.png\") }}\" alt=\"logo\" />
+          </a>
+        </div>
+      </div>
+      <div class=\"navbar-menu-wrapper d-flex align-items-top\"> 
+        <ul class=\"navbar-nav\">
+          <li class=\"nav-item font-weight-semibold d-none d-lg-block ms-0\">
+            <h1 class=\"welcome-text\">Salut, <span class=\"text-black fw-bold\">Chicken</span></h1>
+            <h3 class=\"welcome-sub-text\">Folklore Is Not Dead ! </h3>
+          </li>
+        </ul>
+        <ul class=\"navbar-nav ms-auto\">
+          <li class=\"nav-item dropdown d-none d-lg-block\">
+            <a class=\"nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split\" id=\"messageDropdown\" href=\"#\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"> Select Category </a>
+            <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0\" aria-labelledby=\"messageDropdown\">
+              <a class=\"dropdown-item py-3\" >
+                <p class=\"mb-0 font-weight-medium float-left\">Select category</p>
+              </a>
+              <div class=\"dropdown-divider\"></div>
+              <a class=\"dropdown-item preview-item\">
+                <div class=\"preview-item-content flex-grow py-2\">
+                  <p class=\"preview-subject ellipsis font-weight-medium text-dark\">Bootstrap Bundle </p>
+                  <p class=\"fw-light small-text mb-0\">This is a Bundle featuring 16 unique dashboards</p>
+                </div>
+              </a>
+              <a class=\"dropdown-item preview-item\">
+                <div class=\"preview-item-content flex-grow py-2\">
+                  <p class=\"preview-subject ellipsis font-weight-medium text-dark\">Angular Bundle</p>
+                  <p class=\"fw-light small-text mb-0\">Everything you’ll ever need for your Angular projects</p>
+                </div>
+              </a>
+              <a class=\"dropdown-item preview-item\">
+                <div class=\"preview-item-content flex-grow py-2\">
+                  <p class=\"preview-subject ellipsis font-weight-medium text-dark\">VUE Bundle</p>
+                  <p class=\"fw-light small-text mb-0\">Bundle of 6 Premium Vue Admin Dashboard</p>
+                </div>
+              </a>
+              <a class=\"dropdown-item preview-item\">
+                <div class=\"preview-item-content flex-grow py-2\">
+                  <p class=\"preview-subject ellipsis font-weight-medium text-dark\">React Bundle</p>
+                  <p class=\"fw-light small-text mb-0\">Bundle of 8 Premium React Admin Dashboard</p>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class=\"nav-item d-none d-lg-block\">
+            <div id=\"datepicker-popup\" class=\"input-group date datepicker navbar-date-picker\">
+              <span class=\"input-group-addon input-group-prepend border-right\">
+                <span class=\"icon-calendar input-group-text calendar-icon\"></span>
+              </span>
+              <input type=\"text\" class=\"form-control\">
+            </div>
+          </li>
+          <li class=\"nav-item\">
+            <form class=\"search-form\" action=\"#\">
+              <i class=\"icon-search\"></i>
+              <input type=\"search\" class=\"form-control\" placeholder=\"Search Here\" title=\"Search here\">
+            </form>
+          </li>
+          <li class=\"nav-item dropdown\">
+            <a class=\"nav-link count-indicator\" id=\"notificationDropdown\" href=\"#\" data-bs-toggle=\"dropdown\">
+              <i class=\"icon-mail icon-lg\"></i>
+            </a>
+            <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0\" aria-labelledby=\"notificationDropdown\">
+              <a class=\"dropdown-item py-3 border-bottom\">
+                <p class=\"mb-0 font-weight-medium float-left\">Soumissions </p>
+                <span class=\"badge badge-pill badge-primary float-right\">View all</span>
+              </a>
+              <a class=\"dropdown-item preview-item py-3\">
+                <div class=\"preview-thumbnail\">
+                  <i class=\"mdi mdi-alert m-auto text-primary\"></i>
+                </div>
+                <div class=\"preview-item-content\">
+                  <h6 class=\"preview-subject fw-normal text-dark mb-1\">Soumission ville</h6>
+                  <p class=\"fw-light small-text mb-0\"> La ville Caen a été soumise </p>
+                </div>
+              </a>
+              <a class=\"dropdown-item preview-item py-3\">
+                <div class=\"preview-thumbnail\">
+                  <i class=\"mdi mdi-settings m-auto text-primary\"></i>
+                </div>
+                <div class=\"preview-item-content\">
+                  <h6 class=\"preview-subject fw-normal text-dark mb-1\">Soumission association</h6>
+                  <p class=\"fw-light small-text mb-0\"> L'association ALF a été soumise </p>
+                </div>
+              </a>
+              <a class=\"dropdown-item preview-item py-3\">
+                <div class=\"preview-thumbnail\">
+                  <i class=\"mdi mdi-airballoon m-auto text-primary\"></i>
+                </div>
+                <div class=\"preview-item-content\">
+                  <h6 class=\"preview-subject fw-normal text-dark mb-1\">Soumission association</h6>
+                  <p class=\"fw-light small-text mb-0\"> L'association ARE a été soumise </p>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class=\"nav-item dropdown\"> 
+            <a class=\"nav-link count-indicator\" id=\"countDropdown\" href=\"#\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
+              <i class=\"icon-bell\"></i>
+              <span class=\"count\"></span>
+            </a>
+            <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0\" aria-labelledby=\"countDropdown\">
+              <a class=\"dropdown-item py-3\">
+                <p class=\"mb-0 font-weight-medium float-left\">Modifications </p>
+                <span class=\"badge badge-pill badge-primary float-right\">Voir toutes</span>
+              </a>
+              <div class=\"dropdown-divider\"></div>
+              <a class=\"dropdown-item preview-item\">
+                <div class=\"preview-thumbnail\">
+                  <img src=\"{{ asset(\"logos/Logo512.png\") }}\" alt=\"image\" class=\"img-sm profile-pic\">
+                </div>
+                <div class=\"preview-item-content flex-grow py-2\">
+                  <p class=\"preview-subject ellipsis font-weight-medium text-dark\">Etienne Leroy </p>
+                  <p class=\"fw-light small-text mb-0\"> La ville Lille a été créée </p>
+                </div>
+              </a>
+              <a class=\"dropdown-item preview-item\">
+                <div class=\"preview-thumbnail\">
+                  <img src=\"{{ asset(\"logos/Logo512.png\") }}\" alt=\"image\" class=\"img-sm profile-pic\">
+                </div>
+                <div class=\"preview-item-content flex-grow py-2\">
+                  <p class=\"preview-subject ellipsis font-weight-medium text-dark\">Leroy Etienne </p>
+                  <p class=\"fw-light small-text mb-0\"> L'associatition Interfilière - Paris a été modifiée  </p>
+                </div>
+              </a>
+              <a class=\"dropdown-item preview-item\">
+                <div class=\"preview-thumbnail\">
+                  <img src=\"{{ asset(\"logos/Logo512.png\") }}\" alt=\"image\" class=\"img-sm profile-pic\">
+                </div>
+                <div class=\"preview-item-content flex-grow py-2\">
+                  <p class=\"preview-subject ellipsis font-weight-medium text-dark\">Leroy Etienne </p>
+                  <p class=\"fw-light small-text mb-0\"> L'associatition Interfilière - Paris a été créée </p>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class=\"nav-item dropdown d-none d-lg-block user-dropdown\">
+            <a class=\"nav-link\" id=\"UserDropdown\" href=\"#\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
+              <img class=\"img-xs rounded-circle\" src=\"{{ asset(\"logos/Logo512.png\") }}\" alt=\"Profile image\"> </a>
+            <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown\" aria-labelledby=\"UserDropdown\">
+              <div class=\"dropdown-header text-center\">
+                <img class=\"img-md rounded-circle\" src=\"{{ asset(\"logos/Logo72.png\") }}\" alt=\"Profile image\">
+                <p class=\"mb-1 mt-3 font-weight-semibold\">Allen Moreno</p>
+                <p class=\"fw-light text-muted mb-0\">allenmoreno@gmail.com</p>
+              </div>
+              <a class=\"dropdown-item\"><i class=\"dropdown-item-icon mdi mdi-account-outline text-primary me-2\"></i> My Profile <span class=\"badge badge-pill badge-danger\">1</span></a>
+              <a class=\"dropdown-item\"><i class=\"dropdown-item-icon mdi mdi-message-text-outline text-primary me-2\"></i> Messages</a>
+              <a class=\"dropdown-item\"><i class=\"dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2\"></i> Activity</a>
+              <a class=\"dropdown-item\"><i class=\"dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2\"></i> FAQ</a>
+              <a class=\"dropdown-item\"><i class=\"dropdown-item-icon mdi mdi-power text-primary me-2\"></i>Sign Out</a>
+            </div>
+          </li>
+        </ul>
+        <button class=\"navbar-toggler navbar-toggler-right d-lg-none align-self-center\" type=\"button\" data-bs-toggle=\"offcanvas\">
+          <span class=\"mdi mdi-menu\"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->", "inc/navbar.html.twig", "/opt/lampp/htdocs/bo-FIND/templates/inc/navbar.html.twig");
+    }
+}
