@@ -31,7 +31,7 @@ class HomeController extends AbstractController
 
 
     /**
-     * @Route("/home", name="home")
+     * @Route("/bo/home", name="home")
      * @Template()
      */
     public function home(FindApiService $findApi)
