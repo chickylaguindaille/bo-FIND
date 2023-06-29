@@ -11,7 +11,7 @@ return [
         '/association/add' => [[['_route' => 'association_add', '_controller' => 'App\\Controller\\AssociationController::associationAdd'], null, null, null, false, false, null]],
         '/association/list' => [[['_route' => 'association_list', '_controller' => 'App\\Controller\\AssociationController::associationList'], null, null, null, false, false, null]],
         '/association/list/change' => [[['_route' => 'association_list_change', '_controller' => 'App\\Controller\\AssociationController::associationListChange'], null, null, null, false, false, null]],
-        '/home' => [[['_route' => 'home', '_controller' => 'App\\Controller\\HomeController::home'], null, null, null, false, false, null]],
+        '/bo/home' => [[['_route' => 'home', '_controller' => 'App\\Controller\\HomeController::home'], null, null, null, false, false, null]],
         '/ville/list' => [[['_route' => 'ville_list', '_controller' => 'App\\Controller\\TownController::villeList'], null, null, null, false, false, null]],
         '/user/list' => [[['_route' => 'user_list', '_controller' => 'App\\Controller\\UserController::userList'], null, null, null, false, false, null]],
         '/ville/list/change' => [[['_route' => 'ville_list_change', '_controller' => 'App\\Controller\\UserController::villeListChange'], null, null, null, false, false, null]],

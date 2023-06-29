@@ -58,44 +58,44 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
         <!-- plugins:css -->
         <link rel=\"stylesheet\" href=\"";
         // line 9
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/vendors/feather/feather.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/vendors/feather/feather.css"), "html", null, true);
         echo "\">
         <link rel=\"stylesheet\" href=\"";
         // line 10
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/vendors/mdi/css/materialdesignicons.min.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/vendors/mdi/css/materialdesignicons.min.css"), "html", null, true);
         echo "\">
         <link rel=\"stylesheet\" href=\"";
         // line 11
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/vendors/ti-icons/css/themify-icons.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/vendors/ti-icons/css/themify-icons.css"), "html", null, true);
         echo "\">
         <link rel=\"stylesheet\" href=\"";
         // line 12
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/vendors/typicons/typicons.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/vendors/typicons/typicons.css"), "html", null, true);
         echo "\">
         <link rel=\"stylesheet\" href=\"";
         // line 13
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/vendors/simple-line-icons/css/simple-line-icons.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/vendors/simple-line-icons/css/simple-line-icons.css"), "html", null, true);
         echo "\">
         <link rel=\"stylesheet\" href=\"";
         // line 14
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/vendors/css/vendor.bundle.base.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/vendors/css/vendor.bundle.base.css"), "html", null, true);
         echo "\">
         <!-- endinject -->
         <!-- Plugin css for this page -->
         <link rel=\"stylesheet\" href=\"";
         // line 17
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/js/select.dataTables.min.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/js/select.dataTables.min.css"), "html", null, true);
         echo "\">
         <!-- End plugin css for this page -->
         <!-- inject:css -->
         <link rel=\"stylesheet\" href=\"";
         // line 20
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/css/vertical-layout-light/style.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/css/vertical-layout-light/style.css"), "html", null, true);
         echo "\">
         <!-- endinject -->
         <link rel=\"shortcut icon\" href=\"";
         // line 22
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("logos/32x32.png"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/logos/32x32.png"), "html", null, true);
         echo "\" />
         
         ";
@@ -118,58 +118,58 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
       <!-- plugins:js -->
   <script src=\"";
         // line 37
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/vendors/js/vendor.bundle.base.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/vendors/js/vendor.bundle.base.js"), "html", null, true);
         echo "\"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <script src=\"";
         // line 40
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/vendors/chart.js/Chart.min.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/vendors/chart.js/Chart.min.js"), "html", null, true);
         echo "\"></script>
   <script src=\"";
         // line 41
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"), "html", null, true);
         echo "\"></script>
   <script src=\"";
         // line 42
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/vendors/progressbar.js/progressbar.min.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/vendors/progressbar.js/progressbar.min.js"), "html", null, true);
         echo "\"></script>
 
   <!-- End plugin js for this page -->
   <!-- inject:js -->
   <script src=\"";
         // line 46
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/js/off-canvas.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/js/off-canvas.js"), "html", null, true);
         echo "\"></script>
   <script src=\"";
         // line 47
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/js/hoverable-collapse.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/js/hoverable-collapse.js"), "html", null, true);
         echo "\"></script>
   <script src=\"";
         // line 48
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/js/template.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/js/template.js"), "html", null, true);
         echo "\"></script>
   <script src=\"";
         // line 49
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/js/settings.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/js/settings.js"), "html", null, true);
         echo "\"></script>
   <script src=\"";
         // line 50
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/js/todolist.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/js/todolist.js"), "html", null, true);
         echo "\"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src=\"";
         // line 53
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/js/jquery.cookie.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/js/jquery.cookie.js"), "html", null, true);
         echo "\" type=\"text/javascript\"></script>
   <script src=\"";
         // line 54
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/js/dashboard.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/js/dashboard.js"), "html", null, true);
         echo "\"></script>
   <script src=\"";
         // line 55
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/js/Chart.roundedBarCharts.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/staradmin/js/Chart.roundedBarCharts.js"), "html", null, true);
         echo "\"></script>
   <!-- End custom js for this page-->
   
@@ -295,20 +295,20 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
         {# Bootstrap icon  #}
         <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css\" integrity=\"sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e\" crossorigin=\"anonymous\">
         <!-- plugins:css -->
-        <link rel=\"stylesheet\" href=\"{{ asset(\"staradmin/vendors/feather/feather.css\") }}\">
-        <link rel=\"stylesheet\" href=\"{{ asset(\"staradmin/vendors/mdi/css/materialdesignicons.min.css\") }}\">
-        <link rel=\"stylesheet\" href=\"{{ asset(\"staradmin/vendors/ti-icons/css/themify-icons.css\") }}\">
-        <link rel=\"stylesheet\" href=\"{{ asset(\"staradmin/vendors/typicons/typicons.css\") }}\">
-        <link rel=\"stylesheet\" href=\"{{ asset(\"staradmin/vendors/simple-line-icons/css/simple-line-icons.css\") }}\">
-        <link rel=\"stylesheet\" href=\"{{ asset(\"staradmin/vendors/css/vendor.bundle.base.css\") }}\">
+        <link rel=\"stylesheet\" href=\"{{ asset(\"bo/staradmin/vendors/feather/feather.css\") }}\">
+        <link rel=\"stylesheet\" href=\"{{ asset(\"bo/staradmin/vendors/mdi/css/materialdesignicons.min.css\") }}\">
+        <link rel=\"stylesheet\" href=\"{{ asset(\"bo/staradmin/vendors/ti-icons/css/themify-icons.css\") }}\">
+        <link rel=\"stylesheet\" href=\"{{ asset(\"bo/staradmin/vendors/typicons/typicons.css\") }}\">
+        <link rel=\"stylesheet\" href=\"{{ asset(\"bo/staradmin/vendors/simple-line-icons/css/simple-line-icons.css\") }}\">
+        <link rel=\"stylesheet\" href=\"{{ asset(\"bo/staradmin/vendors/css/vendor.bundle.base.css\") }}\">
         <!-- endinject -->
         <!-- Plugin css for this page -->
-        <link rel=\"stylesheet\" href=\"{{ asset(\"staradmin/js/select.dataTables.min.css\") }}\">
+        <link rel=\"stylesheet\" href=\"{{ asset(\"bo/staradmin/js/select.dataTables.min.css\") }}\">
         <!-- End plugin css for this page -->
         <!-- inject:css -->
-        <link rel=\"stylesheet\" href=\"{{ asset(\"staradmin/css/vertical-layout-light/style.css\") }}\">
+        <link rel=\"stylesheet\" href=\"{{ asset(\"bo/staradmin/css/vertical-layout-light/style.css\") }}\">
         <!-- endinject -->
-        <link rel=\"shortcut icon\" href=\"{{ asset(\"logos/32x32.png\") }}\" />
+        <link rel=\"shortcut icon\" href=\"{{ asset(\"bo/logos/32x32.png\") }}\" />
         
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -323,25 +323,25 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
     </body>
 
       <!-- plugins:js -->
-  <script src=\"{{ asset(\"staradmin/vendors/js/vendor.bundle.base.js\") }}\"></script>
+  <script src=\"{{ asset(\"bo/staradmin/vendors/js/vendor.bundle.base.js\") }}\"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
-  <script src=\"{{ asset(\"staradmin/vendors/chart.js/Chart.min.js\") }}\"></script>
-  <script src=\"{{ asset(\"staradmin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js\") }}\"></script>
-  <script src=\"{{ asset(\"staradmin/vendors/progressbar.js/progressbar.min.js\") }}\"></script>
+  <script src=\"{{ asset(\"bo/staradmin/vendors/chart.js/Chart.min.js\") }}\"></script>
+  <script src=\"{{ asset(\"bo/staradmin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js\") }}\"></script>
+  <script src=\"{{ asset(\"bo/staradmin/vendors/progressbar.js/progressbar.min.js\") }}\"></script>
 
   <!-- End plugin js for this page -->
   <!-- inject:js -->
-  <script src=\"{{ asset(\"staradmin/js/off-canvas.js\") }}\"></script>
-  <script src=\"{{ asset(\"staradmin/js/hoverable-collapse.js\") }}\"></script>
-  <script src=\"{{ asset(\"staradmin/js/template.js\") }}\"></script>
-  <script src=\"{{ asset(\"staradmin/js/settings.js\") }}\"></script>
-  <script src=\"{{ asset(\"staradmin/js/todolist.js\") }}\"></script>
+  <script src=\"{{ asset(\"bo/staradmin/js/off-canvas.js\") }}\"></script>
+  <script src=\"{{ asset(\"bo/staradmin/js/hoverable-collapse.js\") }}\"></script>
+  <script src=\"{{ asset(\"bo/staradmin/js/template.js\") }}\"></script>
+  <script src=\"{{ asset(\"bo/staradmin/js/settings.js\") }}\"></script>
+  <script src=\"{{ asset(\"bo/staradmin/js/todolist.js\") }}\"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src=\"{{ asset(\"staradmin/js/jquery.cookie.js\") }}\" type=\"text/javascript\"></script>
-  <script src=\"{{ asset(\"staradmin/js/dashboard.js\") }}\"></script>
-  <script src=\"{{ asset(\"staradmin/js/Chart.roundedBarCharts.js\") }}\"></script>
+  <script src=\"{{ asset(\"bo/staradmin/js/jquery.cookie.js\") }}\" type=\"text/javascript\"></script>
+  <script src=\"{{ asset(\"bo/staradmin/js/dashboard.js\") }}\"></script>
+  <script src=\"{{ asset(\"bo/staradmin/js/Chart.roundedBarCharts.js\") }}\"></script>
   <!-- End custom js for this page-->
   
 <script>

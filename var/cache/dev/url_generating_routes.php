@@ -9,7 +9,7 @@ return [
     'association_patch' => [['id'], ['_controller' => 'App\\Controller\\AssociationController::associationPatch'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/association/patch']], [], [], []],
     'association_delete' => [['id'], ['_controller' => 'App\\Controller\\AssociationController::villeDelete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/association/delete']], [], [], []],
     'association_list_change' => [[], ['_controller' => 'App\\Controller\\AssociationController::associationListChange'], [], [['text', '/association/list/change']], [], [], []],
-    'home' => [[], ['_controller' => 'App\\Controller\\HomeController::home'], [], [['text', '/home']], [], [], []],
+    'home' => [[], ['_controller' => 'App\\Controller\\HomeController::home'], [], [['text', '/bo/home']], [], [], []],
     'ville_list' => [[], ['_controller' => 'App\\Controller\\TownController::villeList'], [], [['text', '/ville/list']], [], [], []],
     'ville_patch' => [['id'], ['_controller' => 'App\\Controller\\TownController::villePatch'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/ville/patch']], [], [], []],
     'ville_delete' => [['id'], ['_controller' => 'App\\Controller\\TownController::villeDelete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/ville/delete']], [], [], []],

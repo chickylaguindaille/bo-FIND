@@ -137,7 +137,7 @@ class __TwigTemplate_ea5518ae473b94c3f506faa386dc9a5b extends Template
               <li class=\"list active\">
                 <div class=\"profile\"><img src=\"";
         // line 96
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/images/faces/face1.jpg"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("app/staradmin/images/faces/face1.jpg"), "html", null, true);
         echo "\" alt=\"image\"><span class=\"online\"></span></div>
                 <div class=\"info\">
                   <p>Thomas Douglas</p>
@@ -148,7 +148,7 @@ class __TwigTemplate_ea5518ae473b94c3f506faa386dc9a5b extends Template
               <li class=\"list\">
                 <div class=\"profile\"><img src=\"";
         // line 104
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/images/faces/face2.jpg"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("app/staradmin/images/faces/face2.jpg"), "html", null, true);
         echo "\" alt=\"image\"><span class=\"offline\"></span></div>
                 <div class=\"info\">
                   <div class=\"wrapper d-flex\">
@@ -162,7 +162,7 @@ class __TwigTemplate_ea5518ae473b94c3f506faa386dc9a5b extends Template
               <li class=\"list\">
                 <div class=\"profile\"><img src=\"";
         // line 115
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/images/faces/face3.jpg"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("app/staradmin/images/faces/face3.jpg"), "html", null, true);
         echo "\" alt=\"image\"><span class=\"online\"></span></div>
                 <div class=\"info\">
                   <p>Daniel Russell</p>
@@ -173,7 +173,7 @@ class __TwigTemplate_ea5518ae473b94c3f506faa386dc9a5b extends Template
               <li class=\"list\">
                 <div class=\"profile\"><img src=\"";
         // line 123
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/images/faces/face4.jpg"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("app/staradmin/images/faces/face4.jpg"), "html", null, true);
         echo "\" alt=\"image\"><span class=\"offline\"></span></div>
                 <div class=\"info\">
                   <p>James Richardson</p>
@@ -184,7 +184,7 @@ class __TwigTemplate_ea5518ae473b94c3f506faa386dc9a5b extends Template
               <li class=\"list\">
                 <div class=\"profile\"><img src=\"";
         // line 131
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/images/faces/face5.jpg"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("app/staradmin/images/faces/face5.jpg"), "html", null, true);
         echo "\" alt=\"image\"><span class=\"online\"></span></div>
                 <div class=\"info\">
                   <p>Madeline Kennedy</p>
@@ -195,7 +195,7 @@ class __TwigTemplate_ea5518ae473b94c3f506faa386dc9a5b extends Template
               <li class=\"list\">
                 <div class=\"profile\"><img src=\"";
         // line 139
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("staradmin/images/faces/face6.jpg"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("app/staradmin/images/faces/face6.jpg"), "html", null, true);
         echo "\" alt=\"image\"><span class=\"online\"></span></div>
                 <div class=\"info\">
                   <p>Sarah Graves</p>
@@ -207,7 +207,8 @@ class __TwigTemplate_ea5518ae473b94c3f506faa386dc9a5b extends Template
           </div>
           <!-- chat tab ends -->
         </div>
-      </div>";
+      </div>
+";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
@@ -328,7 +329,7 @@ class __TwigTemplate_ea5518ae473b94c3f506faa386dc9a5b extends Template
             </div>
             <ul class=\"chat-list\">
               <li class=\"list active\">
-                <div class=\"profile\"><img src=\"{{ asset(\"staradmin/images/faces/face1.jpg\") }}\" alt=\"image\"><span class=\"online\"></span></div>
+                <div class=\"profile\"><img src=\"{{ asset(\"app/staradmin/images/faces/face1.jpg\") }}\" alt=\"image\"><span class=\"online\"></span></div>
                 <div class=\"info\">
                   <p>Thomas Douglas</p>
                   <p>Available</p>
@@ -336,7 +337,7 @@ class __TwigTemplate_ea5518ae473b94c3f506faa386dc9a5b extends Template
                 <small class=\"text-muted my-auto\">19 min</small>
               </li>
               <li class=\"list\">
-                <div class=\"profile\"><img src=\"{{ asset(\"staradmin/images/faces/face2.jpg\") }}\" alt=\"image\"><span class=\"offline\"></span></div>
+                <div class=\"profile\"><img src=\"{{ asset(\"app/staradmin/images/faces/face2.jpg\") }}\" alt=\"image\"><span class=\"offline\"></span></div>
                 <div class=\"info\">
                   <div class=\"wrapper d-flex\">
                     <p>Catherine</p>
@@ -347,7 +348,7 @@ class __TwigTemplate_ea5518ae473b94c3f506faa386dc9a5b extends Template
                 <small class=\"text-muted my-auto\">23 min</small>
               </li>
               <li class=\"list\">
-                <div class=\"profile\"><img src=\"{{ asset(\"staradmin/images/faces/face3.jpg\") }}\" alt=\"image\"><span class=\"online\"></span></div>
+                <div class=\"profile\"><img src=\"{{ asset(\"app/staradmin/images/faces/face3.jpg\") }}\" alt=\"image\"><span class=\"online\"></span></div>
                 <div class=\"info\">
                   <p>Daniel Russell</p>
                   <p>Available</p>
@@ -355,7 +356,7 @@ class __TwigTemplate_ea5518ae473b94c3f506faa386dc9a5b extends Template
                 <small class=\"text-muted my-auto\">14 min</small>
               </li>
               <li class=\"list\">
-                <div class=\"profile\"><img src=\"{{ asset(\"staradmin/images/faces/face4.jpg\") }}\" alt=\"image\"><span class=\"offline\"></span></div>
+                <div class=\"profile\"><img src=\"{{ asset(\"app/staradmin/images/faces/face4.jpg\") }}\" alt=\"image\"><span class=\"offline\"></span></div>
                 <div class=\"info\">
                   <p>James Richardson</p>
                   <p>Away</p>
@@ -363,7 +364,7 @@ class __TwigTemplate_ea5518ae473b94c3f506faa386dc9a5b extends Template
                 <small class=\"text-muted my-auto\">2 min</small>
               </li>
               <li class=\"list\">
-                <div class=\"profile\"><img src=\"{{ asset(\"staradmin/images/faces/face5.jpg\") }}\" alt=\"image\"><span class=\"online\"></span></div>
+                <div class=\"profile\"><img src=\"{{ asset(\"app/staradmin/images/faces/face5.jpg\") }}\" alt=\"image\"><span class=\"online\"></span></div>
                 <div class=\"info\">
                   <p>Madeline Kennedy</p>
                   <p>Available</p>
@@ -371,7 +372,7 @@ class __TwigTemplate_ea5518ae473b94c3f506faa386dc9a5b extends Template
                 <small class=\"text-muted my-auto\">5 min</small>
               </li>
               <li class=\"list\">
-                <div class=\"profile\"><img src=\"{{ asset(\"staradmin/images/faces/face6.jpg\") }}\" alt=\"image\"><span class=\"online\"></span></div>
+                <div class=\"profile\"><img src=\"{{ asset(\"app/staradmin/images/faces/face6.jpg\") }}\" alt=\"image\"><span class=\"online\"></span></div>
                 <div class=\"info\">
                   <p>Sarah Graves</p>
                   <p>Available</p>
@@ -382,6 +383,7 @@ class __TwigTemplate_ea5518ae473b94c3f506faa386dc9a5b extends Template
           </div>
           <!-- chat tab ends -->
         </div>
-      </div>", "inc/rightsidebar.html.twig", "/opt/lampp/htdocs/bo-FIND/templates/inc/rightsidebar.html.twig");
+      </div>
+", "inc/rightsidebar.html.twig", "/opt/lampp/htdocs/bo-FIND/templates/inc/rightsidebar.html.twig");
     }
 }

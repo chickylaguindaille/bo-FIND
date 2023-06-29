@@ -56,7 +56,7 @@ class __TwigTemplate_7fa23b2f45a251963a77aaf1aede04f0 extends Template
         echo "\">
             <img src=\"";
         // line 12
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("logos/Logo512.png"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/logos/Logo512.png"), "html", null, true);
         echo "\" alt=\"logo\" />
           </a>
           <a class=\"navbar-brand brand-logo-mini\" href=\"";
@@ -65,7 +65,7 @@ class __TwigTemplate_7fa23b2f45a251963a77aaf1aede04f0 extends Template
         echo "\">
             <img src=\"";
         // line 15
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("logos/Logo512.png"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/logos/Logo512.png"), "html", null, true);
         echo "\" alt=\"logo\" />
           </a>
         </div>
@@ -178,7 +178,7 @@ class __TwigTemplate_7fa23b2f45a251963a77aaf1aede04f0 extends Template
                 <div class=\"preview-thumbnail\">
                   <img src=\"";
         // line 125
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("logos/Logo512.png"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/logos/Logo512.png"), "html", null, true);
         echo "\" alt=\"image\" class=\"img-sm profile-pic\">
                 </div>
                 <div class=\"preview-item-content flex-grow py-2\">
@@ -190,7 +190,7 @@ class __TwigTemplate_7fa23b2f45a251963a77aaf1aede04f0 extends Template
                 <div class=\"preview-thumbnail\">
                   <img src=\"";
         // line 134
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("logos/Logo512.png"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/logos/Logo512.png"), "html", null, true);
         echo "\" alt=\"image\" class=\"img-sm profile-pic\">
                 </div>
                 <div class=\"preview-item-content flex-grow py-2\">
@@ -202,7 +202,7 @@ class __TwigTemplate_7fa23b2f45a251963a77aaf1aede04f0 extends Template
                 <div class=\"preview-thumbnail\">
                   <img src=\"";
         // line 143
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("logos/Logo512.png"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/logos/Logo512.png"), "html", null, true);
         echo "\" alt=\"image\" class=\"img-sm profile-pic\">
                 </div>
                 <div class=\"preview-item-content flex-grow py-2\">
@@ -216,13 +216,13 @@ class __TwigTemplate_7fa23b2f45a251963a77aaf1aede04f0 extends Template
             <a class=\"nav-link\" id=\"UserDropdown\" href=\"#\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
               <img class=\"img-xs rounded-circle\" src=\"";
         // line 154
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("logos/Logo512.png"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/logos/Logo512.png"), "html", null, true);
         echo "\" alt=\"Profile image\"> </a>
             <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown\" aria-labelledby=\"UserDropdown\">
               <div class=\"dropdown-header text-center\">
                 <img class=\"img-md rounded-circle\" src=\"";
         // line 157
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("logos/Logo72.png"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("bo/logos/Logo72.png"), "html", null, true);
         echo "\" alt=\"Profile image\">
                 <p class=\"mb-1 mt-3 font-weight-semibold\">Allen Moreno</p>
                 <p class=\"fw-light text-muted mb-0\">allenmoreno@gmail.com</p>
@@ -240,7 +240,8 @@ class __TwigTemplate_7fa23b2f45a251963a77aaf1aede04f0 extends Template
         </button>
       </div>
     </nav>
-    <!-- partial -->";
+    <!-- partial -->
+";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
@@ -277,10 +278,10 @@ class __TwigTemplate_7fa23b2f45a251963a77aaf1aede04f0 extends Template
         </div>
         <div>
           <a class=\"navbar-brand brand-logo\" href=\"{{ path('home')}}\">
-            <img src=\"{{ asset(\"logos/Logo512.png\") }}\" alt=\"logo\" />
+            <img src=\"{{ asset(\"bo/logos/Logo512.png\") }}\" alt=\"logo\" />
           </a>
           <a class=\"navbar-brand brand-logo-mini\" href=\"{{ path('home')}}\">
-            <img src=\"{{ asset(\"logos/Logo512.png\") }}\" alt=\"logo\" />
+            <img src=\"{{ asset(\"bo/logos/Logo512.png\") }}\" alt=\"logo\" />
           </a>
         </div>
       </div>
@@ -390,7 +391,7 @@ class __TwigTemplate_7fa23b2f45a251963a77aaf1aede04f0 extends Template
               <div class=\"dropdown-divider\"></div>
               <a class=\"dropdown-item preview-item\">
                 <div class=\"preview-thumbnail\">
-                  <img src=\"{{ asset(\"logos/Logo512.png\") }}\" alt=\"image\" class=\"img-sm profile-pic\">
+                  <img src=\"{{ asset(\"bo/logos/Logo512.png\") }}\" alt=\"image\" class=\"img-sm profile-pic\">
                 </div>
                 <div class=\"preview-item-content flex-grow py-2\">
                   <p class=\"preview-subject ellipsis font-weight-medium text-dark\">Etienne Leroy </p>
@@ -399,7 +400,7 @@ class __TwigTemplate_7fa23b2f45a251963a77aaf1aede04f0 extends Template
               </a>
               <a class=\"dropdown-item preview-item\">
                 <div class=\"preview-thumbnail\">
-                  <img src=\"{{ asset(\"logos/Logo512.png\") }}\" alt=\"image\" class=\"img-sm profile-pic\">
+                  <img src=\"{{ asset(\"bo/logos/Logo512.png\") }}\" alt=\"image\" class=\"img-sm profile-pic\">
                 </div>
                 <div class=\"preview-item-content flex-grow py-2\">
                   <p class=\"preview-subject ellipsis font-weight-medium text-dark\">Leroy Etienne </p>
@@ -408,7 +409,7 @@ class __TwigTemplate_7fa23b2f45a251963a77aaf1aede04f0 extends Template
               </a>
               <a class=\"dropdown-item preview-item\">
                 <div class=\"preview-thumbnail\">
-                  <img src=\"{{ asset(\"logos/Logo512.png\") }}\" alt=\"image\" class=\"img-sm profile-pic\">
+                  <img src=\"{{ asset(\"bo/logos/Logo512.png\") }}\" alt=\"image\" class=\"img-sm profile-pic\">
                 </div>
                 <div class=\"preview-item-content flex-grow py-2\">
                   <p class=\"preview-subject ellipsis font-weight-medium text-dark\">Leroy Etienne </p>
@@ -419,10 +420,10 @@ class __TwigTemplate_7fa23b2f45a251963a77aaf1aede04f0 extends Template
           </li>
           <li class=\"nav-item dropdown d-none d-lg-block user-dropdown\">
             <a class=\"nav-link\" id=\"UserDropdown\" href=\"#\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
-              <img class=\"img-xs rounded-circle\" src=\"{{ asset(\"logos/Logo512.png\") }}\" alt=\"Profile image\"> </a>
+              <img class=\"img-xs rounded-circle\" src=\"{{ asset(\"bo/logos/Logo512.png\") }}\" alt=\"Profile image\"> </a>
             <div class=\"dropdown-menu dropdown-menu-right navbar-dropdown\" aria-labelledby=\"UserDropdown\">
               <div class=\"dropdown-header text-center\">
-                <img class=\"img-md rounded-circle\" src=\"{{ asset(\"logos/Logo72.png\") }}\" alt=\"Profile image\">
+                <img class=\"img-md rounded-circle\" src=\"{{ asset(\"bo/logos/Logo72.png\") }}\" alt=\"Profile image\">
                 <p class=\"mb-1 mt-3 font-weight-semibold\">Allen Moreno</p>
                 <p class=\"fw-light text-muted mb-0\">allenmoreno@gmail.com</p>
               </div>
@@ -439,6 +440,7 @@ class __TwigTemplate_7fa23b2f45a251963a77aaf1aede04f0 extends Template
         </button>
       </div>
     </nav>
-    <!-- partial -->", "inc/navbar.html.twig", "/opt/lampp/htdocs/bo-FIND/templates/inc/navbar.html.twig");
+    <!-- partial -->
+", "inc/navbar.html.twig", "/opt/lampp/htdocs/bo-FIND/templates/inc/navbar.html.twig");
     }
 }
