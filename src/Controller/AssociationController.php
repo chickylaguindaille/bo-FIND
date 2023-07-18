@@ -306,7 +306,7 @@ class AssociationController extends AbstractController
 
 
     /**
-     * @Route("/association/list", name="association_list")
+     * @Route("/bo/association/list", name="association_list")
      * @Template()
      */
     public function associationList(FindApiService $findApi)
