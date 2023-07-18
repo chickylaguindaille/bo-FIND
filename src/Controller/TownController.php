@@ -54,7 +54,7 @@ class TownController extends AbstractController
 
 
     /**
-     * @Route("/ville/list", name="ville_list")
+     * @Route("/bo/ville/list", name="ville_list")
      * @Template()
      */
     public function villeList(FindApiService $findApi)
