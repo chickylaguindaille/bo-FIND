@@ -53,21 +53,7 @@ class HomeController extends AbstractController
         return $this->render('home.html.twig', $data);
     }
 
-    /**
-     * @Route("/bo/ville/list", name="ville_list")
-     * @Template()
-     */
-    // public function villeList(FindApiService $findApi)
-    // {
-    //     $town = $this->findApi->getTowns();
-    //     $town = $town['data'];
 
-    //     $data['towns'] = $town;
-
-        
-
-    //     return $this->render('Villes/villelist.html.twig', $data);
-    // }
 
 
 }
