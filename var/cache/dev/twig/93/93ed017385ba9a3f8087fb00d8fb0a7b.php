@@ -326,6 +326,6 @@ function delay(fn, ms) {
           })
     }, 500));
   });
-  </script>", "Villes/villelist.js.twig", "/opt/lampp/htdocs/bo-FIND/templates/Villes/villelist.js.twig");
+  </script>", "Villes/villelist.js.twig", "/Applications/MAMP/htdocs/bo-FIND/templates/Villes/villelist.js.twig");
     }
 }

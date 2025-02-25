@@ -1787,6 +1787,6 @@ class __TwigTemplate_9346ca98846d3a798faff9086d70ab19 extends Template
         </tbody>
     </table>
 {% endmacro %}
-", "@Doctrine/Collector/db.html.twig", "/opt/lampp/htdocs/bo-FIND/vendor/doctrine/doctrine-bundle/Resources/views/Collector/db.html.twig");
+", "@Doctrine/Collector/db.html.twig", "/Applications/MAMP/htdocs/bo-FIND/vendor/doctrine/doctrine-bundle/Resources/views/Collector/db.html.twig");
     }
 }

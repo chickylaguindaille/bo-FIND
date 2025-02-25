@@ -24,7 +24,7 @@
                 
                     <label class="form-label">Source</label>
                         <select name="anecdote[{{numberanecdote}}][source]" class="form-select">
-                            {% for name in listes[0]['source']|sort %}
+                            {% for name in listes[0]['source']|default([])|sort %}
                                 <option value="{{name}}">{{name}}</option>
                             {% endfor %}
                         </select>

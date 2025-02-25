@@ -27,7 +27,7 @@
         <div class="form-group col-6">
             <label for="type">Type</label>
             <select name="type" class="form-select" id="type" {{required}}>
-                {% for name in listes[0]['assotype']|sort %}
+                {% for name in listes[0]['assotype']|default([])|sort %}
                     <option value="{{name}}">{{name}}</option>
                 {% endfor %}
             </select>
@@ -35,7 +35,7 @@
         <div class="form-group col-6">
             <label for="hat">Couvre-Chef</label>
             <select name="hat" class="form-select" id="hat" {{required}}>
-                {% for name in listes[0]['hats']|sort %}
+                {% for name in listes[0]['hats']|default([])|sort %}
                     <option value="{{name}}">{{name}}</option>
                 {% endfor %}
             </select>

@@ -13,11 +13,11 @@ $(document).ready(function() {
     var optionSource = "";
 
     // Boucle Twig pour générer les options
-    {% for name in listes[0]['documenttype']|sort %}
+    {% for name in listes[0]['documenttype']|default([])|sort %}
         optionType += '<option value="{{name}}">{{name}}</option>';
     {% endfor %}
 
-    {% for name in listes[0]['source']|sort %}
+    {% for name in listes[0]['source']|default([])|sort %}
         optionSource += '<option value="{{name}}">{{name}}</option>';
     {% endfor %}
 

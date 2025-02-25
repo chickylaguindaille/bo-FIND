@@ -349,6 +349,6 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
 
 </script>
 </html>
-", "base.html.twig", "/opt/lampp/htdocs/bo-FIND/templates/base.html.twig");
+", "base.html.twig", "/Applications/MAMP/htdocs/bo-FIND/templates/base.html.twig");
     }
 }

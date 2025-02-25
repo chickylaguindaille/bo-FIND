@@ -270,6 +270,6 @@ class __TwigTemplate_32235245def651010f00a7dc9fc218d3 extends Template
           </li>
         </ul>
       </nav>
-      <!-- partial -->", "inc/sidebar.html.twig", "/opt/lampp/htdocs/bo-FIND/templates/inc/sidebar.html.twig");
+      <!-- partial -->", "inc/sidebar.html.twig", "/Applications/MAMP/htdocs/bo-FIND/templates/inc/sidebar.html.twig");
     }
 }

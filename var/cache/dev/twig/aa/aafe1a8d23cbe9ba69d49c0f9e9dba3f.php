@@ -71,6 +71,6 @@ class __TwigTemplate_7bbadfc3d6e6bb830f3d5c006a82574f extends Template
             <span class=\"text-muted text-center text-sm-left d-block d-sm-inline-block\">Premium <a href=\"https://www.bootstrapdash.com/\" target=\"_blank\">Bootstrap admin template</a> from BootstrapDash.</span>
             <span class=\"float-none float-sm-right d-block mt-1 mt-sm-0 text-center\">Copyright © 2021. All rights reserved.</span>
           </div>
-        </footer>", "inc/footer.html.twig", "/opt/lampp/htdocs/bo-FIND/templates/inc/footer.html.twig");
+        </footer>", "inc/footer.html.twig", "/Applications/MAMP/htdocs/bo-FIND/templates/inc/footer.html.twig");
     }
 }

@@ -18,7 +18,7 @@
                     <label class="form-label">Type</label>
                     {# <input type="text" name="document[{{numberdocument}}][type]" class="form-control" id="document_{{numberdocument}}_{{association.id??""}}"></input> #}
                         <select name="document[{{numberdocument}}][type]" class="form-select">
-                                {% for name in listes[0]['documenttype']|sort %}
+                                {% for name in listes[0]['documenttype']|default([])|sort %}
                                     <option value="{{name}}">{{name}}</option>
                                 {% endfor %}
                         </select>
@@ -30,7 +30,7 @@
                     <label class="form-label">Source</label>
                     {# <input type="text" name="document[{{numberdocument}}][source]" class="form-control" id="document_{{numberdocument}}_{{association.id??""}}"></input> #}
                         <select name="document[{{numberdocument}}][source]" class="form-select">
-                                {% for name in listes[0]['source']|sort %}
+                                {% for name in listes[0]['source']|default([])|sort %}
                                     <option value="{{name}}">{{name}}</option>
                                 {% endfor %}
                         </select>

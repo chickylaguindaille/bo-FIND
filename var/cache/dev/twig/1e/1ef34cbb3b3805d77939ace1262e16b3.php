@@ -441,6 +441,6 @@ class __TwigTemplate_7fa23b2f45a251963a77aaf1aede04f0 extends Template
       </div>
     </nav>
     <!-- partial -->
-", "inc/navbar.html.twig", "/opt/lampp/htdocs/bo-FIND/templates/inc/navbar.html.twig");
+", "inc/navbar.html.twig", "/Applications/MAMP/htdocs/bo-FIND/templates/inc/navbar.html.twig");
     }
 }

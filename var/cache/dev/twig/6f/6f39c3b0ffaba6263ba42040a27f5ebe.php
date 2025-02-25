@@ -384,6 +384,6 @@ class __TwigTemplate_ea5518ae473b94c3f506faa386dc9a5b extends Template
           <!-- chat tab ends -->
         </div>
       </div>
-", "inc/rightsidebar.html.twig", "/opt/lampp/htdocs/bo-FIND/templates/inc/rightsidebar.html.twig");
+", "inc/rightsidebar.html.twig", "/Applications/MAMP/htdocs/bo-FIND/templates/inc/rightsidebar.html.twig");
     }
 }

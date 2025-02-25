@@ -12,7 +12,7 @@ $(document).ready(function() {
     var optionType = "";
 
     // Boucle Twig pour générer les options
-    {% for name in listes[0]['functiontype']|sort %}
+    {% for name in listes[0]['functiontype']|default([])|sort %}
         optionType += '<option value="{{name}}">{{name}}</option>';
     {% endfor %}
 

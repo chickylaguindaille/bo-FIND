@@ -4,13 +4,13 @@
 
 return [
     'association_add' => [[], ['_controller' => 'App\\Controller\\AssociationController::associationAdd'], [], [['text', '/association/add']], [], [], []],
-    'association_list' => [[], ['_controller' => 'App\\Controller\\AssociationController::associationList'], [], [['text', '/association/list']], [], [], []],
+    'association_list' => [[], ['_controller' => 'App\\Controller\\AssociationController::associationList'], [], [['text', '/bo/association/list']], [], [], []],
     'association_details' => [['id'], ['_controller' => 'App\\Controller\\AssociationController::associationDetails'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/association']], [], [], []],
     'association_patch' => [['id'], ['_controller' => 'App\\Controller\\AssociationController::associationPatch'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/association/patch']], [], [], []],
     'association_delete' => [['id'], ['_controller' => 'App\\Controller\\AssociationController::villeDelete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/association/delete']], [], [], []],
     'association_list_change' => [[], ['_controller' => 'App\\Controller\\AssociationController::associationListChange'], [], [['text', '/association/list/change']], [], [], []],
     'home' => [[], ['_controller' => 'App\\Controller\\HomeController::home'], [], [['text', '/bo/home']], [], [], []],
-    'ville_list' => [[], ['_controller' => 'App\\Controller\\TownController::villeList'], [], [['text', '/ville/list']], [], [], []],
+    'ville_list' => [[], ['_controller' => 'App\\Controller\\TownController::villeList'], [], [['text', '/bo/ville/list']], [], [], []],
     'ville_patch' => [['id'], ['_controller' => 'App\\Controller\\TownController::villePatch'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/ville/patch']], [], [], []],
     'ville_delete' => [['id'], ['_controller' => 'App\\Controller\\TownController::villeDelete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/ville/delete']], [], [], []],
     'user_list' => [[], ['_controller' => 'App\\Controller\\UserController::userList'], [], [['text', '/user/list']], [], [], []],

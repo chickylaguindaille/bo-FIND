@@ -1401,6 +1401,6 @@ class __TwigTemplate_1119040b6e52d882d2b80b931bbcdfa0 extends Template
           </div>
         </div>
 {% endblock %}
-", "home.html.twig", "/opt/lampp/htdocs/bo-FIND/templates/home.html.twig");
+", "home.html.twig", "/Applications/MAMP/htdocs/bo-FIND/templates/home.html.twig");
     }
 }
